@@ -1,0 +1,61 @@
+{
+    "Server":{
+        "Id": "753204464067805195"
+    },
+
+    "Roles": {
+        "Unregistered": []
+    },
+
+    "Stats": {
+        "Message":{
+            "BypassChannels": [],
+            "Cooldown": 1
+        },
+        "Voice": {
+            "BypassChannels": []
+        }
+    },
+
+    "Penals": {
+        "Jail": {
+            "Auth_Roles": [""],
+            "Role": "",
+            "Log": "",
+            "Limit": 3
+        },
+        "Mute": {
+            "Auth_Roles": [""],
+            "Role": "",
+            "Log": ""
+        },
+        "VoiceMute": {
+            "Auth_Roles": [""],
+            "Role": "",
+            "Log": "",
+            "Manual_Mute": true
+        },
+        "Suspect": {
+            "Auth_Roles": [""],
+            "Role": "",
+            "Log": ""
+        },
+        "Ban": {
+            "Auth_Roles": [],
+            "Log": "",
+            "Limit": 3
+        },
+        "Warn": {
+            "Auth_Roles": [""],
+            "Log": "",
+            "Role": [],
+            "Max_Warn": 3,
+            "Jail_Day": 1
+        },
+        "Kick": {
+            "Auth_Roles": [],
+            "Log": "",
+            "Limit": 3
+        }
+    }
+}
