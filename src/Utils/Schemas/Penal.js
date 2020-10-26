@@ -8,6 +8,7 @@ const schema = new mongoose.Schema({
   FinishTime: Number,
   Admin: String,
   User: String,
+  Reason: String,
   Type: String
 });
 

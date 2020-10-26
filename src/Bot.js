@@ -17,5 +17,4 @@ em.addEvent("Penal System/OnMemberUpdate");
 em.addEvent("Penal System/OnReady");
 em.addEvent("Penal System/OnVoiceStateUpdate");
 
-
 client.login(Config.Token).catch(err => console.error(err));

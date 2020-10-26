@@ -12,7 +12,7 @@ class PenalManager{
      * @param {Number} startTime 
      * @param {Number} finishTime 
      */
-    async addPenal(user, admin, type, temporary = false, startTime = Date.now(), finishTime = undefined){
+    async addPenal(user, admin, type, reason, temporary = false, startTime = Date.now(), finishTime = undefined){
         let count = await Penal.countDocuments().exec();
         count = count == 0 ? 1 : count;
         return await new Penal({
@@ -23,6 +23,7 @@ class PenalManager{
             Type: type,
             Temporary: temporary,
             Time: startTime,
+            Reason: reason,
             FinishTime: finishTime
         }).save();
     }

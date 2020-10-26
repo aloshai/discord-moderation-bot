@@ -16,7 +16,6 @@ module.exports.config = {
 }
 
 async function checkPenals() {
-    return;
     let guild = client.guilds.cache.get(Settings.Server.Id);
     if(!guild) return;
     let penals = await pm.getPenals({Activity: true});
