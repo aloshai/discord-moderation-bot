@@ -1,20 +1,21 @@
-const {Client, Collection} = require("discord.js");
 const client = global.Client;
 
 const Config = require("./Configuration/Config.json");
 
 const EventManager = require("./Utils/Managers/EventManager");
-const em = new EventManager();
+const EM = new EventManager();
 
-em.addEvent("CommandHandler");
-em.addEvent("Timer.js");
+EM.addEvent("CommandHandler");
+EM.addEvent("Timer.js");
 
-em.addEvent("Stats System/OnMessageStat");
-em.addEvent("Stats System/OnVoiceReady");
-em.addEvent("Stats System/OnVoiceStateUpdate");
+EM.addEvent("StatsSystem/OnMessageStat");
+EM.addEvent("StatsSystem/OnVoiceReady");
+EM.addEvent("StatsSystem/OnVoiceStateUpdate");
 
-em.addEvent("Penal System/OnMemberUpdate");
-em.addEvent("Penal System/OnReady");
-em.addEvent("Penal System/OnVoiceStateUpdate");
+EM.addEvent("PenalSystem/OnMemberUpdate");
+EM.addEvent("PenalSystem/OnReady");
+EM.addEvent("PenalSystem/OnVoiceStateUpdate");
 
-client.login(Config.Token).catch(err => console.error(err));
+require("./Utils/Helper");
+
+client.login(Config.Token).catch(console.error);

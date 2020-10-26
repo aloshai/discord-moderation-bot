@@ -14,7 +14,7 @@ class PenalManager{
      */
     async addPenal(user, admin, type, reason, temporary = false, startTime = Date.now(), finishTime = undefined){
         let count = await Penal.countDocuments().exec();
-        count = count == 0 ? 1 : count;
+        count = count == 0 ? 1 : count + 1;
         return await new Penal({
             Id: count,
             Activity: true,

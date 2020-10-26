@@ -19,41 +19,39 @@
 
     "Penals": {
         "Jail": {
-            "Auth_Roles": ["760980686013988915"],
+            "AuthRoles": ["760980686013988915"],
             "Role": "761025341170122762",
             "Log": "760535028907638814",
             "Limit": 3
         },
         "Mute": {
-            "Auth_Roles": [""],
+            "AuthRoles": [""],
             "Role": "",
             "Log": ""
         },
         "VoiceMute": {
-            "Auth_Roles": [""],
+            "AuthRoles": [""],
             "Role": "",
             "Log": "",
-            "Manual_Mute": true
+            "ManualMute": true
         },
         "Suspect": {
-            "Auth_Roles": [""],
+            "AuthRoles": [""],
             "Role": "",
             "Log": ""
         },
         "Ban": {
-            "Auth_Roles": [],
+            "AuthRoles": [],
             "Log": "",
             "Limit": 3
         },
         "Warn": {
-            "Auth_Roles": [""],
+            "AuthRoles": [""],
             "Log": "",
-            "Role": [],
-            "Max_Warn": 3,
-            "Jail_Day": 1
+            "Role": []
         },
         "Kick": {
-            "Auth_Roles": [],
+            "AuthRoles": [],
             "Log": "",
             "Limit": 3
         }

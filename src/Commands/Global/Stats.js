@@ -61,7 +61,8 @@ module.exports.execute = async (client, message, args) => {
         Aylık: \`${moment.duration(aylıkses).format("H [saat, ] m [dakika]")}\`
         `, true)
     }
-    message.channel.send(embed);
+    console.log(embed);
+    message.channel.csend(embed);
 }
 
 module.exports.settings = {
