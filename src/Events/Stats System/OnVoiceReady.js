@@ -4,7 +4,6 @@ const sm = new StatsManager();
 const client = global.Client;
 
 module.exports = () => {
-
     let guild = client.guilds.cache.get(Settings.Server.Id);
     if(!guild) return;
     

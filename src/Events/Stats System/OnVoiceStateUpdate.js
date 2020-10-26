@@ -35,7 +35,7 @@ module.exports = (oldState, newState) => {
         let geçenZaman = Date.now() - data.Time;
         return sm.addVoiceStat(oldState.id, data.ChannelID, geçenZaman);
     }
-
+	
     else if(oldState.channelID && !newState.channelID && !Settings.Stats.Voice.BypassChannels.includes(oldState.channelID)){
         let data = Voices.get(oldState.id);
         Voices.delete(oldState.id);
