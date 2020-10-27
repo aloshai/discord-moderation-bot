@@ -11,7 +11,7 @@ const PM = new PenalManager();
  * @param {Array<String>} args 
  */
 module.exports.execute = async (client, message, args) => {
-    if(Settings.Penals.Warn.AuthRoles.some(authRole => message.member.roles.cache.has(authRole))) return message.reply("yeterli yetkin yok.");
+    if(!message.member.hasPermission("ADMINISTRATOR") && Settings.Penals.Jail.AuthRoles.some(authRole => message.member.roles.cache.has(authRole))) return message.reply("yeterli yetkin yok.");
 
     let victim = message.mentions.users.first() || client.users.cache.get(args[0]) || await Helper.GetUser(args[0]);
     if(!victim) return message.reply(`birisini etiketlemelisin.`);
@@ -22,14 +22,16 @@ module.exports.execute = async (client, message, args) => {
     let member = await message.guild.getMember(victim.id);
     if(member && member.roles.highest.position >= message.member.roles.highest.position) return message.reply("senin rolünden üstte ya da aynı roldeki birisine uyarı veremezsin.")
 
-    let document = await PM.addPenal(victim.id, message.author.id, PenalManager.Types.WARN, reason);
+    if(member && member.manageable) PM.setRoles(member, Settings.Penals.Jail.Role);
 
-    message.channel.csend(`**${victim}(${victim.username})** kullanıcısı ${message.author}(${message.author.username}) tarafından **"${reason}"** sebebiyle uyarıldı. (Ceza Numarası: \`#${document.Id}\`)`)
-    message.guild.log(message.author, victim, document, Settings.Penals.Warn.Log);
+    let document = await PM.addPenal(victim.id, message.author.id, PenalManager.Types.JAIL, reason);
+
+    message.channel.csend(`**${victim}(${victim.username})** kullanıcısı ${message.author}(${message.author.username}) tarafından **"${reason}"** sebebiyle cezalandırıldı. (Ceza Numarası: \`#${document.Id}\`)`)
+    message.guild.log(message.author, victim, document, Settings.Penals.Jail.Log);
 }
 
 module.exports.settings = {
-    Commands: ["warn", "uyarı", "uyar"],
+    Commands: ["jail", "cezalandır"],
     Usage: "",
     Description: "",
     Activity: true

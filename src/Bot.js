@@ -1,5 +1,4 @@
 const client = global.Client;
-
 const Config = require("./Configuration/Config.json");
 
 const EventManager = require("./Utils/Managers/EventManager");
@@ -15,6 +14,8 @@ EM.addEvent("StatsSystem/OnVoiceStateUpdate");
 EM.addEvent("PenalSystem/OnMemberUpdate");
 EM.addEvent("PenalSystem/OnReady");
 EM.addEvent("PenalSystem/OnVoiceStateUpdate");
+
+client.on("ready", () => console.log("bot hazır."))
 
 require("./Utils/Helper");
 

@@ -1,4 +1,5 @@
 const Settings = require("../../Configuration/Settings.json");
+const Helper = require("../../Utils/Helper");
 
 const PenalManager = require("../../Utils/Managers/PenalManager");
 const Penal = require("../../Utils/Schemas/Penal");
@@ -24,7 +25,7 @@ async function checkPenals() {
 
     finishPenals.forEach(async penal => {
         penal.Activity = false;
-        let member = guild.member(penal.User) || await guild.members.fetch(penal.User).catch(e => undefined);
+        let member = guild.member(penal.User) || await Helper.GetUser(penal.User);
         if(!member) return;
         if(penal.Type == PenalManager.Types.JAIL || penal.Type == PenalManager.Types.TEMP_JAIL) pm.setRoles(member, Settings.Roles.Unregistered);
         else if(penal.Type == PenalManager.Types.MUTE || penal.Type == PenalManager.Types.TEMP_MUTE) member.roles.remove(Settings.Penals.Mute.Role);
@@ -37,7 +38,7 @@ async function checkPenals() {
 
     penals = penals.filter(penal => penal.Activity);
     penals.forEach(async penal => {
-        let member = guild.member(penal.User) || await guild.members.fetch(penal.User).catch(e => undefined);
+        let member = guild.member(penal.User) || await Helper.GetUser(penal.User);
         if(!member) return;
         
         if((penal.Type == PenalManager.Types.TEMP_JAIL || penal.Type == PenalManager.Types.JAIL) && !member.roles.cache.has(Settings.Penals.Jail.Role)){

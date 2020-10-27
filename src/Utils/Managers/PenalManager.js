@@ -1,7 +1,5 @@
 const {GuildMember} = require("discord.js");
-
 const Penal = require("../Schemas/Penal");
-const Settings = require("../../Configuration/Settings.json");
 
 class PenalManager{
     /**
@@ -37,6 +35,7 @@ class PenalManager{
 
     /**
      * @param {GuildMember} member 
+     * @param {Array<String>} params
      */
     async setRoles(member, params = []){
         if(!member.manageable) return false;
