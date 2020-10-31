@@ -1,5 +1,7 @@
 const {GuildMember} = require("discord.js");
 const Penal = require("../Schemas/Penal");
+const Settings = require("../../Configuration/Settings.json");
+const { parseZone } = require("moment");
 
 class PenalManager{
     /**
@@ -13,7 +15,7 @@ class PenalManager{
     async addPenal(user, admin, type, reason, temporary = false, startTime = Date.now(), finishTime = undefined){
         let count = await Penal.countDocuments().exec();
         count = count == 0 ? 1 : count + 1;
-        return await new Penal({
+        let penal = await new Penal({
             Id: count,
             Activity: true,
             User: user,
@@ -24,7 +26,40 @@ class PenalManager{
             Reason: reason,
             FinishTime: finishTime
         }).save();
+        
+        if(temporary && finishTime && (finishTime < (1000 * 60 * 20))){
+            this.checkPenal(count, finishTime);
+        }
+        return penal;
     }
+
+    async checkPenal(id, time) {
+        setTimeout(async () => {
+            let penal = await Penal.findOne({ Id: id }).exec();
+            if (!penal.Activity) return;
+
+            let guild = global.client.guilds.cache.get(Settings.Server.Id);
+            if (!guild) return;
+
+            let member = await guild.getMember(penal.User);
+            if (!member) {
+                penal.Activity = false;
+            }
+            else {
+                if ((penal.Type == PenalManager.Types.TEMP_JAIL || penal.Type == PenalManager.Types.JAIL) && !member.roles.cache.has(Settings.Penals.Jail.Role)) {
+                    pm.setRoles(member, Settings.Penals.Jail.Role);
+                }
+                else if ((penal.Type == PenalManager.Types.MUTE || penal.Type == PenalManager.Types.TEMP_MUTE) && !member.roles.cache.has(Settings.Penals.Mute.Role)) member.roles.add(Settings.Penals.Mute.Role);
+                else if ((penal.Type == PenalManager.Types.VOICE_MUTE || penal.Type == PenalManager.Types.TEMP_VOICE_MUTE) && (!member.roles.cache.has(Settings.Penals.VoiceMute.Role) || !member.voice.serverMute)) {
+                    member.roles.remove(Settings.Penals.VoiceMute.Role);
+                    if (member.voice.channelID) member.voice.setMute(false).catch();
+                }
+                penal.Activity = false;
+            }
+            penal.save();
+        }, time)
+    }
+
     /**
      * 
      * @param {String} id 

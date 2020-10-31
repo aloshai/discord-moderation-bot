@@ -45,7 +45,7 @@ module.exports.execute = async (client, message, args) => {
             // 9
             dataValue.push(convert(sum));
 
-            let date = new Date(Date.now() - (1000 * 60 * 60 * 24 * (day - _day))).toLocaleDateString();
+            let date = new Date(Date.now() - (1000 * 60 * 60 * 24 * (day - _day))).toDateString();
             // 2020-10-29
             dataDate.push(date);
             dataColors.push( 'rgba(0, 92, 210, 0.5)');

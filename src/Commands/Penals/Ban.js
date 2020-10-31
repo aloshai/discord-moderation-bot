@@ -20,7 +20,7 @@ module.exports.execute = async (client, message, args) => {
     if(!reason) return message.reply("bir sebep belirtmelisin.");
 
     let member = await message.guild.getMember(victim.id);
-    if(member && member.roles.highest.position >= message.member.roles.highest.position) return message.reply("senin rolünden üstte ya da aynı roldeki birisine uyarı veremezsin.");
+    if(member && member.roles.highest.position >= message.member.roles.highest.position) return message.reply("senin rolünden üstte ya da aynı roldeki birisini yasaklayamazsın.");
 
     if(member && !member.bannable) return message.reply("bu kişiyi yasaklayamıyorum.")
     message.guild.members.ban(victim.id, {
@@ -29,7 +29,7 @@ module.exports.execute = async (client, message, args) => {
 
     let document = await PM.addPenal(victim.id, message.author.id, PenalManager.Types.BAN, reason);
 
-    message.channel.csend(`**${victim}(${victim.username})** kullanıcısı ${message.author}(${message.author.username}) tarafından **"${reason}"** sebebiyle cezalandırıldı. (Ceza Numarası: \`#${document.Id}\`)`)
+    message.channel.csend(`**${victim}(${victim.username})** kullanıcısı ${message.author}(${message.author.username}) tarafından **"${reason}"** sebebiyle sunucudan yasaklandı. (Ceza Numarası: \`#${document.Id}\`)`)
     message.guild.log(message.author, victim, document, Settings.Penals.Ban.Log);
 }
 

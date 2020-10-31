@@ -19,7 +19,6 @@ module.exports.execute = async (client, message, args) => {
     if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply("bunu yapmak için yeterli bir yetkiye sahip değilsin.");
 
     let victim = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
-
     if(!victim) return message.reply("birisini etiketlemelisin.")
 
     Penal.find({ User: victim.id }, async (err ,res) => {

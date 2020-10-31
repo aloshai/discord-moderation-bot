@@ -20,7 +20,7 @@ module.exports.execute = async (client, message, args) => {
     if(!reason) return message.reply("bir sebep belirtmelisin.");
 
     let member = await message.guild.getMember(victim.id);
-    if(member && member.roles.highest.position >= message.member.roles.highest.position) return message.reply("senin rolünden üstte ya da aynı roldeki birisine uyarı veremezsin.")
+    if(member && member.roles.highest.position >= message.member.roles.highest.position) return message.reply("senin rolünden üstte ya da aynı roldeki birisine ceza veremezsin.")
 
     if(member && member.manageable) PM.setRoles(member, Settings.Penals.Jail.Role);
 

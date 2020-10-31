@@ -7,9 +7,9 @@ const pm = new PenalManager();
 const client = global.Client;
 
 module.exports = async() => {
-    setInterval(() => {
-        checkPenals();
-    }, 60*10000)
+    setInterval(async () => {
+        await checkPenals();
+    }, 5000)
 }
 
 module.exports.config = {
@@ -17,6 +17,7 @@ module.exports.config = {
 }
 
 async function checkPenals() {
+    console.log("Start Penal Check");
     let guild = client.guilds.cache.get(Settings.Server.Id);
     if(!guild) return;
     let penals = await pm.getPenals({Activity: true});
@@ -25,7 +26,7 @@ async function checkPenals() {
 
     finishPenals.forEach(async penal => {
         penal.Activity = false;
-        let member = guild.member(penal.User) || await Helper.GetUser(penal.User);
+        let member = await guild.getMember(penal.User);
         if(!member) return;
         if(penal.Type == PenalManager.Types.JAIL || penal.Type == PenalManager.Types.TEMP_JAIL) pm.setRoles(member, Settings.Roles.Unregistered);
         else if(penal.Type == PenalManager.Types.MUTE || penal.Type == PenalManager.Types.TEMP_MUTE) member.roles.remove(Settings.Penals.Mute.Role);
@@ -38,7 +39,7 @@ async function checkPenals() {
 
     penals = penals.filter(penal => penal.Activity);
     penals.forEach(async penal => {
-        let member = guild.member(penal.User) || await Helper.GetUser(penal.User);
+        let member = await guild.getMember(penal.User);
         if(!member) return;
         
         if((penal.Type == PenalManager.Types.TEMP_JAIL || penal.Type == PenalManager.Types.JAIL) && !member.roles.cache.has(Settings.Penals.Jail.Role)){
@@ -50,4 +51,5 @@ async function checkPenals() {
             if(member.voice.channelID) member.voice.setMute(false).catch();
         }
     });
+    console.log("Stop Penal Check");
 }

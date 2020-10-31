@@ -44,7 +44,7 @@ module.exports.execute = async (client, message, args) => {
             toplammesaj += sum;
             dataValue.push(sum);
 
-            let date = new Date(Date.now() - (1000 * 60 * 60 * 24 * (day - _day))).toLocaleDateString();
+            let date = new Date(Date.now() - (1000 * 60 * 60 * 24 * (day - _day))).toDateString();
             dataDate.push(date);
             dataColors.push( 'rgba(0, 92, 210, 0.5)');
 

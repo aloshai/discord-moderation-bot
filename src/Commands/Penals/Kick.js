@@ -21,14 +21,14 @@ module.exports.execute = async (client, message, args) => {
 
     let member = await message.guild.getMember(victim.id);
     if(!member) return message.reply(`${victim} kullanıcısı bu sunucuda değil.`);
-    if(member && member.roles.highest.position >= message.member.roles.highest.position) return message.reply("senin rolünden üstte ya da aynı roldeki birisine uyarı veremezsin.");
+    if(member && member.roles.highest.position >= message.member.roles.highest.position) return message.reply("senin rolünden üstte ya da aynı roldeki birisini atamazsın.");
 
     if(member && !member.kickable) return message.reply("bu kişiyi atamıyorum.");
 
     message.member.kick(`Atan kişi: ${message.author.tag}`).catch();
     let document = await PM.addPenal(victim.id, message.author.id, PenalManager.Types.KICK, reason);
 
-    message.channel.csend(`**${victim}(${victim.username})** kullanıcısı ${message.author}(${message.author.username}) tarafından **"${reason}"** sebebiyle cezalandırıldı. (Ceza Numarası: \`#${document.Id}\`)`)
+    message.channel.csend(`**${victim}(${victim.username})** kullanıcısı ${message.author}(${message.author.username}) tarafından **"${reason}"** sebebiyle sunucudan attı. (Ceza Numarası: \`#${document.Id}\`)`)
     message.guild.log(message.author, victim, document, Settings.Penals.Kick.Log);
 }
 
