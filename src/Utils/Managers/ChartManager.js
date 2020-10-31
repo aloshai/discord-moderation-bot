@@ -1,39 +1,46 @@
-const URI = "http://185.148.242.75:3061/";
-const path = require("path");
-const axios = require("axios")
-class ChartManager{
+const URI = "http://localhost:3100/chart";
+const Axios = require("axios");
 
-    constructor(path = "chart"){
-        this.Path = path;
+class ChartManager {
+    async ImageFromData(body) {
+        const response = await Axios.get(URI, {
+            data: body,
+            responseType: 'arraybuffer'
+        });
+        return response.data;
     }
-
-    async getImageFromData(body){
-        let uri = URI + this.Path;
-        console.log("test")
-        doRequest(uri, body);
-        console.log("test");
-    }
-
 }
+module.exports = ChartManager;
+
 /**
- * 
- * @param {*} url 
- * @param {*} body 
- * @returns {Promise<Request>}
- */
-function doRequest(url, data) {
-    request(url, {
-        body: JSON.stringify({
-            config: data
-        }),
-        method: "GET"
-    }, function (error, res, body) {
-        if (!error && res.statusCode == 200) {
-            console.log("1")
-        } else {
-            console.log("2")
+ *     let m = await cm.ImageFromData({
+        width: 600,
+        height: 290,
+        type: 'line',
+        data: {
+            labels: [].concat(yData),
+            datasets: [{
+                label: '# gün istatistiği',
+                data: [].concat(xData),
+                backgroundColor: [
+                    'rgba(0, 132, 189, 0.2)'
+                ],
+                borderColor: [].concat(zData),
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        callback: (value) => '$' + value
+                    }
+                }]
+            }
         }
     });
-}  
+    embed.setImage("attachment://Graph.png");
+    let attachment = new MessageAttachment(m, "Graph.png");
 
-module.exports = ChartManager;
+ */

@@ -7,6 +7,9 @@ require("moment-timezone");
 
 const Penal = require("../../Utils/Schemas/Penal");
 
+const TimeManager = require("../../Utils/Managers/TimeManager");
+const tm = new TimeManager();
+
 /**
  * @param {Client} client 
  * @param {Message} message 

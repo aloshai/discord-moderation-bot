@@ -29,7 +29,7 @@ Guild.prototype.log = async function log(admin, user, document, channelId) {
         **Kullanıcı:** ${user}(${user.id})        
         `);
 
-        channel.send(embed);
+        channel.csend(embed);
     }
 }
 
