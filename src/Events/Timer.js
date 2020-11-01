@@ -4,8 +4,8 @@ const Settings = require("../Configuration/Settings.json");
 
 module.exports = () => {
     const tm = new TimeManager();
-    setInterval(() => {
-        tm.checkDay(Settings.Server.Id);
+    setInterval(async () => {
+        await tm.checkDay(Settings.Server.Id);
     }, 1000);
 }
 

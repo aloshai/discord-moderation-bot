@@ -7,15 +7,15 @@ const EM = new EventManager();
 EM.addEvent("CommandHandler");
 EM.addEvent("Timer.js");
 
-EM.addEvent("StatsSystem/OnMessageStat");
-EM.addEvent("StatsSystem/OnVoiceReady");
-EM.addEvent("StatsSystem/OnVoiceStateUpdate");
+EM.addEvent("Stats/OnMessageStat");
+EM.addEvent("Stats/OnVoiceReady");
+EM.addEvent("Stats/OnVoiceStateUpdate");
 
-EM.addEvent("PenalSystem/OnMemberUpdate");
-EM.addEvent("PenalSystem/OnReady");
-EM.addEvent("PenalSystem/OnVoiceStateUpdate");
+EM.addEvent("Penals/OnMemberUpdate");
+EM.addEvent("Penals/OnReady");
+EM.addEvent("Penals/OnVoiceStateUpdate");
 
-client.on("ready", () => console.log("bot hazır."))
+client.on("ready", () => console.log("Bot hazır."))
 
 require("./Utils/Helper");
 

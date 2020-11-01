@@ -9,7 +9,7 @@ const client = global.Client;
 module.exports = async() => {
     setInterval(async () => {
         await checkPenals();
-    }, 5000)
+    }, 60000)
 }
 
 module.exports.config = {
@@ -17,7 +17,6 @@ module.exports.config = {
 }
 
 async function checkPenals() {
-    console.log("Start Penal Check");
     let guild = client.guilds.cache.get(Settings.Server.Id);
     if(!guild) return;
     let penals = await pm.getPenals({Activity: true});
@@ -27,13 +26,9 @@ async function checkPenals() {
     finishPenals.forEach(async penal => {
         penal.Activity = false;
         let member = await guild.getMember(penal.User);
-        if(!member) return;
-        if(penal.Type == PenalManager.Types.JAIL || penal.Type == PenalManager.Types.TEMP_JAIL) pm.setRoles(member, Settings.Roles.Unregistered);
-        else if(penal.Type == PenalManager.Types.MUTE || penal.Type == PenalManager.Types.TEMP_MUTE) member.roles.remove(Settings.Penals.Mute.Role);
-        else if(penal.Type == PenalManager.Types.VOICE_MUTE || penal.Type == PenalManager.Types.TEMP_VOICE_MUTE){
-            member.roles.remove(Settings.Penals.VoiceMute.Role);
-            if(member.voice.channelID) member.voice.setMute(false).catch();
-        }
+        if(!member) return penal.save();
+
+        pm.disableToPenal(penal, member);
     });
     Penal.updateMany({Activity: true, FinishTime: {$exists: true, $lte: Date.now()}}, {$set: {Activity: false}}, {multi: true}).exec();
 
@@ -47,9 +42,8 @@ async function checkPenals() {
         }
         else if((penal.Type == PenalManager.Types.MUTE || penal.Type == PenalManager.Types.TEMP_MUTE) && !member.roles.cache.has(Settings.Penals.Mute.Role)) member.roles.add(Settings.Penals.Mute.Role);
         else if((penal.Type == PenalManager.Types.VOICE_MUTE || penal.Type == PenalManager.Types.TEMP_VOICE_MUTE) && (!member.roles.cache.has(Settings.Penals.VoiceMute.Role) || !member.voice.serverMute)){
-            member.roles.remove(Settings.Penals.VoiceMute.Role);
-            if(member.voice.channelID) member.voice.setMute(false).catch();
+            member.roles.add(Settings.Penals.VoiceMute.Role);
+            if(member.voice.channelID) member.voice.setMute(true).catch();
         }
     });
-    console.log("Stop Penal Check");
 }

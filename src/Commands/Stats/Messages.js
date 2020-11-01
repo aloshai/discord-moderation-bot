@@ -1,11 +1,11 @@
 const { Client, Message, MessageEmbed, MessageAttachment } = require("discord.js");
 const Stat = require("../../Utils/Schemas/Stat");
 
-var webshot = require("node-webshot");
-var fs = require("fs");
-
 const TimeManager = require("../../Utils/Managers/TimeManager");
 const tm = new TimeManager();
+
+const moment = require("moment");
+require("moment-duration-format");
 
 const ChartManager = require("../../Utils/Managers/ChartManager");
 const cm = new ChartManager();
@@ -29,9 +29,9 @@ module.exports.execute = async (client, message, args) => {
     embed.setDescription(`${victim} kişisinin ${day} gün boyunca yapmış olduğu mesaj aktifliği aşağıda detaylı olarak sıralanmıştır. Bir önceki güne gitmek için yöneticiye başvurunuz.`);
     embed.setColor("2f3136");
 
-    let dataValue = [];
+    let dataValue = new Array(day).fill(0);
     let dataDate = [];
-    let dataColors = [];
+    let dataColors = new Array(day).fill('rgba(0, 92, 210, 0.5)');
 
     if (data.Message) {
         let günlükmesaj = 0, haftalıkmesaj = 0, aylıkmesaj = 0, toplammesaj = 0;
@@ -42,12 +42,7 @@ module.exports.execute = async (client, message, args) => {
         days.forEach(_day => {
             let sum = Object.values(data.Message[_day]).reduce((x, y) => x + y, 0);
             toplammesaj += sum;
-            dataValue.push(sum);
-
-            let date = new Date(Date.now() - (1000 * 60 * 60 * 24 * (day - _day))).toDateString();
-            dataDate.push(date);
-            dataColors.push( 'rgba(0, 92, 210, 0.5)');
-
+            dataValue[_day - 1] = sum;
 
             if (day == Number(_day)) {
                 günlükmesaj += sum;
@@ -109,6 +104,11 @@ module.exports.execute = async (client, message, args) => {
         embed.setDescription("Herhangi bir kayıt bulunamadı.");
     }
 
+    for (let index = 0; index < day; index++) {
+        let date = new Date(Date.now() - (1000 * 60 * 60 * 24 * (day - (index + 1)))).toDateString();
+        dataDate.push(date);
+    }
+
     let buffer = await cm.ImageFromData({
         width: 600,
         height: 290,
@@ -117,7 +117,7 @@ module.exports.execute = async (client, message, args) => {
         data: {
             labels: [].concat(dataDate),
             datasets: [{
-                label: "Toplam Mesaj İstatistiği (Gün)",
+                label: "Toplam Mesaj İstatistiği (Adet)",
                 data: [].concat(dataValue),
                 backgroundColor: [
                     'rgba(0, 112, 255, 0.25)'

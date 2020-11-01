@@ -29,7 +29,7 @@ module.exports.execute = async (client, message, args) => {
     embed.setDescription(`${victim} kişisinin ${day} gün boyunca yapmış olduğu ses aktifliği aşağıda detaylı olarak sıralanmıştır. Bir önceki güne gitmek için yöneticiye başvurunuz.`);
     embed.setColor("2f3136");
 
-    let dataValue = [];
+    let dataValue = new Array(day).fill(0);
     let dataDate = [];
     let dataColors = [];
 
@@ -42,13 +42,8 @@ module.exports.execute = async (client, message, args) => {
         days.forEach(_day => {
             let sum = Object.values(data.Voice[_day]).reduce((x, y) => x + y, 0);
             toplamses += sum;
-            // 9
-            dataValue.push(convert(sum));
-
-            let date = new Date(Date.now() - (1000 * 60 * 60 * 24 * (day - _day))).toDateString();
-            // 2020-10-29
-            dataDate.push(date);
-            dataColors.push( 'rgba(0, 92, 210, 0.5)');
+            dataValue[_day - 1] = convert(sum);
+            dataColors.push('rgba(4, 255, 0, 0.5)');
 
 
             if (day == Number(_day)) {
@@ -111,6 +106,11 @@ module.exports.execute = async (client, message, args) => {
         embed.setDescription("Herhangi bir kayıt bulunamadı.");
     }
 
+    for (let index = 0; index < day; index++) {
+        let date = new Date(Date.now() - (1000 * 60 * 60 * 24 * (day - (index + 1)))).toDateString();
+        dataDate.push(date);
+    }
+
     let buffer = await cm.ImageFromData({
         width: 600,
         height: 290,
@@ -119,10 +119,10 @@ module.exports.execute = async (client, message, args) => {
         data: {
             labels: [].concat(dataDate),
             datasets: [{
-                label: "Toplam Ses İstatistiği (Gün)",
+                label: "Toplam Ses İstatistiği (Dakika)",
                 data: [].concat(dataValue),
                 backgroundColor: [
-                    'rgba(0, 112, 255, 0.25)'
+                    'rgba(4, 255, 0, 0.25)'
                 ],
                 borderColor: [].concat(dataColors),
                 borderWidth: 1

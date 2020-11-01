@@ -1,4 +1,4 @@
-const {Client, Message, MessageEmbed} = require("discord.js");
+const {Client, Message, MessageEmbed, MessageAttachment} = require("discord.js");
 const Stat = require("../../Utils/Schemas/Stat");
 const TimeManager = require("../../Utils/Managers/TimeManager");
 
@@ -7,6 +7,8 @@ require("moment-duration-format");
 
 const tm = new TimeManager();
 
+const ChartManager = require("../../Utils/Managers/ChartManager");
+const cm = new ChartManager();
 
 /**
  * @param {Client} client 
@@ -24,12 +26,15 @@ module.exports.execute = async (client, message, args) => {
     if(!data) data = {};
     let day = await tm.getDay(message.guild.id);
 
+    let dataMessage = new Array(day).fill(0, 0, day), dataVoice = new Array(day).fill(0, 0, day), dataColors = new Array(day).fill('rgba(0, 92, 210, 0.5)');
+
     if(data.Message){
         let günlükmesaj = 0, haftalıkmesaj = 0, aylıkmesaj = 0, toplammesaj = 0;
         let days = Object.keys(data.Message);
         days.forEach(_day => {
             let sum = Object.values(data.Message[_day]).reduce((x,y) => x + y, 0);
             toplammesaj += sum;
+            dataMessage[_day - 1] = sum;
             if(day == Number(_day)) günlükmesaj += sum;
             if(_day <= 7) haftalıkmesaj += sum;
             if(_day <= 30) aylıkmesaj += sum;
@@ -42,13 +47,16 @@ module.exports.execute = async (client, message, args) => {
         Aylık: \`${aylıkmesaj} mesaj\`
         `, true)
     }
-
     if(data.Voice){
         let günlükses = 0, haftalıkses = 0, aylıkses = 0, toplamses = 0;
         let days = Object.keys(data.Voice);
+        let max = Math.max(dataMessage);
         days.forEach(_day => {
             let sum = Object.values(data.Voice[_day]).reduce((x,y) => x + y, 0);
+            if(isNaN(sum)) sum = 0;
             toplamses += sum;
+
+            dataVoice[_day - 1] = (sum / (1000 * 60))
             if(day == Number(_day)) günlükses += sum;
             if(_day <= 7) haftalıkses += sum;
             if(_day <= 30) aylıkses += sum;
@@ -61,7 +69,58 @@ module.exports.execute = async (client, message, args) => {
         Aylık: \`${moment.duration(aylıkses).format("H [saat, ] m [dakika]")}\`
         `, true)
     }
-    message.channel.csend(embed);
+
+    let dataDate = [];
+    for (let index = 0; index < day; index++) {
+        let date = new Date(Date.now() - (1000 * 60 * 60 * 24 * (day - (index + 1)))).toDateString();
+        dataDate.push(date);
+    }
+
+    let buffer = await cm.ImageFromData({
+        width: 600,
+        height: 290,
+        type: 'line',
+        
+        data: {
+            labels: [].concat(dataDate),
+            datasets: [{
+                label: "Toplam Mesaj İstatistiği (Adet)",
+                data: [].concat(dataMessage),
+                backgroundColor: [
+                    'rgba(0, 112, 255, 0.25)'
+                ],
+                borderColor: [].concat(dataColors),
+                borderWidth: 1
+            },
+            {
+                label: "Toplam Ses İstatistiği (Dakika)",
+                data: dataVoice,
+                backgroundColor: [
+                    'rgba(4, 255, 0, 0.25)'
+                ],
+                borderColor: [].concat(new Array(day).fill('rgba(4, 255, 0, 0.5)')),
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        callback: (value) => '$' + value
+                    }
+                }]
+            }
+        }
+    });
+
+    embed.setImage("attachment://Graph.png");
+    let attachment = new MessageAttachment(buffer, "Graph.png");
+
+    message.channel.send({
+        embed: embed,
+        files: [attachment]
+    });
 }
 
 module.exports.settings = {

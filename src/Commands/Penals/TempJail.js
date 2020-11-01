@@ -2,6 +2,8 @@ const {Client, Message} = require("discord.js");
 const Settings = require("../../Configuration/Settings.json");
 const Helper = require("../../Utils/Helper");
 
+const ms = require("ms");
+
 const PenalManager = require("../../Utils/Managers/PenalManager");
 const PM = new PenalManager();
 
@@ -18,23 +20,23 @@ module.exports.execute = async (client, message, args) => {
 
     let time = args[1];
     if(!time || !ms(time)) return message.reply("lütfen geçerli bir süre girin.");
-
+    time = ms(time);
     let reason = args.splice(12).join(" ");
     if(!reason) return message.reply("bir sebep belirtmelisin.");
 
     let member = await message.guild.getMember(victim.id);
     if(member && member.roles.highest.position >= message.member.roles.highest.position) return message.reply("senin rolünden üstte ya da aynı roldeki birisine ceza veremezsin.")
 
-    if(member && member.manageable) PM.setRoles(member, Settings.Penals.Jail.Role);
+    if(member && member.manageable) PM.setRoles(member, Settings.Penals.Jail.Role).catch();
 
-    let document = await PM.addPenal(victim.id, message.author.id, PenalManager.Types.TEMP_JAIL, reason, true, Date.now(), Date.now() + time);
+    let document = await PM.addPenal(victim.id, message.author.id, PenalManager.Types.TEMP_JAIL, reason, true, Date.now(), time);
 
     message.channel.csend(`**${victim}(${victim.username})** kullanıcısı ${message.author}(${message.author.username}) tarafından **"${reason}"** sebebiyle geçici olarak cezalandırıldı. (Ceza Numarası: \`#${document.Id}\`)`)
     message.guild.log(message.author, victim, document, Settings.Penals.Jail.Log);
 }
 
 module.exports.settings = {
-    Commands: ["jail", "cezalandır"],
+    Commands: ["tempjail", "geçicicezalandır"],
     Usage: "",
     Description: "",
     Activity: true

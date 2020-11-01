@@ -24,7 +24,7 @@ class PenalManager{
             Temporary: temporary,
             Time: startTime,
             Reason: reason,
-            FinishTime: finishTime
+            FinishTime: startTime + finishTime
         }).save();
         
         if(temporary && finishTime && (finishTime < (1000 * 60 * 20))){
@@ -38,7 +38,7 @@ class PenalManager{
             let penal = await Penal.findOne({ Id: id }).exec();
             if (!penal.Activity) return;
 
-            let guild = global.client.guilds.cache.get(Settings.Server.Id);
+            let guild = global.Client.guilds.cache.get(Settings.Server.Id);
             if (!guild) return;
 
             let member = await guild.getMember(penal.User);
@@ -46,18 +46,31 @@ class PenalManager{
                 penal.Activity = false;
             }
             else {
-                if ((penal.Type == PenalManager.Types.TEMP_JAIL || penal.Type == PenalManager.Types.JAIL) && !member.roles.cache.has(Settings.Penals.Jail.Role)) {
-                    pm.setRoles(member, Settings.Penals.Jail.Role);
-                }
-                else if ((penal.Type == PenalManager.Types.MUTE || penal.Type == PenalManager.Types.TEMP_MUTE) && !member.roles.cache.has(Settings.Penals.Mute.Role)) member.roles.add(Settings.Penals.Mute.Role);
-                else if ((penal.Type == PenalManager.Types.VOICE_MUTE || penal.Type == PenalManager.Types.TEMP_VOICE_MUTE) && (!member.roles.cache.has(Settings.Penals.VoiceMute.Role) || !member.voice.serverMute)) {
-                    member.roles.remove(Settings.Penals.VoiceMute.Role);
-                    if (member.voice.channelID) member.voice.setMute(false).catch();
-                }
-                penal.Activity = false;
+                return this.disableToPenal(penal, member);
             }
             penal.save();
         }, time)
+    }
+
+    async disableToPenal(penal, member){
+        if ((penal.Type == PenalManager.Types.TEMP_JAIL || penal.Type == PenalManager.Types.JAIL) && !member.roles.cache.has(Settings.Penals.Jail.Role)) {
+            let count = await Penal.countDocuments({Activity: true, User: member.user.id, $or: [{Type: PenalManager.Types.TEMP_JAIL}, {Type: PenalManager.Types.JAIL}]});
+            count -= 1;
+            if(count <= 0 && member.manageable) pm.setRoles(member, Settings.Roles.Unregistered);
+        }
+        else if ((penal.Type == PenalManager.Types.MUTE || penal.Type == PenalManager.Types.TEMP_MUTE) && !member.roles.cache.has(Settings.Penals.Mute.Role)){
+            let count = await Penal.countDocuments({Activity: true, User: member.user.id, $or: [{Type: PenalManager.Types.TEMP_MUTE}, {Type: PenalManager.Types.MUTE}]});
+            count -= 1;
+            if(count <= 0) member.roles.remove(Settings.Penals.Mute.Role).catch();
+        }
+        else if ((penal.Type == PenalManager.Types.VOICE_MUTE || penal.Type == PenalManager.Types.TEMP_VOICE_MUTE) && (!member.roles.cache.has(Settings.Penals.VoiceMute.Role) || !member.voice.serverMute)) {
+            let count = await Penal.countDocuments({Activity: true, User: member.user.id, $or: [{Type: PenalManager.Types.TEMP_VOICE_MUTE}, {Type: PenalManager.Types.VOICE_MUTE}]});
+            count -= 1;
+            if(count <= 0) member.roles.remove(Settings.Penals.VoiceMute.Role).catch();
+            if (member.voice.channelID && member.voice.serverMute) member.voice.setMute(false).catch();
+        }
+        penal.Activity = false;
+        penal.save();
     }
 
     /**
@@ -86,7 +99,13 @@ class PenalManager{
     async getPenal(id){
         return await Penal.findOne({Id: id}).exec();
     }
-
+    /**
+     * 
+     * @param {Object} query 
+     */
+    async getPenalToQuery(query){
+        return await Penal.findOne(query).exec();
+    }
     /**
      * 
      * @param {String} user 
