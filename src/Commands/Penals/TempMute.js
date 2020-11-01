@@ -33,7 +33,7 @@ module.exports.execute = async (client, message, args) => {
     let document = await PM.addPenal(victim.id, message.author.id, PenalManager.Types.TEMP_MUTE, reason, true, Date.now(), time);
 
     message.channel.csend(`**${victim}(${victim.username})** kullanıcısı ${message.author}(${message.author.username}) tarafından **"${reason}"** sebebiyle geçici olarak susturuldu. (Ceza Numarası: \`#${document.Id}\`)`)
-    message.guild.log(message.author, victim, document, Settings.Penals.Jail.Log);
+    message.guild.log(message.author, victim, document, Settings.Penals.Mute.Log);
 }
 
 module.exports.settings = {

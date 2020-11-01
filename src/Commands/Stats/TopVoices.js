@@ -20,13 +20,13 @@ const cm = new ChartManager();
 module.exports.execute = async (client, message, args) => {
     let embed = new MessageEmbed()
         .setAuthor(message.author.username, message.author.avatarURL({ dynamic: true }))
-        .setFooter(`${message.guild.name} sunucusunun mesaj istatistikleri.`)
+        .setFooter(`${message.guild.name} sunucusunun ses istatistikleri.`)
     let day = await tm.getDay(message.guild.id);
-    embed.setDescription(`${message.guild.name} sunucusunda kullanıcıların **${day}** gün boyunca yapmış olduğu mesaj aktifliği aşağıda detaylı olarak sıralanmıştır. Bir önceki güne gitmek için yöneticiye başvurunuz.`);
+    embed.setDescription(`${message.guild.name} sunucusunda kullanıcıların **${day}** gün boyunca yapmış olduğu ses aktifliği aşağıda detaylı olarak sıralanmıştır. Bir önceki güne gitmek için yöneticiye başvurunuz.`);
     embed.setColor("2f3136");
 
     HelperStat.aggregate([
-        {$sort: {Message: -1}}
+        {$sort: {Voice: -1}}
     ]).limit(10).exec(async (err, docs) => {
         if(err) return message.reply("bir hata ile karşılaşıldı.");
         let users = [], usersToEmbed = [];
@@ -37,12 +37,12 @@ module.exports.execute = async (client, message, args) => {
                 let stat = await Stat.findOne({Id: doc.Id});
                 if(!stat) continue;
 
-                if(stat.Message){
-                    let days = Object.keys(stat.Message);
+                if(stat.Voice){
+                    let days = Object.keys(stat.Voice);
                     let dataValues = new Array(day).fill(0);
                     days.forEach(_day => {
-                        let sum = Object.values(stat.Message[_day]).reduce((x, y) => x + y, 0);
-                        dataValues[_day - 1] = sum;
+                        let sum = Object.values(stat.Voice[_day]).reduce((x, y) => x + y, 0);
+                        dataValues[_day - 1] = (sum / (1000 * 60));
                     });
                     let user = (await Helper.GetUser(doc.Id));
                     usersToEmbed.push({
@@ -95,7 +95,7 @@ module.exports.execute = async (client, message, args) => {
                     }
                 }
             });
-            embed.addField(`Top 10 Genel Mesaj İstatistiği`, usersToEmbed.map((val, index) => `\`${index + 1}.\` ${val.User}(${val.User.username}): \`${val.Value} mesaj\``).join("\n"))
+            embed.addField(`Top 10 Genel Ses İstatistiği`, usersToEmbed.map((val, index) => `\`${index + 1}.\` ${val.User}(${val.User.username}): \`${moment.duration(val.Value).format("H [saat, ] m [dakika]")}\``).join("\n"))
             embed.setImage("attachment://Graph.png");
             let attachment = new MessageAttachment(buffer, "Graph.png");
 
@@ -130,7 +130,7 @@ function getColor(index, x) {
 }
 
 module.exports.settings = {
-    Commands: ["topmessages", "topmesajlar"],
+    Commands: ["topvoices", "topvoices"],
     Usage: "",
     Description: "",
     Activity: true

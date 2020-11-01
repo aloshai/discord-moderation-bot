@@ -18,5 +18,4 @@ EM.addEvent("Penals/OnVoiceStateUpdate");
 client.on("ready", () => console.log("Bot hazır."))
 
 require("./Utils/Helper");
-
 client.login(Config.Token).catch(console.error);

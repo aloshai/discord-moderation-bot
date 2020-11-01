@@ -23,14 +23,14 @@ module.exports.execute = async (client, message, args) => {
     if(member && member.roles.highest.position >= message.member.roles.highest.position) return message.reply("senin rolünden üstte ya da aynı roldeki birisini sesli susturamazsın.")
 
     if(member && member.manageable) {
-        member.roles.add(Settings.Penals.Mute.Role);
+        if(!member.roles.cache.has(Settings.Penals.VoiceMute.Role)) member.roles.add(Settings.Penals.VoiceMute.Role);
         if(member.voice.channelID && !member.voice.serverMute) member.voice.setMute(true);
     }
 
     let document = await PM.addPenal(victim.id, message.author.id, PenalManager.Types.VOICE_MUTE, reason);
 
     message.channel.csend(`**${victim}(${victim.username})** kullanıcısı ${message.author}(${message.author.username}) tarafından **"${reason}"** sebebiyle sesli susturuldu. (Ceza Numarası: \`#${document.Id}\`)`)
-    message.guild.log(message.author, victim, document, Settings.Penals.Jail.Log);
+    message.guild.log(message.author, victim, document, Settings.Penals.VoiceMute.Log);
 }
 
 module.exports.settings = {

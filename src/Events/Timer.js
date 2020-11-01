@@ -6,7 +6,7 @@ module.exports = () => {
     const tm = new TimeManager();
     setInterval(async () => {
         await tm.checkDay(Settings.Server.Id);
-    }, 1000);
+    }, 5000);
 }
 
 module.exports.config = {

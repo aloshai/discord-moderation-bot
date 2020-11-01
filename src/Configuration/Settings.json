@@ -3,6 +3,21 @@
         "Id": "753204464067805195"
     },
 
+    "Registers":{
+        "AuthRoles": [],
+
+        "ManRoles": [],
+        "WomanRoles": []
+    },
+
+    "Tag": {
+        "Symbol": "",
+        "Symbol_2": "",
+        "TagRoles": [],
+
+        "Log": ""
+    },
+
     "Roles": {
         "Unregistered": []
     },

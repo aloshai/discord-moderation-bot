@@ -35,7 +35,7 @@ module.exports.execute = async (client, message, args) => {
     let document = await PM.addPenal(victim.id, message.author.id, PenalManager.Types.TEMP_VOICE_MUTE, reason, true, Date.now(), time);
 
     message.channel.csend(`**${victim}(${victim.username})** kullanıcısı ${message.author}(${message.author.username}) tarafından **"${reason}"** sebebiyle  geçici olarak sesli susturuldu. (Ceza Numarası: \`#${document.Id}\`)`)
-    message.guild.log(message.author, victim, document, Settings.Penals.Jail.Log);
+    message.guild.log(message.author, victim, document, Settings.Penals.VoiceMute.Log);
 }
 
 module.exports.settings = {
