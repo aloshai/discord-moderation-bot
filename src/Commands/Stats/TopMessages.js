@@ -6,9 +6,6 @@ const Helper = require("../../Utils/Helper");
 const TimeManager = require("../../Utils/Managers/TimeManager");
 const tm = new TimeManager();
 
-const moment = require("moment");
-require("moment-duration-format");
-
 const ChartManager = require("../../Utils/Managers/ChartManager");
 const cm = new ChartManager();
 
@@ -99,8 +96,8 @@ module.exports.execute = async (client, message, args) => {
             embed.setImage("attachment://Graph.png");
             let attachment = new MessageAttachment(buffer, "Graph.png");
 
-            message.channel.send({
-                embed: embed,
+            message.channel.csend({
+                embeds: [embed],
                 files: [attachment]
             });    
         }

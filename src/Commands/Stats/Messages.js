@@ -4,9 +4,6 @@ const Stat = require("../../Utils/Schemas/Stat");
 const TimeManager = require("../../Utils/Managers/TimeManager");
 const tm = new TimeManager();
 
-const moment = require("moment");
-require("moment-duration-format");
-
 const ChartManager = require("../../Utils/Managers/ChartManager");
 const cm = new ChartManager();
 
@@ -141,16 +138,11 @@ module.exports.execute = async (client, message, args) => {
     embed.setImage("attachment://Graph.png");
     let attachment = new MessageAttachment(buffer, "Graph.png");
 
-    message.channel.send({
-        embed: embed,
+    message.channel.csend({
+        embeds: [embed],
         files: [attachment]
     });
 }
-function random_rgba() {
-    var o = Math.round, r = Math.random, s = 255;
-    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
-}
-
 module.exports.settings = {
     Commands: ["messagestats", "mesajlar"],
     Usage: "",

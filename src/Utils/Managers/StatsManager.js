@@ -3,7 +3,6 @@ const HelperStat = require("../Schemas/HelperStat");
 const TimeManager = require("./TimeManager");
 const tm = new TimeManager();
 const Settings = require("../../Configuration/Settings.json");
-const Helper = require("../Helper");
 
 class StatsManager {
     /**

@@ -99,8 +99,8 @@ module.exports.execute = async (client, message, args) => {
             embed.setImage("attachment://Graph.png");
             let attachment = new MessageAttachment(buffer, "Graph.png");
 
-            message.channel.send({
-                embed: embed,
+            message.channel.csend({
+                embeds: [embed],
                 files: [attachment]
             });    
         }

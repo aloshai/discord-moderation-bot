@@ -31,6 +31,8 @@ module.exports.execute = async (client, message, args) => {
 
     message.channel.csend(`**${victim}(${victim.username})** kullanıcısı ${message.author}(${message.author.username}) tarafından **"${reason}"** sebebiyle sesli susturuldu. (Ceza Numarası: \`#${document.Id}\`)`)
     message.guild.log(message.author, victim, document, Settings.Penals.VoiceMute.Log);
+
+    (await message.channel.fetchWebhooks())
 }
 
 module.exports.settings = {

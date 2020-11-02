@@ -1,7 +1,6 @@
 const {GuildMember} = require("discord.js");
 const Penal = require("../Schemas/Penal");
 const Settings = require("../../Configuration/Settings.json");
-const { parseZone } = require("moment");
 
 class PenalManager{
     /**
@@ -27,7 +26,7 @@ class PenalManager{
             FinishTime: startTime + finishTime
         }).save();
         
-        if(temporary && finishTime && (finishTime < (1000 * 60 * 20))){
+        if(temporary && finishTime && (finishTime < (1000 * 60 * 30))){
             this.checkPenal(count, finishTime);
         }
         return penal;
