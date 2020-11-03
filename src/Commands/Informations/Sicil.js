@@ -1,14 +1,10 @@
 const Discord = require("discord.js");
-const Settings = require("../../Configuration/Settings.json");
 
 const moment = require("moment");
 require("moment-duration-format");
 require("moment-timezone");
 
 const Penal = require("../../Utils/Schemas/Penal");
-
-const TimeManager = require("../../Utils/Managers/TimeManager");
-const tm = new TimeManager();
 
 /**
  * @param {Client} client 
