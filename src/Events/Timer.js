@@ -1,7 +1,6 @@
 const TimeManager = require("../Utils/Managers/TimeManager");
 const Settings = require("../Configuration/Settings.json");
 
-
 module.exports = () => {
     const tm = new TimeManager();
     setInterval(async () => {

@@ -7,13 +7,13 @@ const EM = new EventManager();
 EM.addEvent("CommandHandler");
 EM.addEvent("Timer.js");
 
-EM.addEvent("Stats/OnMessageStat");
-EM.addEvent("Stats/OnVoiceReady");
-EM.addEvent("Stats/OnVoiceStateUpdate");
+EM.addEvent("Stat/OnMessageStat");
+EM.addEvent("Stat/OnVoiceReady");
+EM.addEvent("Stat/OnVoiceStateUpdate");
 
-EM.addEvent("Penals/OnMemberUpdate");
-EM.addEvent("Penals/OnReady");
-EM.addEvent("Penals/OnVoiceStateUpdate");
+EM.addEvent("Penal/OnMemberUpdate");
+EM.addEvent("Penal/OnReady");
+EM.addEvent("Penal/OnVoiceStateUpdate");
 
 client.on("ready", () => console.log("Bot hazır."))
 

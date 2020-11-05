@@ -39,6 +39,6 @@ module.exports.settings = {
     Commands: ["join", "go", "git"],
     Usage: "",
     Description: "",
-    cooldown: 5000,
+    cooldown: 1000,
     Activity: true
 }
