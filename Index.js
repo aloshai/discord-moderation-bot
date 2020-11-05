@@ -4,6 +4,7 @@ const {Client} = require("discord.js");
 const client = global.Client = new Client();
 
 const fs = require("fs");
+let CommandId = 0;
 const Commands = global.Commands = [];
 
 let dirs = fs.readdirSync("./src/Commands", {encoding: "utf8"});
@@ -14,9 +15,10 @@ dirs.forEach(dir => {
         if(!ref.settings) return console.error(`[ Commands/${dir}/${file} ] path to not loaded.`)
 
         if(ref.onLoad != undefined && typeof ref.onLoad == "function") ref.onLoad(client);
+        ref.settings.id = CommandId;
         Commands.push(ref);
-
-        console.log(`${dir}/${file} is loaded.`)
+        console.log(`${dir}/${file} is loaded. [ COMMAND ID ] ${CommandId}`);
+        CommandId += 1;
     });
 });
 

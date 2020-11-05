@@ -13,9 +13,16 @@
     "Tag": {
         "Symbol": "",
         "Symbol_2": "",
-        "TagRoles": [],
+        "Roles": [],
 
         "Log": ""
+    },
+
+    "Authorization": {
+        "Transporter": {
+            "Roles": [],
+            "Cooldown": 15
+        }
     },
 
     "Roles": {
@@ -33,6 +40,7 @@
     },
 
     "Penals": {
+        "SendPrivateMessage": false,
         "Jail": {
             "AuthRoles": ["760980686013988915"],
             "Role": "772440615052771338",

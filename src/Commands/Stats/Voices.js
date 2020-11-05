@@ -107,8 +107,8 @@ module.exports.execute = async (client, message, args) => {
     }
 
     for (let index = 0; index < day; index++) {
-        let date = new Date(Date.now() - (1000 * 60 * 60 * 24 * (day - (index + 1)))).toDateString();
-        dataDate.push(date);
+        let date = new Date(Date.now() - (1000 * 60 * 60 * 24 * (day - (index + 1))));
+        dataDate.push(date.toTurkishFormatDate());
     }
 
     let buffer = await cm.ImageFromData({
