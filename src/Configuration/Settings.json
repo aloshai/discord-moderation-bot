@@ -5,7 +5,6 @@
 
     "Registers":{
         "AuthRoles": [],
-
         "ManRoles": [],
         "WomanRoles": []
     },

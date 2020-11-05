@@ -1,4 +1,4 @@
-const {Message, MessageEmbed, Client} = require("discord.js");
+const {Message, Client} = require("discord.js");
 const Settings = require("../../Configuration/Settings.json");
 
 const Waiting = new Set();

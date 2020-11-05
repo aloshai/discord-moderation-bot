@@ -1,5 +1,5 @@
-const {Message, MessageEmbed, Client} = require("discord.js");
-const Helper = require("../../Utils/Helper");
+const {Message, Client} = require("discord.js");
+const Settings = require("../../Configuration/Settings.json");
 /**
  * @param {Client} client 
  * @param {Message} message 
