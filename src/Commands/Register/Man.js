@@ -10,8 +10,11 @@ const User = require("../../Utils/Schemas/User");
 module.exports.execute = async (client, message, args) => {
     if(!message.member.hasPermission("ADMINISTRATOR") && !Settings.Registers.AuthRoles.some(role => message.member.roles.cache.has(role))) return message.reply("bunu yapmak için yetkin yok.");
 
-    let victim = message.mentions.members.first() || args[0] ? await message.guild.getMember(args[0]) : undefined;
+    let victim = message.mentions.members.first() || (args[0] ? await message.guild.getMember(args[0]) : undefined);
     if(!victim) return message.reply("bir kullanıcı etiketlemelisin ya da ID'sini girmelisin.");
+
+    if(victim.roles.highest.position >= message.member.roles.highest.position) return message.reply("senin rolünden üstte ya da aynı roldeki birisini kayıt edemezsin.")
+
     let newName; 
     args = args.splice(1);
     if(args.length > 1 && Settings.Registers.NameAndAge){
@@ -24,8 +27,9 @@ module.exports.execute = async (client, message, args) => {
     }
     else newName = `${victim.user.username.includes(Settings.Tag.Symbol) ? Settings.Tag.Symbol : Settings.Tag.Symbol_2} ${args.length <= 0 ? victim.user.username : args.join(" ")}`;
 
-    if(newName >= 32) return message.channel.csend(`UUPS! ${victim} bir sorunumuz var. Etiketlediğin kişinin ismi \`${newName}\` 32 karakterden fazla karakter barındığı için düzenlenemez.`);
-    if(victim.manageable) victim.setNickname(newName).catch(console.error);
+    if(newName >= 32) return message.channel.csend(`UUPS! ${victim} bir sorunumuz var. Etiketlediğin kişinin ismi \`${newName}\` 32 karakterden fazla karakter barındırdığı için düzenlenemez.`);
+    if(!victim.manageable) return message.reply("bu kişinin yetkisi benden yüksek.")
+    victim.setNickname(newName).catch(console.error);
     let roles = Settings.Registers.ManRoles;
 
     if(victim.user.username.includes(Settings.Tag.Symbol)) roles.concat(Settings.Tag.Roles);
@@ -33,7 +37,7 @@ module.exports.execute = async (client, message, args) => {
 
     let data = await User.findOneAndUpdate({Id: message.author.id, Authorized: true}, {$inc: {"Usage.Man": 1}});
     message.channel.csend(new MessageEmbed()
-    .setDescription(`${message.author}, ${victim} kullanıcısı **ERKEK** olarak kaydettin. \n\n\t **Ayarlanan İsim:** ${newName}`)
+    .setDescription(`${message.author}, ${victim} kullanıcısı **ERKEK** olarak kaydettin. \n\t **Ayarlanan İsim:** ${newName}`)
     .setFooter(`Erkek: ${data ? (data.Usage.Man || 0) : 0} | Kız: ${data ? (data.Usage.Woman || 0) : 0}`));
 }
 
