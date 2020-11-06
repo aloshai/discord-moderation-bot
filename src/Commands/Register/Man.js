@@ -31,8 +31,10 @@ module.exports.execute = async (client, message, args) => {
     if(victim.user.username.includes(Settings.Tag.Symbol)) roles.concat(Settings.Tag.Roles);
     victim.setRoles(roles);
 
-    let data = await User.findOneAndUpdate({Id: message.author.id, Authorized: true}, {$inc: {"Usage.Man": 1}}, {upsert: true});
-    message.channel.csend(new MessageEmbed())
+    let data = await User.findOneAndUpdate({Id: message.author.id, Authorized: true}, {$inc: {"Usage.Man": 1}});
+    message.channel.csend(new MessageEmbed()
+    .setDescription(`${message.author}, ${victim} kullanıcısı **ERKEK** olarak kaydettin. \n\n\t **Ayarlanan İsim:** ${newName}`)
+    .setFooter(`Erkek: ${data ? (data.Usage.Man || 0) : 0} | Kız: ${data ? (data.Usage.Woman || 0) : 0}`));
 }
 
 module.exports.settings = {

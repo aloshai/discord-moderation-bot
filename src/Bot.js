@@ -15,9 +15,10 @@ EM.addEvent("Penal/OnMemberUpdate");
 EM.addEvent("Penal/OnReady");
 EM.addEvent("Penal/OnVoiceStateUpdate");
 
-client.on("ready", () => console.log("Bot hazır."))
+client.on("ready", () => console.log("Bot is ready."))
 
 require("./Utils/Helper");
 require("./Utils/Util");
+require("./Utils/Patch");
 
 client.login(Config.Token).catch(console.error);

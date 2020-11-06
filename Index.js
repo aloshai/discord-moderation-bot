@@ -1,7 +1,9 @@
 const Config = global.Config = require("./src/Configuration/Config.json");
 
 const {Client} = require("discord.js");
-const client = global.Client = new Client();
+const client = global.Client = new Client({
+  fetchAllMembers: true
+});
 
 const fs = require("fs");
 let CommandId = 0;
