@@ -9,6 +9,6 @@ const schema = new mongoose.Schema({
   Notes: {type: Array, default: []}
 });
 
-const model = mongoose.model("Authorizeds", schema);
+const model = mongoose.model("Users", schema);
 
 module.exports = model;

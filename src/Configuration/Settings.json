@@ -3,32 +3,34 @@
         "Id": "753204464067805195"
     },
 
-    "Registers":{
-        "NameAndAge": true,
-        "AgeLimit": 13,
-        "Brace": "|",
-        "AuthRoles": [],
-        "ManRoles": [],
-        "WomanRoles": []
+    "Authorization": {
+        "Registers":{
+            "Roles": [],
+            "NameAndAge": true,
+            "AgeLimit": 13,
+            "Brace": " | ",
+            "ManRoles": [],
+            "WomanRoles": []
+        },
+        "Transporter": {
+            "Roles": [],
+            "Cooldown": 15
+        },
+        "NameChanger":{
+            "Roles": []
+        }
     },
 
     "Tag": {
         "Symbol": "",
         "Symbol_2": "",
         "Roles": [],
-
         "Log": ""
     },
 
-    "Authorization": {
-        "Transporter": {
-            "Roles": [],
-            "Cooldown": 15
-        }
-    },
-
     "Roles": {
-        "Unregistered": []
+        "Unregistered": [],
+        "BoosterRole": ""
     },
 
     "Stats": {
