@@ -1,23 +1,28 @@
 {
-  "name": "dark-paradise",
+  "name": "advanced-moderation",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Advanced moderation designed for Discord Turkish servers.",
+  "main": "Index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aloshai/discord-moderation-bot.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aloshai/discord-moderation-bot/issues"
+  },
+  "homepage": "https://github.com/aloshai/discord-moderation-bot#readme",
   "dependencies": {
     "axios": "^0.21.0",
-    "bufferlist": "^0.1.0",
     "discord.js": "^12.4.1",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
     "moment-timezone": "^0.5.31",
-    "mongoose": "^5.10.10",
-    "ms": "^2.1.2",
-    "node-webshot": "^1.0.4",
-    "request": "^2.88.2"
+    "mongoose": "^5.10.12",
+    "ms": "^2.1.2"
   }
 }

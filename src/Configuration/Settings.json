@@ -4,6 +4,9 @@
     },
 
     "Registers":{
+        "NameAndAge": true,
+        "AgeLimit": 13,
+        "Brace": "|",
         "AuthRoles": [],
         "ManRoles": [],
         "WomanRoles": []
