@@ -35,7 +35,7 @@ module.exports.execute = async (client, message, args) => {
     if(victim.user.username.includes(Settings.Tag.Symbol)) roles.concat(Settings.Tag.Roles);
     victim.setRoles(roles);
 
-    User.updateOne({Id: victim.id}, {$push: {"Names": {Admin: message.author.id, Date: Date.now(), Value: newName}}}, {upsert: true});
+    User.updateOne({Id: victim.id}, {$push: {"Names": {Admin: message.author.id, Date: Date.now(), Value: newName}}}, {upsert: true}).exec();
     let data = await User.findOneAndUpdate({Id: message.author.id, Authorized: true}, {$inc: {"Usage.Man": 1}});
     message.channel.csend(new MessageEmbed()
     .setDescription(`${message.author}, ${victim} kullanıcısı **ERKEK** olarak kaydettin. \n\t **Ayarlanan İsim:** ${newName}`)

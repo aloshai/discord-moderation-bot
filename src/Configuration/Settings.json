@@ -17,20 +17,22 @@
             "Cooldown": 15
         },
         "NameChanger":{
-            "Roles": []
+            "Roles": ["774597590238756894"],
+            "ForceTag": true,
+            "ForceTagFormat": "<tag> <name>"
         }
     },
 
     "Tag": {
-        "Symbol": "",
-        "Symbol_2": "",
+        "Symbol": "⊀",
+        "Symbol_2": "⊁",
         "Roles": [],
         "Log": ""
     },
 
     "Roles": {
         "Unregistered": [],
-        "BoosterRole": ""
+        "BoosterRole": "774597554306416680"
     },
 
     "Stats": {

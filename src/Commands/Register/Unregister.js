@@ -19,7 +19,7 @@ module.exports.execute = async (client, message, args) => {
     let roles = Settings.Roles.Unregistered;
     victim.setRoles(roles);
 
-    User.updateOne({Id: message.author.id, Authorized: true}, {$inc: {"Usage.Unregistered": 1}});
+    User.updateOne({Id: message.author.id, Authorized: true}, {$inc: {"Usage.Unregistered": 1}}).exec();
     message.channel.csend(`${victim}, ${message.author} tarafından **kayıtsız** rolüne atıldı.`);
 }
 
