@@ -11,7 +11,6 @@ const cooldowns = new Map();
  */
 module.exports = (message) => {
     if(message.author.bot || message.channel.type != "text" || Settings.Stats.Message.BypassChannels.includes(message.channel.id)) return;
-    console.log(sm.addMessageStat);
     if(cooldowns.has(message.author.id)){
         let data = cooldowns.get(message.author.id);
 

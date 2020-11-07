@@ -20,7 +20,6 @@ class StatsManager {
      * @param {Number} value 
      */
     static async addMessageStat(id, channel, value) {
-        console.log(tm.getDay);
         HelperStat.updateOne({Id: id}, {$inc: {Message: value}}, {upsert: true}).exec();
         return Stat.updateOne({Id: id}, {$inc: {[`Message.${await tm.getDay(Settings.Server.Id)}.${channel}`]: value}}, {upsert: true}).exec();
     }
