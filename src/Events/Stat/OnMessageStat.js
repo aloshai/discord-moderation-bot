@@ -1,7 +1,6 @@
 const {Message} = require("discord.js");
 const Settings = require("../../Configuration/Settings.json");
-const StatsManager = require("../../Utils/Managers/StatsManager");
-const sm = new StatsManager();
+const sm = require("../../Utils/Managers/StatsManager");
 
 // TODO: Çok fazla veri olduğunda bellekte fazla yer kaplayacak. Güncelleme kontrolü yapacağız.
 
@@ -12,7 +11,7 @@ const cooldowns = new Map();
  */
 module.exports = (message) => {
     if(message.author.bot || message.channel.type != "text" || Settings.Stats.Message.BypassChannels.includes(message.channel.id)) return;
-
+    console.log(sm.addMessageStat);
     if(cooldowns.has(message.author.id)){
         let data = cooldowns.get(message.author.id);
 

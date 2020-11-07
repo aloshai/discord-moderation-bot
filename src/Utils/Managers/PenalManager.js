@@ -11,7 +11,7 @@ class PenalManager{
      * @param {Number} startTime 
      * @param {Number} finishTime 
      */
-    async addPenal(user, admin, type, reason, temporary = false, startTime = Date.now(), finishTime = undefined){
+    static async addPenal(user, admin, type, reason, temporary = false, startTime = Date.now(), finishTime = undefined){
         let count = await Penal.countDocuments().exec();
         count = count == 0 ? 1 : count + 1;
         let penal = await new Penal({
@@ -32,7 +32,7 @@ class PenalManager{
         return penal;
     }
 
-    async checkPenal(id, time) {
+    static async checkPenal(id, time) {
         setTimeout(async () => {
             let penal = await Penal.findOne({ Id: id }).exec();
             if (!penal.Activity) return;
@@ -51,7 +51,7 @@ class PenalManager{
         }, time)
     }
 
-    async disableToPenal(penal, member){
+    static async disableToPenal(penal, member){
         if ((penal.Type == PenalManager.Types.TEMP_JAIL || penal.Type == PenalManager.Types.JAIL) && !member.roles.cache.has(Settings.Penals.Jail.Role)) {
             let count = await Penal.countDocuments({Activity: true, User: member.user.id, $or: [{Type: PenalManager.Types.TEMP_JAIL}, {Type: PenalManager.Types.JAIL}]});
             count -= 1;
@@ -76,7 +76,7 @@ class PenalManager{
      * 
      * @param {String} id 
      */
-    async removePenal(id){
+    static async removePenal(id){
         return await Penal.deleteOne({Id: id}).exec();   
     }
 
@@ -84,7 +84,7 @@ class PenalManager{
      * @param {GuildMember} member 
      * @param {Array<String>} params
      */
-    async setRoles(member, params = []){
+    static async setRoles(member, params = []){
         if(!member.manageable) return false;
         let roles = member.roles.cache.filter(role => role.managed).map(role => role.id).concat(params);
         member.roles.set(roles).catch();
@@ -95,14 +95,14 @@ class PenalManager{
      * 
      * @param {String} id 
      */
-    async getPenal(id){
+    static async getPenal(id){
         return await Penal.findOne({Id: id}).exec();
     }
     /**
      * 
      * @param {Object} query 
      */
-    async getPenalToQuery(query){
+    static async getPenalToQuery(query){
         return await Penal.findOne(query).exec();
     }
     /**
@@ -110,7 +110,7 @@ class PenalManager{
      * @param {String} user 
      * @param {Number} limit 
      */
-    async getPenals(query, limit = undefined){
+    static async getPenals(query, limit = undefined){
         if(!limit) return await Penal.find(query).exec();
         return await Penal.find(query).limit(limit).exec();
     }

@@ -4,11 +4,9 @@ const Stat = require("../../Utils/Schemas/Stat");
 const moment = require("moment");
 require("moment-duration-format");
 
-const TimeManager = require("../../Utils/Managers/TimeManager");
-const tm = new TimeManager();
+const tm = require("../../Utils/Managers/TimeManager");
 
-const ChartManager = require("../../Utils/Managers/ChartManager");
-const cm = new ChartManager();
+const cm = require("../../Utils/Managers/ChartManager");
 
 
 /**

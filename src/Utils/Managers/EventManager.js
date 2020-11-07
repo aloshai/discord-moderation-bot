@@ -1,5 +1,5 @@
 class EventManager{
-    addEvent(fileName){
+    static addEvent(fileName){
         let ref = require(`../../Events/${fileName}`);
         console.log(ref);
         global.Client.on(ref.config.Event, ref);

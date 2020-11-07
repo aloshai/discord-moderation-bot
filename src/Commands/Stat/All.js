@@ -1,14 +1,11 @@
 const {Client, Message, MessageEmbed, MessageAttachment} = require("discord.js");
 const Stat = require("../../Utils/Schemas/Stat");
-const TimeManager = require("../../Utils/Managers/TimeManager");
+const tm = require("../../Utils/Managers/TimeManager");
 
 const moment = require("moment");
 require("moment-duration-format");
 
-const tm = new TimeManager();
-
-const ChartManager = require("../../Utils/Managers/ChartManager");
-const cm = new ChartManager();
+const cm = require("../../Utils/Managers/ChartManager");
 
 /**
  * @param {Client} client 

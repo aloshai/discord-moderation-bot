@@ -1,9 +1,7 @@
 const {GuildMember} = require("discord.js");
 
-const PenalManager = require("../../Utils/Managers/PenalManager");
+const pm = require("../../Utils/Managers/PenalManager");
 const Settings = require("../../Configuration/Settings.json");
-
-const pm = new PenalManager();
 
 /**
  * 

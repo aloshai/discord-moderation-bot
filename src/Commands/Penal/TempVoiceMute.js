@@ -4,8 +4,7 @@ const Helper = require("../../Utils/Helper");
 
 const ms = require("ms");
 
-const PenalManager = require("../../Utils/Managers/PenalManager");
-const PM = new PenalManager();
+const PM = require("../../Utils/Managers/PenalManager");
 
 /**
  * @param {Client} client 

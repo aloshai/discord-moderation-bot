@@ -1,8 +1,7 @@
 const client = global.Client;
 const Config = require("./Configuration/Config.json");
 
-const EventManager = require("./Utils/Managers/EventManager");
-const EM = new EventManager();
+const EM = require("./Utils/Managers/EventManager");
 
 EM.addEvent("CommandHandler");
 EM.addEvent("Timer.js");

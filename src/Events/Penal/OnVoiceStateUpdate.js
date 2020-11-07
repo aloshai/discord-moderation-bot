@@ -1,7 +1,6 @@
 const {VoiceState} = require("discord.js");
 
-const PenalManager = require("../../Utils/Managers/PenalManager");
-const pm = new PenalManager();
+const pm = require("../../Utils/Managers/PenalManager");
 
 // TODO: KONTROL EDİLECEK.
 

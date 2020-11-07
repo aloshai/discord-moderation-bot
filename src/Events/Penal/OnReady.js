@@ -1,8 +1,7 @@
 const Settings = require("../../Configuration/Settings.json");
 
-const PenalManager = require("../../Utils/Managers/PenalManager");
+const pm = require("../../Utils/Managers/PenalManager");
 const Penal = require("../../Utils/Schemas/Penal");
-const pm = new PenalManager();
 const client = global.Client;
 
 module.exports = async() => {

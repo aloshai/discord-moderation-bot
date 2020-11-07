@@ -2,7 +2,7 @@ const TimeManager = require("../Utils/Managers/TimeManager");
 const Settings = require("../Configuration/Settings.json");
 
 module.exports = () => {
-    const tm = new TimeManager();
+    const tm = TimeManager;
     setInterval(async () => {
         await tm.checkDay(Settings.Server.Id);
     }, 5000);
