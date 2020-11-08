@@ -1,0 +1,12 @@
+{
+    "semi": true,
+    "trailingComma": "none",
+    "singleQuote": false,
+    "printWidth": 120,
+    "tabWidth": 4,
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "endOfLine": "lf",
+    "parser": "babel-ts",
+    "quoteProps": "consistent"
+}

@@ -2,7 +2,6 @@ const {Message, TextChannel, Guild, MessageEmbed, Util,  GuildMember} = require(
 
 const client = global.Client;
 
-
 Date.prototype.toTurkishFormatDate = function(format = "dd MM yyyy") {
     var date = this,
             day = date.getDate(),
@@ -77,6 +76,8 @@ async function GetUser(id) {
         return undefined;
     }
 };
+
+client.users.getUser = GetUser;
 
 module.exports = {
     GetUser

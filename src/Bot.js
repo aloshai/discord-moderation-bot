@@ -3,6 +3,8 @@ const Config = require("./Configuration/Config.json");
 
 const EM = require("./Utils/Managers/EventManager");
 
+require("./Utils/Managers/InviteManager");
+
 EM.addEvent("CommandHandler");
 EM.addEvent("Timer.js");
 
