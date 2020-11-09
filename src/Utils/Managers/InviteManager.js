@@ -113,7 +113,7 @@ client.on("guildMemberRemove", async (member) => {
         .replace("-regular-", `${regular}`)
         .replace("-fakecount-", `${fakecount}`)
         .replace("-fake-", `${data.IsFake}`);
-        channel.send(content);
+        channel.csend(content);
     }
 });
 //#endregion
