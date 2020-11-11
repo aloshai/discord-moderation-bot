@@ -78,6 +78,7 @@ async function GetUser(id) {
 };
 
 client.users.getUser = GetUser;
+client.getUser = GetUser;
 
 module.exports = {
     GetUser

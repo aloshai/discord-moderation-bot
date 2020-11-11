@@ -70,5 +70,6 @@ module.exports.settings = {
     Commands: ["sicil"],
     Usage: "",
     Description: "",
-    Activity: true
+    Activity: true,
+    cooldown: 5000
 }

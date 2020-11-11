@@ -8,7 +8,7 @@ const User = require("../../Utils/Schemas/User");
  * @param {Array<String>} args 
  */
 module.exports.execute = async (client, message, args) => {
-    if(!message.member.hasPermission("ADMINISTRATOR") && !Settings.Authorization.Registers.AuthRoles.some(role => message.member.roles.cache.has(role))) return message.reply("bunu yapmak için yetkin yok.");
+    if(!message.member.hasPermission("ADMINISTRATOR") && !Settings.Authorization.Registers.Roles.some(role => message.member.roles.cache.has(role))) return message.reply("bunu yapmak için yetkin yok.");
 
     let victim = message.mentions.members.first() || (args[0] ? await message.guild.getMember(args[0]) : undefined);
     if(!victim) return message.reply("bir kullanıcı etiketlemelisin ya da ID'sini girmelisin.");
@@ -36,7 +36,7 @@ module.exports.execute = async (client, message, args) => {
     victim.setRoles(roles);
 
     User.updateOne({Id: victim.id}, {$push: {"Names": {Admin: message.author.id, Date: Date.now(), Value: newName}}}, {upsert: true}).exec();
-    let data = await User.findOneAndUpdate({Id: message.author.id, Authorized: true}, {$inc: {"Usage.Woman": 1}});
+    let data = await User.findOneAndUpdate({Id: message.author.id, Authorized: true}, {$inc: {"Usage.Woman": 1}}).exec();
     message.channel.csend(new MessageEmbed()
     .setDescription(`${message.author}, ${victim} kullanıcısı **KIZ** olarak kaydettin. \n\t **Ayarlanan İsim:** ${newName}`)
     .setFooter(`Erkek: ${data ? (data.Usage.Man || 0) : 0} | Kız: ${data ? (data.Usage.Woman || 0) : 0}`));

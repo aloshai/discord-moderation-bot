@@ -1,42 +1,46 @@
 {
     "Server":{
-        "Id": "753204464067805195"
+        "Id": "770070426096893952"
+    },
+
+    "Welcome": {
+        "Channel": "770070426096893956"
     },
 
     "Authorization": {
         "Registers":{
-            "Roles": [],
+            "Roles": ["770235950076264496"],
             "NameAndAge": true,
             "AgeLimit": 13,
             "Brace": " | ",
-            "ManRoles": [],
-            "WomanRoles": []
+            "ManRoles": ["770235945119121449"],
+            "WomanRoles": ["770235925263024129"]
         },
         "Transporter": {
-            "Roles": [],
+            "Roles": ["770246035514589194"],
             "Cooldown": 15
         },
         "NameChanger":{
-            "Roles": ["774597590238756894"],
+            "Roles": ["775762712222367754"],
             "ForceTag": true,
             "ForceTagFormat": "<tag> <name>"
         }
     },
 
     "Invite": {
-        "Channel": "774793556501463080"
+        "Channel": "775762827868241940"
     },
 
     "Tag": {
-        "Symbol": "⊀",
-        "Symbol_2": "⊁",
+        "Symbol": "み",
+        "Symbol_2": "み",
         "Roles": [],
-        "Log": ""
+        "Log": "775762934981722152"
     },
 
     "Roles": {
-        "Unregistered": [],
-        "BoosterRole": "774597554306416680"
+        "Unregistered": ["770235947257954304"],
+        "BoosterRole": "770400461794181122"
     },
 
     "Stats": {
@@ -52,34 +56,34 @@
     "Penals": {
         "SendPrivateMessage": false,
         "Jail": {
-            "AuthRoles": ["760980686013988915"],
-            "Role": "772440615052771338",
+            "AuthRoles": ["775763117950763050"],
+            "Role": "775763914092314624",
             "Log": "760535028907638814",
             "Limit": 3
         },
         "Mute": {
-            "AuthRoles": ["772181067015651380"],
-            "Role": "772440614478020618",
+            "AuthRoles": ["775763118487240756"],
+            "Role": "770245858222276628",
             "Log": ""
         },
         "VoiceMute": {
-            "AuthRoles": ["772181067015651380"],
-            "Role": "772440615643906078",
+            "AuthRoles": ["775763118487240756"],
+            "Role": "",
             "Log": "",
             "ManualMute": true
         },
         "Suspect": {
-            "AuthRoles": [""],
+            "AuthRoles": ["775763914516070401"],
             "Role": "",
             "Log": ""
         },
         "Ban": {
-            "AuthRoles": [],
+            "AuthRoles": ["770236379782971422"],
             "Log": "",
             "Limit": 3
         },
         "Warn": {
-            "AuthRoles": [""],
+            "AuthRoles": ["775763376806559744"],
             "Log": "",
             "Role": []
         },

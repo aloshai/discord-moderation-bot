@@ -153,8 +153,10 @@ function convert(ms) {
 }
 
 module.exports.settings = {
-    Commands: ["voicestats", "sesler"],
+    Commands: ["voicestats", "sesler", "sesistatistigi", "ses"],
     Usage: "",
     Description: "",
-    Activity: true
+    Activity: true,
+    cooldown: 20000
+
 }

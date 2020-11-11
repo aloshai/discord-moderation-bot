@@ -9,5 +9,5 @@ module.exports = () => {
 }
 
 module.exports.config = {
-    Event: "message"
+    Event: "ready"
 }

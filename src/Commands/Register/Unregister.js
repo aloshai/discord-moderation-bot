@@ -8,7 +8,7 @@ const User = require("../../Utils/Schemas/User");
  * @param {Array<String>} args 
  */
 module.exports.execute = async (client, message, args) => {
-    if(!message.member.hasPermission("ADMINISTRATOR") && !Settings.Authorization.Registers.AuthRoles.some(role => message.member.roles.cache.has(role))) return message.reply("bunu yapmak için yetkin yok.");
+    if(!message.member.hasPermission("ADMINISTRATOR") && !Settings.Authorization.Registers.Roles.some(role => message.member.roles.cache.has(role))) return message.reply("bunu yapmak için yetkin yok.");
 
     let victim = message.mentions.members.first() || (args[0] ? await message.guild.getMember(args[0]) : undefined);
     if(!victim) return message.reply("bir kullanıcı etiketlemelisin ya da ID'sini girmelisin.");
@@ -27,5 +27,6 @@ module.exports.settings = {
     Commands: ["unregister", "kayıtsız", "kayitsiz"],
     Usage: "",
     Description: "",
-    Activity: true
+    Activity: true,
+    cooldown: 10000
 }

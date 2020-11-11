@@ -82,18 +82,10 @@ module.exports.execute = async (client, message, args) => {
                             fontColor: '#ffffff',
                             fontSize: 20
                         }
-                    },
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true,
-                                callback: (value) => '$' + value
-                            }
-                        }]
                     }
                 }
             });
-            embed.addField(`Top 10 Genel Ses İstatistiği`, usersToEmbed.map((val, index) => `\`${index + 1}.\` ${val.User}(${val.User.username}): \`${moment.duration(val.Value).format("H [saat, ] m [dakika]")}\``).join("\n"))
+            embed.addField(`Top 10 Genel Ses İstatistiği`, usersToEmbed.map((val, index) => `\`${index + 1}.\` ${val.User}(${val.User.username}): \`${moment.duration(val.Value * (1000 * 60)).format("H [saat, ] m [dakika]")}\``).join("\n"))
             embed.setImage("attachment://Graph.png");
             let attachment = new MessageAttachment(buffer, "Graph.png");
 
@@ -111,16 +103,16 @@ module.exports.execute = async (client, message, args) => {
 }
 
 const colors = [
-    'rgba(251, 255, 0, <f>)',
-    'rgba(4, 255, 0, <f>)',
-    'rgba(255, 0, 0, <f>)',
-    'rgba(1, 242, 255, <f>)',
-    'rgba(151, 0, 255, <f>)',
-    'rgba(8, 0, 255, <f>)',
-    'rgba(255, 131, 0, <f>)',
-    'rgba(255, 0, 212, <f>)',
-    'rgba(92, 0, 0, <f>)',
-    'rgba(98, 1, 58, <f>)',
+    'rgba(240, 255, 0, <f>)',
+    'rgba(147, 255, 0, <f>)',
+    'rgba(0, 255, 4, <f>)',
+    'rgba(0, 255, 182, <f>)',
+    'rgba(0, 240, 255, <f>)',
+    'rgba(0, 124, 255, <f>)',
+    'rgba(81, 0, 255, <f>)',
+    'rgba(182, 0, 255, <f>)',
+    'rgba(255, 0, 220, <f>)',
+    'rgba(255, 0, 85, <f>)',
 ]
 function getColor(index, x) {
     let color = colors[index].replace("<f>", x);
@@ -131,5 +123,7 @@ module.exports.settings = {
     Commands: ["topvoices", "topvoices"],
     Usage: "",
     Description: "",
-    Activity: true
+    Activity: true,
+    cooldown: 10000
+
 }

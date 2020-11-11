@@ -23,7 +23,7 @@ class PenalManager{
             Temporary: temporary,
             Time: startTime,
             Reason: reason,
-            FinishTime: startTime + finishTime
+            FinishTime: finishTime ? startTime + finishTime : finishTime
         }).save();
         
         if(temporary && finishTime && (finishTime < (1000 * 60 * 30))){
@@ -52,17 +52,17 @@ class PenalManager{
     }
 
     static async disableToPenal(penal, member){
-        if ((penal.Type == PenalManager.Types.TEMP_JAIL || penal.Type == PenalManager.Types.JAIL) && !member.roles.cache.has(Settings.Penals.Jail.Role)) {
+        if ((penal.Type == PenalManager.Types.TEMP_JAIL || penal.Type == PenalManager.Types.JAIL) && member.roles.cache.has(Settings.Penals.Jail.Role)) {
             let count = await Penal.countDocuments({Activity: true, User: member.user.id, $or: [{Type: PenalManager.Types.TEMP_JAIL}, {Type: PenalManager.Types.JAIL}]});
             count -= 1;
             if(count <= 0 && member.manageable) pm.setRoles(member, Settings.Roles.Unregistered);
         }
-        else if ((penal.Type == PenalManager.Types.MUTE || penal.Type == PenalManager.Types.TEMP_MUTE) && !member.roles.cache.has(Settings.Penals.Mute.Role)){
+        else if ((penal.Type == PenalManager.Types.MUTE || penal.Type == PenalManager.Types.TEMP_MUTE) && member.roles.cache.has(Settings.Penals.Mute.Role)){
             let count = await Penal.countDocuments({Activity: true, User: member.user.id, $or: [{Type: PenalManager.Types.TEMP_MUTE}, {Type: PenalManager.Types.MUTE}]});
             count -= 1;
             if(count <= 0) member.roles.remove(Settings.Penals.Mute.Role).catch();
         }
-        else if ((penal.Type == PenalManager.Types.VOICE_MUTE || penal.Type == PenalManager.Types.TEMP_VOICE_MUTE) && (!member.roles.cache.has(Settings.Penals.VoiceMute.Role) || !member.voice.serverMute)) {
+        else if ((penal.Type == PenalManager.Types.VOICE_MUTE || penal.Type == PenalManager.Types.TEMP_VOICE_MUTE) && (member.roles.cache.has(Settings.Penals.VoiceMute.Role) || member.voice.serverMute)) {
             let count = await Penal.countDocuments({Activity: true, User: member.user.id, $or: [{Type: PenalManager.Types.TEMP_VOICE_MUTE}, {Type: PenalManager.Types.VOICE_MUTE}]});
             count -= 1;
             if(count <= 0) member.roles.remove(Settings.Penals.VoiceMute.Role).catch();

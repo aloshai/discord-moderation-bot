@@ -16,6 +16,8 @@ EM.addEvent("Penal/OnMemberUpdate");
 EM.addEvent("Penal/OnReady");
 EM.addEvent("Penal/OnVoiceStateUpdate");
 
+EM.addEvent("Misc/Welcome.js");
+
 client.on("ready", () => console.log("Bot is ready."))
 
 require("./Utils/Helper");

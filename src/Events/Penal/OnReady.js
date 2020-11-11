@@ -35,11 +35,11 @@ async function checkPenals() {
         let member = await guild.getMember(penal.User);
         if(!member) return;
         
-        if((penal.Type == PenalManager.Types.TEMP_JAIL || penal.Type == PenalManager.Types.JAIL) && !member.roles.cache.has(Settings.Penals.Jail.Role)){
+        if((penal.Type == pm.Types.TEMP_JAIL || penal.Type == pm.Types.JAIL) && !member.roles.cache.has(Settings.Penals.Jail.Role)){
             pm.setRoles(member, Settings.Penals.Jail.Role);
         }
-        else if((penal.Type == PenalManager.Types.MUTE || penal.Type == PenalManager.Types.TEMP_MUTE) && !member.roles.cache.has(Settings.Penals.Mute.Role)) member.roles.add(Settings.Penals.Mute.Role);
-        else if((penal.Type == PenalManager.Types.VOICE_MUTE || penal.Type == PenalManager.Types.TEMP_VOICE_MUTE) && (!member.roles.cache.has(Settings.Penals.VoiceMute.Role) || !member.voice.serverMute)){
+        else if((penal.Type == pm.Types.MUTE || penal.Type == pm.Types.TEMP_MUTE) && !member.roles.cache.has(Settings.Penals.Mute.Role)) member.roles.add(Settings.Penals.Mute.Role);
+        else if((penal.Type == pm.Types.VOICE_MUTE || penal.Type == pm.Types.TEMP_VOICE_MUTE) && (!member.roles.cache.has(Settings.Penals.VoiceMute.Role) || !member.voice.serverMute)){
             member.roles.add(Settings.Penals.VoiceMute.Role);
             if(member.voice.channelID) member.voice.setMute(true).catch();
         }

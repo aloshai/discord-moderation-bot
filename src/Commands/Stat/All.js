@@ -98,16 +98,6 @@ module.exports.execute = async (client, message, args) => {
                 borderColor: [].concat(new Array(day).fill('rgba(4, 255, 0, 0.5)')),
                 borderWidth: 1
             }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        callback: (value) => '$' + value
-                    }
-                }]
-            }
         }
     });
 
@@ -121,8 +111,9 @@ module.exports.execute = async (client, message, args) => {
 }
 
 module.exports.settings = {
-    Commands: ["stats", "istatistik"],
+    Commands: ["stats", "istatistik", "stat"],
     Usage: "",
     Description: "",
-    Activity: true
+    Activity: true,
+    cooldown: 20000
 }

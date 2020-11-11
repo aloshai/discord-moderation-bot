@@ -31,7 +31,7 @@ module.exports.execute = async (client, message, args) => {
         max: 1
     });
 
-    if(collected.size > 0 && targetMember.voice.channelID && member.voice.channelID) targetMember.voice.setChannel(member.voice.channelID);
+    if(collected.size > 0 && targetMember.voice.channelID && message.member.voice.channelID) targetMember.voice.setChannel(message.member.voice.channelID);
     Waiting.delete(message.author.id);
 }
 

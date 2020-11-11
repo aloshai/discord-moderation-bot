@@ -17,7 +17,7 @@ module.exports.execute = async (client, message, args) => {
     if(!targetMember.voice.channelID) return message.reply("etiketlediğin kişi herhangi bir kanalda değil.");
     if(targetMember.voice.channelID == message.member.voice.channelID) return message.reply("ikinizde aynı kanaldasınız.");
 
-    targetMember.voice.setChannel(member.voice.channelID);
+    targetMember.voice.setChannel(message.member.voice.channelID);
 }
 
 module.exports.settings = {

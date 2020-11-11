@@ -142,8 +142,9 @@ module.exports.execute = async (client, message, args) => {
     });
 }
 module.exports.settings = {
-    Commands: ["messagestats", "mesajlar"],
+    Commands: ["messagestats", "mesajlar", "mesaj", "mesajistatistik"],
     Usage: "",
     Description: "",
-    Activity: true
+    Activity: true,
+    cooldown: 20000
 }
