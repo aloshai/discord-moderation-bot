@@ -122,14 +122,7 @@ module.exports.execute = async (client, message, args) => {
             }]
         },
         options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        callback: (value) => '$' + value
-                    }
-                }]
-            }
+            
         }
     });
 
@@ -142,9 +135,10 @@ module.exports.execute = async (client, message, args) => {
     });
 }
 module.exports.settings = {
-    Commands: ["messagestats", "mesajlar", "mesaj", "mesajistatistik"],
+    Commands: ["messagestats", "mesajlar", "mesaj"],
     Usage: "",
     Description: "",
     Activity: true,
-    cooldown: 20000
+    cooldown: 10000
+
 }

@@ -98,6 +98,9 @@ module.exports.execute = async (client, message, args) => {
                 borderColor: [].concat(new Array(day).fill('rgba(4, 255, 0, 0.5)')),
                 borderWidth: 1
             }]
+        },
+        options:{
+            
         }
     });
 

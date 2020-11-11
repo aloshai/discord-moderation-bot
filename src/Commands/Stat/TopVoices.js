@@ -120,7 +120,7 @@ function getColor(index, x) {
 }
 
 module.exports.settings = {
-    Commands: ["topvoices", "topvoices"],
+    Commands: ["topvoices", "topsesler"],
     Usage: "",
     Description: "",
     Activity: true,

@@ -126,15 +126,8 @@ module.exports.execute = async (client, message, args) => {
                 borderWidth: 1
             }]
         },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        callback: (value) => '$' + value
-                    }
-                }]
-            }
+        options:{
+            
         }
     });
 
@@ -153,10 +146,10 @@ function convert(ms) {
 }
 
 module.exports.settings = {
-    Commands: ["voicestats", "sesler", "sesistatistigi", "ses"],
+    Commands: ["voicestats", "sesler", "ses"],
     Usage: "",
     Description: "",
     Activity: true,
-    cooldown: 20000
+    cooldown: 10000
 
 }
