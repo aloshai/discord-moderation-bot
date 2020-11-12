@@ -146,7 +146,7 @@ function convert(ms) {
 }
 
 module.exports.settings = {
-    Commands: ["voicestats", "sesler", "ses"],
+    Commands: ["voicestats", "sesler", "sesim", "seslerim", "ises", "voice", "ses"],
     Usage: "",
     Description: "",
     Activity: true,

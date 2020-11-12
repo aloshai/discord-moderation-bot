@@ -8,7 +8,7 @@ module.exports = () => {
     
     let channels = guild.channels.cache.filter(channel => channel.type == "voice" && channel.members.size > 0 && !Settings.Stats.Voice.BypassChannels.includes(channel.id));
     channels.forEach(channel => {
-        let members = channel.members;
+        let members = channel.members.filter(member => !member.user.bot);
         members.forEach(member => {
             global.Voices.set(member.id, {
                 ChannelID: channel.id,
