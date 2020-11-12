@@ -3,7 +3,6 @@ const Settings = require("../Configuration/Settings.json");
 const Config = require("../Configuration/Config.json");
 
 const Cooldown = new Map();
-
 setInterval(() => {
     Cooldown.forEach((cd, key) => {
         if((Date.now() - cd.lastUsage) > cd.cooldown) Cooldown.delete(key);
@@ -11,7 +10,6 @@ setInterval(() => {
 }, 5000);
 
 /**
- * 
  * @param {Message} message 
  */
 module.exports = (message) => {
