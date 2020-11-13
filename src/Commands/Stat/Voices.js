@@ -150,6 +150,5 @@ module.exports.settings = {
     Usage: "",
     Description: "",
     Activity: true,
-    cooldown: 10000
-
+    cooldown: 15000
 }

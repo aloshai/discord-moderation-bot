@@ -10,7 +10,7 @@ module.exports.execute = async (client, message, args) => {
 }
 
 module.exports.settings = {
-    Commands: ["yazitura", "yazıtura", "yazi-tura", "yazı-tura"],
+    Commands: ["yazitura", "yazıtura", "yazi-tura", "yazı-tura", "coinflip"],
     Usage: "",
     Description: "",
     cooldown: 5000,
