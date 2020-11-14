@@ -14,7 +14,7 @@ const Penal = require("../../Utils/Schemas/Penal");
 module.exports.execute = async (client, message, args) => {
     if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply("bunu yapmak için yeterli bir yetkiye sahip değilsin.");
 
-    let victim = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
+    let victim = message.mentions.users.first() || (args[0] ? await client.getUser(args[0]) : undefined);
     if(!victim) return message.reply("birisini etiketlemelisin.")
 
     Penal.find({ User: victim.id }, async (err ,res) => {

@@ -23,6 +23,6 @@ module.exports.settings = {
     Commands: ["kullanıcı", "user"],
     Usage: "",
     Description: "",
-    cooldown: 30000,
+    cooldown: 500,
     Activity: true
 }
