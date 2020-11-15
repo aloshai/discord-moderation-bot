@@ -1,6 +1,6 @@
 {
-    "Token": "Nzc1NzYyMjk1OTQyNTQ1NDQ5.X6rC8A.z4B8oRksA8e5pC1dyEMnOGGM9PY",
+    "Token": "Nzc3Njc3OTY4MTA5MjA3NTgy.X7G7DA.8dTY20Lt_uacUW2nlAhfhW10vEQ",
     "Prefix": "!",
     "DatabaseUrl": "mongodb+srv://alosha:MXRrP3kLsDo39N78@aloshadatabase.fsiwe.mongodb.net/<dbname>?retryWrites=true&w=majority",
-    "DatabaseName": "vierra"
+    "DatabaseName": "glare"
 }
