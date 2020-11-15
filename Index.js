@@ -1,5 +1,15 @@
 const Config = global.Config = require("./src/Configuration/Config.json");
 
+const express = require("express");
+
+let app = express();
+
+app.get("/",(req,res) => {
+	res.send("sa .D");
+});
+
+app.listen(process.env.PORT);
+
 const {Client} = require("discord.js");
 const client = global.Client = new Client({
   fetchAllMembers: true
