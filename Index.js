@@ -8,7 +8,7 @@ app.get("/",(req,res) => {
 	res.send("sa .D");
 });
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT, function () {
 
 const {Client} = require("discord.js");
 const client = global.Client = new Client({
@@ -43,4 +43,5 @@ mongoose.connect(Config.DatabaseUrl.replace("<dbname>", Config.DatabaseName), {
 mongoose.connection.on("connected", () => {
   console.log("MongoDB is connected.")
   require("./src/Bot.js");
+});
 });
