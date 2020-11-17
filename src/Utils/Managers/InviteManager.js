@@ -39,6 +39,7 @@ client.on("guildCreate", (guild) => {
 
 //#region Counter
 client.on("guildMemberAdd", async (member) => {
+	if(member.bot) return;
     //const gi = new Collection().concat(Invites.get(member.guild.id));
     const gi = (Invites.get(member.guild.id) || new Collection()).clone(), 
     settings = Settings.Invite || {};
@@ -48,7 +49,7 @@ client.on("guildMemberAdd", async (member) => {
         let invite = invites.find(_i => gi.has(_i.code) && gi.get(_i.code).uses < _i.uses) || gi.find(_i => !invites.has(_i.code)) || guild.vanityURLCode;
         Invites.set(member.guild.id, invites);
         let content = `${member} is joined the server.`, regular = 0, _fake = 0, bonus = 0;
-        if(invite == guild.vanityURLCode) content = settings.defaultMessage ? settings.defaultMessage : `-member- joined the server with vanility url. :tada:`;
+        if(invite == guild.vanityURLCode || !invite) content = settings.defaultMessage ? settings.defaultMessage : `-member- joined the server with vanility url. :tada:`;
         else content = settings.welcomeMessage ? settings.welcomeMessage : `The -member-, joined the server using the invitation of the -target-.`;
 
         if (invite.inviter) {

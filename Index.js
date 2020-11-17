@@ -17,7 +17,7 @@ const client = global.Client = new Client({
 
 const fs = require("fs");
 let CommandId = 0;
-const Commands = global.Commands = [];
+const Commands = global.Commands = new Array();
 
 let dirs = fs.readdirSync("./src/Commands", {encoding: "utf8"});
 dirs.forEach(dir => {
