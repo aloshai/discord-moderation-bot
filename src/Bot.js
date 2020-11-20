@@ -17,6 +17,7 @@ EM.addEvent("Penal/OnReady");
 EM.addEvent("Penal/OnVoiceStateUpdate");
 
 EM.addEvent("Misc/Welcome.js");
+EM.addEvent("Misc/PrivateChannels.js");
 
 client.on("ready", () => console.log("Bot is ready."))
 

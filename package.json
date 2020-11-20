@@ -4,7 +4,8 @@
   "description": "Advanced moderation designed for Discord Turkish servers.",
   "main": "Index.js",
   "scripts": {
-    "start": "node Index.js"
+    "start": "node Index.js",
+	"setup": "node Index.js"
   },
   "repository": {
     "type": "git",

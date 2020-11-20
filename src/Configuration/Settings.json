@@ -7,6 +7,11 @@
         "Channel": "777668528874586114"
     },
 
+    "PrivHub": {
+        "Room": "777673097045606420",
+        "Symbol": "🔺"
+    },
+
     "Authorization": {
         "Registers":{
             "Roles": ["777665198311735308"],
