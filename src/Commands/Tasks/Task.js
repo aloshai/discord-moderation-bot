@@ -104,5 +104,5 @@ function MessageDifficultySizer(value) {
 }
 
 function VoiceDifficultySizer(value) {
-    return ((Math.pow(value, 2)) + 50 * value + 30) * (1000 * 60);
+    return (3 * (Math.pow(value, 2)) + 50 * value + 30) * (1000 * 60);
 }

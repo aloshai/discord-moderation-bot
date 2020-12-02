@@ -1,4 +1,4 @@
-const {Client, Message, MessageEmbed, MessageAttachment} = require("discord.js");
+const { Client, Message, MessageEmbed, MessageAttachment } = require("discord.js");
 const Stat = require("../../Utils/Schemas/Stat");
 const tm = require("../../Utils/Managers/TimeManager");
 
@@ -16,25 +16,25 @@ module.exports.execute = async (client, message, args) => {
     let victim = message.mentions.users.first() || client.users.cache.get(args[0]) || message.author;
 
     let embed = new MessageEmbed()
-    .setAuthor(victim.username, victim.avatarURL({dynamic: true}))
-    .setFooter("İstatistik bilgileri");
+        .setAuthor(victim.username, victim.avatarURL({ dynamic: true }))
+        .setFooter("İstatistik bilgileri");
 
-    let data = await Stat.findOne({Id: victim.id});
-    if(!data) data = {};
+    let data = await Stat.findOne({ Id: victim.id });
+    if (!data) data = {};
     let day = await tm.getDay(message.guild.id);
 
     let dataMessage = new Array(day).fill(0, 0, day), dataVoice = new Array(day).fill(0, 0, day), dataColors = new Array(day).fill('rgba(0, 92, 210, 0.5)');
 
-    if(data.Message){
+    if (data.Message) {
         let günlükmesaj = 0, haftalıkmesaj = 0, aylıkmesaj = 0, toplammesaj = 0;
         let days = Object.keys(data.Message);
         days.forEach(_day => {
-            let sum = Object.values(data.Message[_day]).reduce((x,y) => x + y, 0);
+            let sum = Object.values(data.Message[_day]).reduce((x, y) => x + y, 0);
             toplammesaj += sum;
             dataMessage[_day - 1] = sum;
-            if(day == Number(_day)) günlükmesaj += sum;
-            if(_day <= 7) haftalıkmesaj += sum;
-            if(_day <= 30) aylıkmesaj += sum;
+            if (day == Number(_day)) günlükmesaj += sum;
+            if (_day <= 7) haftalıkmesaj += sum;
+            if (_day <= 30) aylıkmesaj += sum;
         });
         embed.addField(`Mesaj İstatistiği`, `
         __Toplam:__ \`${toplammesaj} mesaj\`
@@ -44,19 +44,19 @@ module.exports.execute = async (client, message, args) => {
         Aylık: \`${aylıkmesaj} mesaj\`
         `, true)
     }
-    if(data.Voice){
+    if (data.Voice) {
         let günlükses = 0, haftalıkses = 0, aylıkses = 0, toplamses = 0;
         let days = Object.keys(data.Voice);
         let max = Math.max(dataMessage);
         days.forEach(_day => {
-            let sum = Object.values(data.Voice[_day]).reduce((x,y) => x + y, 0);
-            if(isNaN(sum)) sum = 0;
+            let sum = Object.values(data.Voice[_day]).reduce((x, y) => x + y, 0);
+            if (isNaN(sum)) sum = 0;
             toplamses += sum;
 
             dataVoice[_day - 1] = (sum / (1000 * 60))
-            if(day == Number(_day)) günlükses += sum;
-            if(_day <= 7) haftalıkses += sum;
-            if(_day <= 30) aylıkses += sum;
+            if (day == Number(_day)) günlükses += sum;
+            if (_day <= 7) haftalıkses += sum;
+            if (_day <= 30) aylıkses += sum;
         });
         embed.addField(`Ses İstatistiği`, `
         __Toplam:__ \`${moment.duration(toplamses).format("H [saat, ] m [dakika]")}\`
@@ -77,7 +77,7 @@ module.exports.execute = async (client, message, args) => {
         width: 600,
         height: 290,
         type: 'line',
-        
+
         data: {
             labels: [].concat(dataDate),
             datasets: [{
@@ -99,8 +99,8 @@ module.exports.execute = async (client, message, args) => {
                 borderWidth: 1
             }]
         },
-        options:{
-            
+        options: {
+
         }
     });
 

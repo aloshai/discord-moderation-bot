@@ -4,6 +4,16 @@ const express = require("express");
 
 let app = express();
 
+global.forceGC = function forceGC() {
+  if (global.gc) {
+    let used = process.memoryUsage().heapUsed / 1024 / 1024;
+    global.gc();
+    console.log(`GC Çağrıldı ${used} MB -> ${process.memoryUsage().heapUsed / 1024 / 1024} MB`);
+  } else {
+    console.warn('No GC hook! Start your program as `node --expose-gc file.js`.');
+  }
+};
+
 app.get("/", (req, res) => {
   res.send("sa .D");
 });

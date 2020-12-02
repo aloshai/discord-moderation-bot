@@ -24,18 +24,18 @@ module.exports.execute = async (client, message, args) => {
     embed.setColor("2f3136");
 
     HelperStat.aggregate([
-        {$sort: {Voice: -1}}
+        { $sort: { Voice: -1 } }
     ]).limit(10).exec(async (err, docs) => {
-        if(err) return message.reply("bir hata ile karşılaşıldı.");
+        if (err) return message.reply("bir hata ile karşılaşıldı.");
         let users = [], usersToEmbed = [];
 
-        if(docs.length > 0){
+        if (docs.length > 0) {
             for (let index = 0; index < docs.length; index++) {
                 const doc = docs[index];
-                let stat = await Stat.findOne({Id: doc.Id});
-                if(!stat) continue;
+                let stat = await Stat.findOne({ Id: doc.Id });
+                if (!stat) continue;
 
-                if(stat.Voice){
+                if (stat.Voice) {
                     let days = Object.keys(stat.Voice);
                     let dataValues = new Array(day).fill(0);
                     days.forEach(_day => {
@@ -62,7 +62,7 @@ module.exports.execute = async (client, message, args) => {
                 }
             }
 
-            let dataDate= [];
+            let dataDate = [];
             for (let index = 0; index < day; index++) {
                 let date = new Date(Date.now() - (1000 * 60 * 60 * 24 * (day - (index + 1))));
                 dataDate.push(date.toTurkishFormatDate());
@@ -92,10 +92,9 @@ module.exports.execute = async (client, message, args) => {
             message.channel.csend({
                 embeds: [embed],
                 files: [attachment]
-            });    
+            });
         }
-        else
-        {
+        else {
             embed.addField("VERI KAYDI YOK!", "** **");
             return message.csend(embed);
         }
