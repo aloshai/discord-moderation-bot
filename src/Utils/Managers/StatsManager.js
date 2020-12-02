@@ -11,9 +11,9 @@ class StatsManager {
      * @param {Number} value 
      */
     static async addVoiceStat(id, channel, value) {
-        Task.updateOne({Id: id, Task: { $exists: true} }, {$inc: {"Task.Voice.Current": value}}).exec();
-        HelperStat.updateOne({Id: id}, {$inc: {Voice: value}}, {upsert: true}).exec()
-        return Stat.updateOne({Id: id}, {$inc: {[`Voice.${await tm.getDay(Settings.Server.Id)}.${channel}`]: value}}, {upsert: true}).exec();
+        Task.updateOne({ Id: id, Task: { $exists: true } }, { $inc: { "Task.Voice.Current": value } }).exec();
+        HelperStat.updateOne({ Id: id }, { $inc: { Voice: value } }, { upsert: true }).exec()
+        return Stat.updateOne({ Id: id }, { $inc: { AllVoice: value, [`Voice.${await tm.getDay(Settings.Server.Id)}.${channel}`]: value } }, { upsert: true }).exec();
     }
 
     /**
@@ -22,25 +22,25 @@ class StatsManager {
      * @param {Number} value 
      */
     static async addMessageStat(id, channel, value) {
-        Task.updateOne({Id: id, Task: { $exists: true} }, {"$inc": {"Task.Message.Current": 1}}).exec();
-        HelperStat.updateOne({Id: id}, {$inc: {Message: value}}, {upsert: true}).exec();
-        return Stat.updateOne({Id: id}, {$inc: {[`Message.${await tm.getDay(Settings.Server.Id)}.${channel}`]: value}}, {upsert: true}).exec();
+        Task.updateOne({ Id: id, Task: { $exists: true } }, { "$inc": { "Task.Message.Current": 1 } }).exec();
+        HelperStat.updateOne({ Id: id }, { $inc: { Message: value } }, { upsert: true }).exec();
+        return Stat.updateOne({ Id: id }, { $inc: { AllMessage: value, [`Message.${await tm.getDay(Settings.Server.Id)}.${channel}`]: value } }, { upsert: true }).exec();
     }
 
     /**
      * @param {String} id 
      */
-    static async resetVoiceStat(id = undefined){
-        if(id) return Stat.findOneAndUpdate({Id: id}, {$set: {"Voice": {}}}).exec((err) => {if(err) console.error(err)});
-        return Stat.updateMany({Voice: {$exists: true}}, {$set: {"Voice": {}}}, {multi: true}).exec();
+    static async resetVoiceStat(id = undefined) {
+        if (id) return Stat.findOneAndUpdate({ Id: id }, { $set: { "Voice": {} } }).exec((err) => { if (err) console.error(err) });
+        return Stat.updateMany({ Voice: { $exists: true } }, { $set: { "Voice": {} } }, { multi: true }).exec();
     }
 
     /**
      * @param {String} id 
      */
-    static async resetMessageStat(id = undefined){
-        if(id) return Stat.findOneAndUpdate({Id: id}, {$set: {"Message": {}}}).exec((err) => {if(err) console.error(err)});
-        return Stat.updateMany({Message: {$exists: true}}, {$set: {"Message": {}}}, {multi: true}).exec();
+    static async resetMessageStat(id = undefined) {
+        if (id) return Stat.findOneAndUpdate({ Id: id }, { $set: { "Message": {} } }).exec((err) => { if (err) console.error(err) });
+        return Stat.updateMany({ Message: { $exists: true } }, { $set: { "Message": {} } }, { multi: true }).exec();
     }
 }
 
