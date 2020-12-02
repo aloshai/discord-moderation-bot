@@ -1,6 +1,5 @@
 const { Client, Message, MessageEmbed, MessageAttachment } = require("discord.js");
 const Stat = require("../../Utils/Schemas/Stat");
-const HelperStat = require("../../Utils/Schemas/HelperStat");
 const Helper = require("../../Utils/Helper");
 
 const tm = require("../../Utils/Managers/TimeManager");
@@ -20,19 +19,21 @@ module.exports.execute = async (client, message, args) => {
     embed.setDescription(`${message.guild.name} sunucusunda kullanıcıların **${day}** gün boyunca yapmış olduğu mesaj aktifliği aşağıda detaylı olarak sıralanmıştır. Bir önceki güne gitmek için yöneticiye başvurunuz.`);
     embed.setColor("2f3136");
 
-    HelperStat.aggregate([
-        {$sort: {Message: -1}}
+    Stat.aggregate([
+        { $sort: { AllMessage: -1 } }
     ]).limit(10).exec(async (err, docs) => {
-        if(err) return message.reply("bir hata ile karşılaşıldı.");
+        if (err) return message.reply("bir hata ile karşılaşıldı.");
         let users = [], usersToEmbed = [];
 
-        if(docs.length > 0){
+        if (docs.length > 0) {
             for (let index = 0; index < docs.length; index++) {
                 const doc = docs[index];
-                let stat = await Stat.findOne({Id: doc.Id});
-                if(!stat) continue;
+                let stat = doc;
+                if (!stat) continue;
 
-                if(stat.Message){
+                if (stat.AllMessage <= 0) continue;
+
+                if (stat.Message) {
                     let days = Object.keys(stat.Message);
                     let dataValues = new Array(day).fill(0);
                     days.forEach(_day => {
@@ -59,7 +60,7 @@ module.exports.execute = async (client, message, args) => {
                 }
             }
 
-            let dataDate= [];
+            let dataDate = [];
             for (let index = 0; index < day; index++) {
                 let date = new Date(Date.now() - (1000 * 60 * 60 * 24 * (day - (index + 1))));
                 dataDate.push(date.toTurkishFormatDate());
@@ -89,10 +90,9 @@ module.exports.execute = async (client, message, args) => {
             message.channel.csend({
                 embeds: [embed],
                 files: [attachment]
-            });    
+            });
         }
-        else
-        {
+        else {
             embed.addField("VERI KAYDI YOK!", "** **");
             return message.csend(embed);
         }

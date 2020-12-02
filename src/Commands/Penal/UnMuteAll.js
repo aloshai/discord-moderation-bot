@@ -24,7 +24,8 @@ module.exports.execute = async (client, message, args) => {
     let msg = await message.reply(`${victim} kişisinin toplam **${penals.length}** adet sohbet susturması var. Cezaların hepsini kaldırmak istediğinizden emin misiniz? (Evet/Hayır)`);
 
     let messages = await msg.channel.awaitMessages((m) => m.author.id == message.author.id && ["evet", "hayır", "hayir"].some(cevap => m.content.toLowerCase().includes(cevap)), {
-        max: 1
+        max: 1,
+        time: 15000
     });
 
     if (messages.size <= 0) {

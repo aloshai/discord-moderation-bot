@@ -1,6 +1,5 @@
 const Stat = require("../Schemas/Stat");
 const Task = require("../Schemas/Task");
-const HelperStat = require("../Schemas/HelperStat");
 const tm = require("./TimeManager");
 const Settings = require("../../Configuration/Settings.json");
 
@@ -12,7 +11,6 @@ class StatsManager {
      */
     static async addVoiceStat(id, channel, value) {
         Task.updateOne({ Id: id, Task: { $exists: true } }, { $inc: { "Task.Voice.Current": value } }).exec();
-        HelperStat.updateOne({ Id: id }, { $inc: { Voice: value } }, { upsert: true }).exec()
         return Stat.updateOne({ Id: id }, { $inc: { AllVoice: value, [`Voice.${await tm.getDay(Settings.Server.Id)}.${channel}`]: value } }, { upsert: true }).exec();
     }
 
@@ -23,7 +21,6 @@ class StatsManager {
      */
     static async addMessageStat(id, channel, value) {
         Task.updateOne({ Id: id, Task: { $exists: true } }, { "$inc": { "Task.Message.Current": 1 } }).exec();
-        HelperStat.updateOne({ Id: id }, { $inc: { Message: value } }, { upsert: true }).exec();
         return Stat.updateOne({ Id: id }, { $inc: { AllMessage: value, [`Message.${await tm.getDay(Settings.Server.Id)}.${channel}`]: value } }, { upsert: true }).exec();
     }
 

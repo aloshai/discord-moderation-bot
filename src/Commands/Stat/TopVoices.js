@@ -1,6 +1,5 @@
 const { Client, Message, MessageEmbed, MessageAttachment } = require("discord.js");
 const Stat = require("../../Utils/Schemas/Stat");
-const HelperStat = require("../../Utils/Schemas/HelperStat");
 const Helper = require("../../Utils/Helper");
 
 const tm = require("../../Utils/Managers/TimeManager");
@@ -23,8 +22,8 @@ module.exports.execute = async (client, message, args) => {
     embed.setDescription(`${message.guild.name} sunucusunda kullanıcıların **${day}** gün boyunca yapmış olduğu ses aktifliği aşağıda detaylı olarak sıralanmıştır. Bir önceki güne gitmek için yöneticiye başvurunuz.`);
     embed.setColor("2f3136");
 
-    HelperStat.aggregate([
-        { $sort: { Voice: -1 } }
+    Stat.aggregate([
+        { $sort: { AllVoice: -1 } }
     ]).limit(10).exec(async (err, docs) => {
         if (err) return message.reply("bir hata ile karşılaşıldı.");
         let users = [], usersToEmbed = [];
@@ -32,8 +31,10 @@ module.exports.execute = async (client, message, args) => {
         if (docs.length > 0) {
             for (let index = 0; index < docs.length; index++) {
                 const doc = docs[index];
-                let stat = await Stat.findOne({ Id: doc.Id });
+                let stat = doc;
                 if (!stat) continue;
+
+                if (stat.AllVoice <= 0) continue;
 
                 if (stat.Voice) {
                     let days = Object.keys(stat.Voice);
