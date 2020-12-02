@@ -1,4 +1,4 @@
-const {GuildMember, Guild, TextChannel, Message} = require("discord.js");
+const { GuildMember, Guild, TextChannel, Message, MessageEmbed } = require("discord.js");
 const webhooks = {};
 const client = global.Client;
 
@@ -11,9 +11,9 @@ Number.prototype.toHumanize = function (options) {
     return n.join(s);
 };
 
-GuildMember.prototype.setRoles = function(params = []){
+GuildMember.prototype.setRoles = function (params = []) {
     let roles = this.roles.cache.clone().filter(e => e.managed).map(e => e.id).concat(params);
-    return this.roles.set(roles);  
+    return this.roles.set(roles);
 }
 
 /**
@@ -23,11 +23,11 @@ GuildMember.prototype.setRoles = function(params = []){
  */
 Guild.prototype.getMember = async function (id) {
     let member = this.member(id);
-    if(!member) {
-        try{
+    if (!member) {
+        try {
             member = await this.members.fetch(id);
         }
-        catch(err){
+        catch (err) {
             member = undefined;
         }
     }
@@ -36,16 +36,16 @@ Guild.prototype.getMember = async function (id) {
 
 Guild.prototype.log = async function log(admin, user, document, channelId) {
     let channel = this.channels.cache.get(channelId);
-    if(channel){
+    if (channel) {
         let embed = new MessageEmbed()
-        .setThumbnail(admin.avatarURL({dynamic: true}))
-        .setColor("RANDOM")
-        .setDescription(`${admin}(${admin.id}) tarafından ${user}(${user.id}) kişisi **"${document.Reason}"** sebebi ile ${document.Type} cezası aldı. (Ceza Numarası: #${document.Id})`)
-        .addField("Ceza Bilgisi",`
+            .setThumbnail(admin.avatarURL({ dynamic: true }))
+            .setColor("RANDOM")
+            .setDescription(`${admin}(${admin.id}) tarafından ${user}(${user.id}) kişisi **"${document.Reason}"** sebebi ile ${document.Type} cezası aldı. (Ceza Numarası: #${document.Id})`)
+            .addField("Ceza Bilgisi", `
         **Ceza Numarası:** \`#${document.Id}\`
         **Ceza Tipi:** ${document.Type}
         `)
-        .addField("Yetkili ve Kullanıcı", `
+            .addField("Yetkili ve Kullanıcı", `
         **Yetkili:** ${admin}(${admin.id})
         **Kullanıcı:** ${user}(${user.id})        
         `);
