@@ -35,7 +35,7 @@ module.exports.execute = async (client, message, args) => {
 }
 
 module.exports.settings = {
-    Commands: ["mute", "sustur"],
+    Commands: ["voicemute", "seslisustur"],
     Usage: "",
     Description: "",
     Activity: true

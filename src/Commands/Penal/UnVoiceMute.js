@@ -47,7 +47,7 @@ module.exports.execute = async (client, message, args) => {
 };
 
 module.exports.settings = {
-    Commands: ["unmute"],
+    Commands: ["unvoicemute"],
     Usage: "",
     Description: "",
     Activity: true

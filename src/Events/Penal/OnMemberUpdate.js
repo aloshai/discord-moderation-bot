@@ -18,7 +18,7 @@ module.exports = async (oldMember, newMember) => {
     let muted = penals.some(penal => penal.Type == pm.Types.TEMP_MUTE || penal.Type == pm.Types.MUTE);
     if(muted && Settings.Penals.Mute.Role.length > 0) addRoles.push(Settings.Penals.Mute.Role); 
     let voicemuted = penals.some(penal => penal.Type == pm.Types.VOICE_MUTE || penal.Type == pm.Types.TEMP_VOICE_MUTE);
-    if(voicemuted && Settings.Penals.VoiceMute.Role.length > 0 && Penals.VoiceMute.ManualMute == false) addRoles.push(Settings.Penals.VoiceMute.Role);
+    if(voicemuted && Settings.Penals.VoiceMute.Role.length > 0 && Settings.Penals.VoiceMute.ManualMute == false) addRoles.push(Settings.Penals.VoiceMute.Role);
     if(addRoles.length > 0) newMember.roles.add(addRoles).catch();
 }
 
