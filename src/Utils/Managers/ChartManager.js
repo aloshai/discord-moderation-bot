@@ -5,7 +5,7 @@ class ChartManager {
         return await ChartManager.fromImage(body, w, h);
     }
 
-    static async fromImage(config, w, h){
+    static async fromImage(config, w, h) {
         let crs = new CanvasRenderService(w, h);
         return await crs.renderToBuffer(config);
     }

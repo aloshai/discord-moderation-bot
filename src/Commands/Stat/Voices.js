@@ -113,7 +113,7 @@ module.exports.execute = async (client, message, args) => {
         width: 600,
         height: 290,
         type: 'line',
-        
+
         data: {
             labels: [].concat(dataDate),
             datasets: [{
@@ -126,8 +126,8 @@ module.exports.execute = async (client, message, args) => {
                 borderWidth: 1
             }]
         },
-        options:{
-            
+        options: {
+
         }
     });
 

@@ -1,4 +1,4 @@
-const {Message, Client, MessageEmbed} = require("discord.js");
+const { Message, Client, MessageEmbed } = require("discord.js");
 const Config = require("../../Configuration/Config.json");
 /**
  * @param {Client} client 
@@ -6,10 +6,10 @@ const Config = require("../../Configuration/Config.json");
  * @param {Array<String>} args 
  */
 module.exports.execute = async (client, message, args) => {
-    let commandNames = global.Commands.map(e => "`"+Config.Prefix+e.settings.Commands[0] + ":` " + e.settings.Commands.splice(1).join(", "));
+    let commandNames = global.Commands.map(e => "`" + Config.Prefix + e.settings.Commands[0] + ":` " + e.settings.Commands.splice(1).join(", "));
     message.channel.csend(new MessageEmbed()
-    .setColor("RANDOM")
-    .setDescription(commandNames.join("\n")));
+        .setColor("RANDOM")
+        .setDescription(commandNames.join("\n")));
 }
 
 module.exports.settings = {

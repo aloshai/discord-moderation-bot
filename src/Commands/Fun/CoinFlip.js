@@ -1,4 +1,4 @@
-const {Message, Client, MessageEmbed} = require("discord.js");
+const { Message, Client, MessageEmbed } = require("discord.js");
 const Config = require("../../Configuration/Config.json");
 /**
  * @param {Client} client 

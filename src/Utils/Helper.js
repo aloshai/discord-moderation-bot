@@ -1,16 +1,16 @@
-const {Message, TextChannel, Guild, MessageEmbed, Util,  GuildMember} = require("discord.js");
+const { Message, TextChannel, Guild, MessageEmbed, Util, GuildMember } = require("discord.js");
 
 const client = global.Client;
 
-Date.prototype.toTurkishFormatDate = function(format = "dd MM yyyy") {
+Date.prototype.toTurkishFormatDate = function (format = "dd MM yyyy") {
     var date = this,
-            day = date.getDate(),
-            weekDay = date.getDay(),
-            month = date.getMonth(),
-            year = date.getFullYear(),
-            hours = date.getHours(),
-            minutes = date.getMinutes(),
-            seconds = date.getSeconds();
+        day = date.getDate(),
+        weekDay = date.getDay(),
+        month = date.getMonth(),
+        year = date.getFullYear(),
+        hours = date.getHours(),
+        minutes = date.getMinutes(),
+        seconds = date.getSeconds();
 
     var monthNames = new Array("Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık");
     var dayNames = new Array("Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi");
@@ -55,18 +55,18 @@ Date.prototype.toTurkishFormatDate = function(format = "dd MM yyyy") {
     return format;
 };
 
-Date.prototype.toTurkishDate = function() {
+Date.prototype.toTurkishDate = function () {
     let monthNames = [
         "Ocak", "Şubat", "Mart",
         "Nisan", "Mayıs", "Haziran", "Temmuz",
         "Ağustos", "Eylül", "Ekim",
         "Kasım", "Aralık"
-      ];
-      let date = this;
-      let day = date.getDate();
-      let monthIndex = date.getMonth();
-      let year = date.getFullYear();
-      return `${day} ${monthNames[monthIndex]} ${year}`;
+    ];
+    let date = this;
+    let day = date.getDate();
+    let monthIndex = date.getMonth();
+    let year = date.getFullYear();
+    return `${day} ${monthNames[monthIndex]} ${year}`;
 }
 
 async function GetUser(id) {

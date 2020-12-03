@@ -1,4 +1,4 @@
-const {Message, Client, MessageEmbed} = require("discord.js");
+const { Message, Client, MessageEmbed } = require("discord.js");
 const Config = require("../../Configuration/Config.json");
 /**
  * @param {Client} client 
@@ -7,11 +7,11 @@ const Config = require("../../Configuration/Config.json");
  */
 module.exports.execute = async (client, message, args) => {
     let victim = message.mentions.users.first() || (args[0] ? await client.users.getUser(args[0]) : undefined) || message.author;
-    
+
     message.channel.csend(new MessageEmbed()
-    .setImage(victim.avatarURL({dynamic: true}))
-    .setDescription(`[URL ADRESI](${victim.avatarURL({dynamic: true})})`)
-    .setFooter(`${message.author.tag} | Tarafından istendi.`));
+        .setImage(victim.avatarURL({ dynamic: true }))
+        .setDescription(`[URL ADRESI](${victim.avatarURL({ dynamic: true })})`)
+        .setFooter(`${message.author.tag} | Tarafından istendi.`));
 }
 
 module.exports.settings = {

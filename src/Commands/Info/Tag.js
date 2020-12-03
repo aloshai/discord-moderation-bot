@@ -1,4 +1,4 @@
-const {Message, Client, MessageEmbed} = require("discord.js");
+const { Message, Client, MessageEmbed } = require("discord.js");
 const Config = require("../../Configuration/Config.json");
 /**
  * @param {Client} client 
@@ -6,7 +6,7 @@ const Config = require("../../Configuration/Config.json");
  * @param {Array<String>} args 
  */
 module.exports.execute = async (client, message, args) => {
-	message.channel.csend("ϯ")
+    message.channel.csend("ϯ")
 }
 
 module.exports.settings = {
