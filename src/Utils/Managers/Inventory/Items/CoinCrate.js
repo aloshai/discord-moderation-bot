@@ -1,6 +1,6 @@
 const Item = require("../Item");
 
-class Crate extends Item {
+class CoinCrate extends Item {
     constructor(){
         super("COIN_CRATE", "Altın Sandığı", "Bir miktar para çıkarmak için kullanılır.", "CRATE", "coincrate");
 
@@ -19,4 +19,4 @@ class Crate extends Item {
     }
 }
 
-module.exports = Crate;
+module.exports = CoinCrate;

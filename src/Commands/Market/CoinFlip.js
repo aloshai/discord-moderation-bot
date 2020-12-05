@@ -34,7 +34,7 @@ module.exports.execute = async (client, message, args) => {
                 User.updateOne({Id: message.author.id}, {$inc: {Coin: Number(coin)}}).exec();
             }
             else result = "kaybettin";
-            msg.edit(`${message.author}, :coin:**${InventoryManager.Number(value)}** ${result}!`);    
+            msg.edit(`${message.author}, :coin:**${InventoryManager.Number(value)}** ${result}! ${rnd == 1 ?  "✅" : "❌"}`);    
         }, 2000);
     });
 }

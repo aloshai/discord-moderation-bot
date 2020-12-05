@@ -1,6 +1,7 @@
 const Config = global.Config = require("./src/Configuration/Config.json");
 
 global.forceGC = function forceGC() {
+  return;
   if (global.gc) {
     let used = process.memoryUsage().heapUsed / 1024 / 1024;
     global.gc();
