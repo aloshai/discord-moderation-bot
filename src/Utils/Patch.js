@@ -82,13 +82,13 @@ Message.prototype.reply = async function (content, options) {
     let webhookss = await this.channel.fetchWebhooks();
     let wh = webhookss.find(e => e.name == client.user.username),
         result;
-    if (!wh) {
+    if (!wh){
         wh = await this.channel.createWebhook(client.user.username, {
             avatar: client.user.avatarURL()
         });
         webhooks[this.channel.id] = wh;
         result = await wh.send(`${this.author}, ${content}`, options);
-    } else {
+    } else{
         webhooks[this.channel.id] = wh;
         result = await wh.send(`${this.author}, ${content}`, options);
     }
