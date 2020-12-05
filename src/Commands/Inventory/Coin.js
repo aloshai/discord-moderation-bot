@@ -16,7 +16,7 @@ module.exports.execute = async (client, message, args) => {
         user.Coin = 0;
         user.save();
     }
-    message.reply(`toplam :coin:**${InventoryManager.Number(user.Coin)}** puanın var.`)
+    message.reply(`toplam :coin: **${InventoryManager.Number(user.Coin)}** puanın var.`)
 }
 
 module.exports.settings = {

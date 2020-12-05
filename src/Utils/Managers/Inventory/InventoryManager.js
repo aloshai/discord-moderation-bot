@@ -79,6 +79,30 @@ class InventoryManager {
     static FindItems(name) {
         return this.Items.filter(item => item.Id.includes(name));
     }
+
+
+    static async addItemOfInventory(user, item, count){
+        let element = user.Inventory.find(e => e.Id == item.Id);
+        if(element) element.Count += count;
+        else user.Inventory.push(this.CreateUserItem(item.Id, count));
+        user.markModified("Inventory");
+
+        await user.save();
+    }
+
+    static async removeItemOfInventory(user, item, count){
+        let element = user.Inventory.find(e => e.Id == item.Id);
+        if(element) {
+            user.markModified("Inventory");
+            element.Count -= count;
+            
+            if(element.Count <= 0){
+                let index = user.Inventory.findIndex(e => e.Id == element.Id);
+                user.Inventory.splice(index, 1);
+            }
+            await user.save();
+        }
+    }
 }
 
 module.exports = InventoryManager;

@@ -6,6 +6,15 @@ const schema = new mongoose.Schema({
   Inventory: {type: Array, default: []},
   DailyCrate: {type: Number },
   DailyCoin: {type: Number},
+  Mine: {
+    Pickaxe: {
+      Have: {type: Boolean, default: false},
+      Use: {type: Number, default: 0},
+      MaxUse: {type: Number}
+    },
+    TotalMined: {type: Number, default: 0},
+    type: Object
+  },
   Authorized: { type: Boolean, default: false },
   Rank: { type: Number, default: 0 },
   Usage: { type: Object, default: {} },

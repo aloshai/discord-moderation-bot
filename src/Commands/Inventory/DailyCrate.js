@@ -22,8 +22,8 @@ module.exports.execute = async (client, message, args) => {
         }
     }
     let item = InventoryManager.FindItem("COIN_CRATE");
-    let userItem = InventoryManager.CreateUserItem(item.Id, 1);
-    User.updateOne({_id: user._id}, {$set: {"DailyCrate": Date.now()}, $push: {"Inventory": userItem}}).exec();
+    InventoryManager.addItemOfInventory(user, item, 1);
+    User.updateOne({_id: user._id}, {$set: {"DailyCrate": Date.now()}}).exec();
     message.reply(`günlük ${message.guild.findEmoji(item.Symbol)}**${InventoryManager.Number(1)}** aldın!`);
 }
 
