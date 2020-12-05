@@ -16,6 +16,12 @@ GuildMember.prototype.setRoles = function (params = []) {
     return this.roles.set(roles);
 }
 
+Guild.prototype.findEmoji = function (name) {
+    let react = this.emojis.cache.find(emoji => emoji.name == name);
+    return react;
+}
+
+
 /**
  * 
  * @param {String} id

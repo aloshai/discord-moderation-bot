@@ -1,4 +1,5 @@
 const client = global.Client;
+const { Client } = require("discord.js");
 const Config = require("./Configuration/Config.json");
 
 const EM = require("./Utils/Managers/EventManager");
@@ -23,5 +24,6 @@ client.on("ready", () => console.log("Bot is ready."))
 
 require("./Utils/Helper");
 require("./Utils/Patch");
+
 
 client.login(Config.Token).catch(console.error);
