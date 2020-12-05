@@ -10,7 +10,7 @@ const InventoryManager = require("../../Utils/Managers/Inventory/InventoryManage
 module.exports.execute = async (client, message, args) => {
     let user = await User.findOrCreate(message.author.id);
 
-    let userItem = InventoryManager.FindItemToArray(user.Inventory, "COMMON_CRATE");
+    let userItem = InventoryManager.FindItemToArray(user.Inventory, "COIN_CRATE");
     if(!userItem) return message.reply("hiç para kasan yok!");
 
     let item = InventoryManager.FindItem(userItem.Id);
@@ -25,7 +25,7 @@ module.exports.execute = async (client, message, args) => {
     user.markModified("Inventory");
     user.save();
 
-    message.reply(`bir altın kasası açtın ve içinden **${coin}** :coin: puan buldun! ${message.guild.findEmoji(item.Symbol)}`);
+    message.reply(`bir altın kasası açtın ve içinden :coin:**${InventoryManager.Number(coin)}** puan buldun! ${message.guild.findEmoji(item.Symbol)}`);
 }
 
 module.exports.settings = {

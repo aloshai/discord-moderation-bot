@@ -2,6 +2,8 @@ const { Message, Client, MessageEmbed } = require("discord.js");
 const Settings = require("../../Configuration/Settings.json");
 const User = require("../../Utils/Schemas/User");
 
+const InventoryManager = require("../../Utils/Managers/Inventory/InventoryManager");
+
 /**
  * @param {Client} client 
  * @param {Message} message 
@@ -15,25 +17,25 @@ module.exports.execute = async (client, message, args) => {
 
     if(value <= 0) return message.reply("değer 0'dan küçük olamaz");
 
-    if(value > Settings.Market.MaxCoinBet) return message.reply(`maksimum :coin:${Settings.Market.MaxCoinBet} değerinde bir bahis girebilirsin.`);
+    if(value > Settings.Market.MaxCoinBet) return message.reply(`maksimum **${Settings.Market.MaxCoinBet}** değerinde bir bahis girebilirsin.`);
 
     let user = await User.findOrCreate(message.author.id);
-    if(user.Coin < value){
-        if(user.Coin >= Settings.Market.MaxCoinBet) value = Settings.Market.MaxCoinBet;
-        else value = user.Coin;
-    }
-    await User.updateOne({Id: message.author.id}, {$inc: {Coin: -value}});
+    if(user.Coin < value) return message.reply("geçerli bir miktar giriniz.");
+    if(value <= 0) return message.reply("yeterli puanın yok.");
+    await User.updateOne({Id: message.author.id}, {$inc: {Coin: -value}}).exec();
 
     message.channel.send(`${message.author}, para fırlatılıyor...`).then(msg => {
-        let rnd = Math.floor(Math.random() * 2), result;
-        if(rnd == 1){
-            result = "kazandın";
-            let coin = value + value;
-            User.updateOne({Id: message.author.id}, {$inc: {Coin: coin}});
-        }
-        else result = "kaybettin";
-        msg.edit(`${message.author}, **${value}** ${result}!`);
-
+        setTimeout(() => {
+            let rnd = Math.floor(Math.random() * 2), result;
+            if(rnd == 1){
+                result = "kazandın";
+                value = Number(value);
+                let coin = value + value;
+                User.updateOne({Id: message.author.id}, {$inc: {Coin: Number(coin)}}).exec();
+            }
+            else result = "kaybettin";
+            msg.edit(`${message.author}, :coin:**${InventoryManager.Number(value)}** ${result}!`);    
+        }, 2000);
     });
 }
 

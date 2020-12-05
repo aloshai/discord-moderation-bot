@@ -4,6 +4,7 @@ const schema = new mongoose.Schema({
   Id: String,
   Coin: {type: Number, default: 0},
   Inventory: {type: Array, default: []},
+  DailyCrate: {type: Number },
   Authorized: { type: Boolean, default: false },
   Rank: { type: Number, default: 0 },
   Usage: { type: Object, default: {} },

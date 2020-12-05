@@ -1,4 +1,5 @@
 const { Message, Client, MessageEmbed } = require("discord.js");
+const InventoryManager = require("../../Utils/Managers/Inventory/InventoryManager");
 
 const User = require("../../Utils/Schemas/User");
 
@@ -15,7 +16,7 @@ module.exports.execute = async (client, message, args) => {
         user.Coin = 0;
         user.save();
     }
-    message.reply(`toplam **🪙${user.Coin}** puanın var.`)
+    message.reply(`toplam :coin:**${InventoryManager.Number(user.Coin)}** puanın var.`)
 }
 
 module.exports.settings = {

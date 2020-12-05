@@ -1,10 +1,6 @@
 const Item = require("./Item");
 const UserItem = require("./UserItem");
 
-const fs = require("fs");
-const Item = require("./Item");
-const UserItem = require("./UserItem");
-
 class InventoryManager {
     static Items = [];
 
