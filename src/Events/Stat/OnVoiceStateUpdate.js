@@ -31,15 +31,15 @@ module.exports = (oldState, newState) => {
             ChannelID: newState.channelID
         });
 
-        let geçenZaman = Date.now() - data.Time;
-        return sm.addVoiceStat(oldState.id, data.ChannelID, geçenZaman);
+        let duration = Date.now() - data.Time;
+        return sm.addVoiceStat(oldState.id, data.ChannelID, duration);
     }
 	
     else if(oldState.channelID && !newState.channelID && !Settings.Stats.Voice.BypassChannels.includes(oldState.channelID)){
         let data = Voices.get(oldState.id);
         Voices.delete(oldState.id);
-        let geçenZaman = Date.now() - data.Time;
-        return sm.addVoiceStat(oldState.id, data.ChannelID, geçenZaman);
+        let duration = Date.now() - data.Time;
+        return sm.addVoiceStat(oldState.id, data.ChannelID, duration);
     }
 };
 
