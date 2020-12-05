@@ -43,6 +43,6 @@ module.exports.settings = {
     Commands: ["yazitura", "yazıtura", "yazi-tura", "yazı-tura", "coinflip"],
     Usage: "!coinflip <bahis>",
     Description: "",
-    cooldown: 5000,
+    cooldown: 2500,
     Activity: true
 }
