@@ -7,7 +7,7 @@ class Pickaxe extends Item {
         super("PICKAXE", "Kazma", "Maden kazmak için kullanabileceğin bir şey it herif..", "USEABLE", "pickaxe");
 
         this.Price = 50;
-        this.MaxUse = 30;
+        this.MaxUse = 25;
     }
 
 

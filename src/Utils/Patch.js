@@ -77,7 +77,7 @@ TextChannel.prototype.csend = async function (content, options) {
     return result;
 };
 
-Message.prototype.reply = async function (content, options) {
+/*Message.prototype.reply = async function (content, options) {
     if (webhooks[this.channel.id]) return (await webhooks[this.channel.id].send(`${this.author}, ${content}`, options));
     let webhookss = await this.channel.fetchWebhooks();
     let wh = webhookss.find(e => e.name == client.user.username),
@@ -93,4 +93,4 @@ Message.prototype.reply = async function (content, options) {
         result = await wh.send(`${this.author}, ${content}`, options);
     }
     return result;
-};
+};*/

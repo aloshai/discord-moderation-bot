@@ -15,7 +15,7 @@ module.exports.execute = async (client, message, args) => {
         let itemId = args[1];
         if(!itemId) return message.reply("bir eşya ID'si girmelisin.");
 
-        let item = InventoryManager.FindItem(itemId);
+        let item = InventoryManager.FindItem(itemId.toUpperCase());
         if(!item) return message.reply("böyle bir eşya yok. Geçerli bir ID girmeyi dene.");
         if(!item.Price) return message.reply("bu eşya satın alınamıyor.");
 
@@ -26,6 +26,34 @@ module.exports.execute = async (client, message, args) => {
         InventoryManager.addItemOfInventory(user, item, 1);
 
         message.reply(`${item.Name} isimli eşyayı satın aldın. ✅`);
+        return;
+    }
+    else if(args[0] == "sell"){
+        let itemId = args[1];
+        if(!itemId) return message.reply("bir eşya ID'si girmelisin.");
+        
+        let item = InventoryManager.FindItem(itemId.toUpperCase());
+        if(!item) return message.reply("böyle bir eşya yok. Geçerli bir ID girmeyi dene.");
+        if(!item.Sell) return message.reply("bu eşya satılamıyor.");
+
+        let user = await User.findOrCreate(message.author.id);
+        let inventoryItem = InventoryManager.FindItemToArray(user.Inventory, item.Id);
+        if(!inventoryItem || (inventoryItem && inventoryItem.Count <= 0)) return message.reply("envanterinde bu eşya yok.");
+
+        let count = args[2];
+        if(!count) return message.reply("kaç adet satmak istediğini belirt.");
+        if(count == "all") count = inventoryItem.Count;
+        else{
+            count = Number(count);
+            if(isNaN(count)) return message.reply("geçerli bir sayı girmelisin.");    
+        }
+
+        let money = count * item.Sell;
+        await InventoryManager.removeItemOfInventory(user, item, count);
+        User.updateOne({Id: user.Id}, {$inc: {"Coin": money}}).exec((err, res) => {
+            if(err) return console.error(err);
+            message.reply(`başarılı bir şekilde ${item.Name} eşyasından **${count}** adet sattın ve sana toplam **${money}** puan verildi.`);
+        });
         return;
     }
 

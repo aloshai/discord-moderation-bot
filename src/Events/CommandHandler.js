@@ -27,7 +27,7 @@ module.exports = (message) => {
             let element = cd.find(e => e.id == command.settings.id);
             if (element) {
                 let diff = (Date.now() - element.lastUsage);
-                if (diff < cooldown) return message.reply(`bu komutu tekrar kullanabilmek için **${Number(((cooldown - diff) / 1000).toFixed(2)).toHumanize({}, 1)} saniye** sonra tekrar dene.`);
+                if (diff < cooldown) return; //message.reply(`bu komutu tekrar kullanabilmek için **${Number(((cooldown - diff) / 1000).toFixed(2)).toHumanize({}, 1)} saniye** sonra tekrar dene.`);
                 element.lastUsage = Date.now();
             }
         }

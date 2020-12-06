@@ -80,6 +80,10 @@ class InventoryManager {
         return this.Items.filter(item => item.Id.includes(name));
     }
 
+    static FindItemsToType(name){
+        return this.Items.filter(item => item.Type == name);
+    }
+
 
     static async addItemOfInventory(user, item, count){
         let element = user.Inventory.find(e => e.Id == item.Id);
@@ -87,7 +91,9 @@ class InventoryManager {
         else user.Inventory.push(this.CreateUserItem(item.Id, count));
         user.markModified("Inventory");
 
-        await user.save();
+        await user.save((err, res) => {
+            if(err) console.error(err);
+        });
     }
 
     static async removeItemOfInventory(user, item, count){
@@ -100,7 +106,9 @@ class InventoryManager {
                 let index = user.Inventory.findIndex(e => e.Id == element.Id);
                 user.Inventory.splice(index, 1);
             }
-            await user.save();
+            await user.save((err, res) => {
+                if(err) console.error(err);
+            });
         }
     }
 }

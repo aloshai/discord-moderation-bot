@@ -100,6 +100,7 @@
     },
 
     "Market": {
-        "MaxCoinBet": 50000
+        "MaxCoinBet": 50000,
+        "DropChannel": "777670253017563168"
     }
 }

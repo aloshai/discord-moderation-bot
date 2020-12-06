@@ -15,7 +15,7 @@ module.exports.execute = async (client, message, args) => {
         let itemId = args[1];
         if(!itemId) return message.reply("bir tane eşya ID'si girmelisin.");
 
-        let item = InventoryManager.FindItem(itemId);
+        let item = InventoryManager.FindItem(itemId.toUpperCase());
         if(!item) return message.reply("böyle bir eşya yok. Geçerli bir eşya ID'si girin.");
         if(item.Type != "USEABLE") return message.reply("bu eşya kullanılabilir bir eşya değil.");
 

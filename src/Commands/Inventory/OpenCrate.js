@@ -10,9 +10,10 @@ const InventoryManager = require("../../Utils/Managers/Inventory/InventoryManage
 module.exports.execute = async (client, message, args) => {
     let user = await User.findOrCreate(message.author.id);
 
-    let userItem = InventoryManager.FindItemToArray(user.Inventory, "COIN_CRATE");
-    if(!userItem) return message.reply("hiç para kasan yok!");
+    let userItems = InventoryManager.FindItemsToArray(user.Inventory, "CRATE");
+    if(userItems.length <= 0) return message.reply("hiç para kasan yok!");
 
+    let userItem = userItems[0];
     let item = InventoryManager.FindItem(userItem.Id);
     
     let coin = item.open();

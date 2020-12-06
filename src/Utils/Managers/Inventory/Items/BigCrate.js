@@ -2,10 +2,12 @@ const Item = require("../Item");
 
 class CoinCrate extends Item {
     constructor(){
-        super("COIN_CRATE", "Altın Sandığı", "Bir miktar para çıkarmak için kullanılır.", "CRATE", "coincrate");
+        super("SOURCE_BIG_CRATE", "Büyük Elmas Sandığı", "Bir miktar para çıkarmak için kullanılır.", "CRATE", "coincrate");
 
-        this.Min = 50;
-        this.Max = 150;
+        this.Min = 2000;
+        this.Max = 5000;
+        this.RarityMin = 0.56;
+        this.RarityMax = 0.57;
     }
 
     /**
