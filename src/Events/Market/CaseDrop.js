@@ -10,7 +10,7 @@ let lastDrop = undefined;
 
 module.exports = () => {
     setInterval(() => {
-        if(lastDrop && (Date.now() - lastDrop) / (1000 * 60) < 5) return console.log("iptal oldu kalan zaman " + (Date.now() - lastDrop) / (1000 * 60 * 5));
+        if(lastDrop && (Date.now() - lastDrop) / (1000 * 60) < 5) return;
         lastDrop = Date.now();
 
         let channel = client.channels.cache.get(Settings.Market.DropChannel);
