@@ -27,7 +27,6 @@ const model = mongoose.model("Users", schema);
 module.exports = model;
 
 /**
- * 
  * @param {String} id
  * @returns {Document} 
  */

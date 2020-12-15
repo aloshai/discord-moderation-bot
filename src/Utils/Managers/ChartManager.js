@@ -10,4 +10,5 @@ class ChartManager {
         return await crs.renderToBuffer(config);
     }
 }
+
 module.exports = ChartManager;

@@ -49,7 +49,6 @@ module.exports.execute = async (client, message, args) => {
     }
 
     if (görev.Task.Message.Target <= görev.Task.Message.Current && görev.Task.Voice.Target <= görev.Task.Voice.Current) {
-        message.reply("eski görevlerini tamamlamışsın bunun için sana yeni bir görev veriyorum.");
         görev.ComplatedTask.push({ Element: görev.Task, Date: Date.now() });
         görev.Difficulty += 1;
         let newTask = CreateTask(görev.Difficulty);
