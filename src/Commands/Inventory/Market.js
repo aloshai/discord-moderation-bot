@@ -2,6 +2,7 @@ const { Message, Client, MessageEmbed } = require("discord.js");
 const InventoryManager = require("../../Utils/Managers/Inventory/InventoryManager");
 
 const User = require("../../Utils/Schemas/User");
+const Stat = require("../../Utils/Schemas/Stat");
 
 /**
  * @param {Client} client 
@@ -20,9 +21,22 @@ module.exports.execute = async (client, message, args) => {
         if(!item.Price) return message.reply("bu eşya satın alınamıyor.");
 
         let user = await User.findOrCreate(message.author.id);
-        if(user.Coin < item.Price) return message.reply("yeterli puanın yok.");
 
-        await User.updateOne({Id: user.Id}, {$inc: {"Coin": -item.Price}}).exec();
+        if(item.PriceType && item.PriceType == "STAT_VOICE"){
+            let stat = await Stat.findOne({Id: user.Id}, {Message: 0, Voice: 0});
+            if(!stat) return message.reply("hiç ses aktiviten yok :(");
+            if(stat.AllVoice < (item.Price * (1000 * 60))) return message.reply("bu işlemi yapabilmek için yeterli ses aktiviten yok.");
+            await Stat.updateOne({Id: user.Id}, {$inc: {AllVoice: -(item.Price * (1000 * 60))}}).exec();
+        }
+        else if(item.PriceType && item.PriceType == "STAT_CHAT"){
+            let stat = await Stat.findOne({Id: user.Id}, {Message: 0, Voice: 0});
+            if(!stat) return message.reply("hiç mesaj aktiviten yok :(");
+            if(stat.AllMessage < (item.Price)) return message.reply("bu işlemi yapabilmek için yeterli mesaj aktiviten yok.");
+            await Stat.updateOne({Id: user.Id}, {$inc: {AllMessage: -item.Price}}).exec();
+        }
+        else if(user.Coin < item.Price) return message.reply("yeterli puanın yok.");
+
+        if(!item.PriceType) await User.updateOne({Id: user.Id}, {$inc: {"Coin": -item.Price}}).exec();
         InventoryManager.addItemOfInventory(user, item, 1);
 
         message.reply(`${item.Name} isimli eşyayı satın aldın. ✅`);

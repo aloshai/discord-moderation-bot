@@ -1,12 +1,12 @@
 const { Message, Client, MessageEmbed } = require("discord.js");
-const Config = require("../../Configuration/Config.json");
+const Settings = require("../../Configuration/Settings.json");
 /**
  * @param {Client} client 
  * @param {Message} message 
  * @param {Array<String>} args 
  */
 module.exports.execute = async (client, message, args) => {
-    message.channel.csend("ϯ")
+    message.channel.csend(Settings.Tag.Symbol)
 }
 
 module.exports.settings = {

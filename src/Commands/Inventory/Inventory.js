@@ -21,9 +21,9 @@ module.exports.execute = async (client, message, args) => {
 
         if(!user.Inventory.some(userItem => userItem.Id == item.Id)) return message.reply("bu eşya senin envanterinde yok.");
 
-        item.use(user.Id);
-        InventoryManager.removeItemOfInventory(user, item, 1);
-        message.reply(`${item.Name} adlı eşyayı kullanmaya başladın!`);
+        let response = await item.use(user.Id) || "";
+        await InventoryManager.removeItemOfInventory(user, item, 1);
+        message.reply(`${item.Name} adlı eşyayı kullandın! ${response}`);
         return;
     }
 

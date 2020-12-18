@@ -27,6 +27,10 @@
     "moment-timezone": "^0.5.31",
     "mongoose": "^5.10.12",
     "ms": "^2.1.2",
+    "quickchart-js": "^1.0.5",
+    "request": "^2.88.2",
     "string-table": "^0.1.5"
-  }
+  },
+  "devDependencies": {},
+  "keywords": []
 }
