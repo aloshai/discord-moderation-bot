@@ -7,7 +7,7 @@ const client = global.Client;
 module.exports = async() => {
     setInterval(async () => {
         await checkPenals();
-    }, 60000)
+    }, 10000)
 }
 
 module.exports.config = {
@@ -17,7 +17,8 @@ module.exports.config = {
 async function checkPenals() {
     let guild = client.guilds.cache.get(Settings.Server.Id);
     if(!guild) return;
-    let penals = await pm.getPenals({Activity: true});
+    let penals = await pm.getPenals({Activity: true, FinishTime: {$lte: Date.now()}});
+    //let penals = await pm.getPenals({Activity: true});
 
     let finishPenals = penals.filter(penal => penal.Temporary && Date.now() > penal.FinishTime);
 

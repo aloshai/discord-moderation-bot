@@ -25,10 +25,10 @@ module.exports.execute = async (client, message, args) => {
         let category = Categorys[name];
         if(category){
             embed.setDescription(`
-            Merhaba, burası ${name} kategorisinde olan komutları görebileceğin bir yer umarım sana yardımcı olacaktır ;)
+            Bu kategori **${name.toUpperCase()}** ait bu kategoriye ait tüm komutları buradan görebilirsin. ;)
     
             ❕ **Komutlar ve kullanımları** ❔
-            ${category.map(command => `**-** \`${Config.Prefix}${command.Commands[0]}\` komutu ${command.Usage ? `${command.Usage} |` : ""} \`${Config.Prefix}help ${command.Commands[0]}\``).join("\n")}
+            ${category.map(command => `**-** \`${Config.Prefix}${command.Commands[0]}\` komutu ${command.Usage ? `\`${Config.Prefix}${command.Usage}\` |` : ""} \`${Config.Prefix}help ${command.Commands[0]}\``).join("\n")}
 
             `)
             message.channel.csend(embed);    
@@ -40,12 +40,10 @@ module.exports.execute = async (client, message, args) => {
 
             embed.setDescription(`            
             \`Komut:\` ${command.settings.Commands[0]}
-
             \`Açıklama:\` ${Config.Prefix}${command.settings.Usage}
             \`Kullanımı:\` ${command.settings.Description}
             \`Kategori:\` ${command.settings.Category || "Misc"}
-
-            \`Gecikme Süresi:\` ${(command.settings.cooldown || 1000) / 1000} saniye
+            \`Tekrar Kullanım:\` ${(command.settings.cooldown || 1000) / 1000} saniye
             `)
             message.channel.csend(embed);
         }

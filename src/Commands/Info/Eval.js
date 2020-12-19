@@ -21,8 +21,6 @@ module.exports.execute = async (client, message, args) => {
         code: true,
         split: true
     });
-
-
 }
 
 module.exports.settings = {

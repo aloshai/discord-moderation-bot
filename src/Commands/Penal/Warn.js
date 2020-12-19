@@ -29,8 +29,8 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["warn", "uyarı", "uyar"],
-    Usage: "",
-    Description: "",
+    Usage: "warn <@user|id> [reason]",
+    Description: "Bahsettiğin kişiyi sunucuda uyarırsın.",
     Category: "Penal",
     Activity: true
 }

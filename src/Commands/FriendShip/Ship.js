@@ -14,7 +14,7 @@ module.exports.execute = async (client, message, args) => {
     let friends = Object.keys(data.Friends).sort((a, b) => data.Friends[b] - data.Friends[a]);
 
     let embed = new MessageEmbed().setColor("RANDOM").setAuthor(message.author.username, message.author.avatarURL({dynamic: true})).setTimestamp();
-    embed.setDescription(`Arkadaşlık sistemi sunucu içerisinde vakit geçirdiğin insanların/grupların seninle olan arkadaşlık puanlarını gösterir. Unutma ki buradaki puanlama sistemi arkadaşların arasındaki ilişkini bilemez. (Tamamen matematiksel hesaplamalarla ölçer)`);
+    embed.setDescription(`Arkadaşlık sistemi sunucu içerisinde vakit geçirdiğin insanların/grupların seninle olan arkadaşlık puanlarını gösterir. Unutma ki buradaki puanlama sistemi tamamen matematiksel hesaplamalarla çalışır, arkadaşlarınla arandaki ilişkini bilemez.`);
     embed.addField("Arkadaşlarım", `${friends.map(friend => `<@${friend}>: **${data.Friends[friend].toFixed(2)}** puan`).join("\n")}`);
     message.channel.csend(embed);
 }

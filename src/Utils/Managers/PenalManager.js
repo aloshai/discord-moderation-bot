@@ -68,7 +68,7 @@ class PenalManager {
         if ((penal.Type == PenalManager.Types.TEMP_JAIL || penal.Type == PenalManager.Types.JAIL) && member.roles.cache.has(Settings.Penals.Jail.Role)) {
             let count = await Penal.countDocuments({ Activity: true, User: member.user.id, $or: [{ Type: PenalManager.Types.TEMP_JAIL }, { Type: PenalManager.Types.JAIL }] });
             count -= 1;
-            if (count <= 0 && member.manageable) pm.setRoles(member, Settings.Roles.Unregistered);
+            if (count <= 0 && member.manageable) this.setRoles(member, Settings.Roles.Unregistered);
         }
         else if ((penal.Type == PenalManager.Types.MUTE || penal.Type == PenalManager.Types.TEMP_MUTE) && member.roles.cache.has(Settings.Penals.Mute.Role)) {
             let count = await Penal.countDocuments({ Activity: true, User: member.user.id, $or: [{ Type: PenalManager.Types.TEMP_MUTE }, { Type: PenalManager.Types.MUTE }] });

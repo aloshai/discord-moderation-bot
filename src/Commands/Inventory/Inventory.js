@@ -27,15 +27,12 @@ module.exports.execute = async (client, message, args) => {
         return;
     }
 
-
     let list = user.Inventory.map(userItem => {
         let item = InventoryManager.FindItem(userItem.Id);
         return `${item.Name}${InventoryManager.Number(userItem.Count)}`
     }).join(", ");
 
-
     message.channel.send(new MessageEmbed().setDescription(list).setColor("RANDOM").setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })));
-
 }
 
 module.exports.settings = {

@@ -20,7 +20,7 @@ module.exports.execute = async (client, message, args) => {
     let time = args[1];
     if(!time || !ms(time)) return message.reply("lütfen geçerli bir süre girin.");
     time = ms(time);
-    let reason = args.splice(12).join(" ");
+    let reason = args.splice(2).join(" ");
     if(!reason) return message.reply("bir sebep belirtmelisin.");
 
     let member = await message.guild.getMember(victim.id);
