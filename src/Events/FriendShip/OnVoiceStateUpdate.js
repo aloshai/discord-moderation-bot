@@ -1,5 +1,4 @@
 const {VoiceState, Collection} = require("discord.js");
-const Settings = require("../../Configuration/Settings.json");
 const Group = require("../../Utils/Models/Group");
 
 /**

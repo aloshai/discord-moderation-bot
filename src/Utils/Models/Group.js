@@ -12,6 +12,11 @@ class Group{
      */
     Experience = 0;
 
+    /**
+     * 
+     * @param {Array<{Id: String, LastUpdate: Number}>} users 
+     * @param {Number} experience 
+     */
     constructor(users = [], experience){
         this.Users = users;
         this.Experience = experience;
