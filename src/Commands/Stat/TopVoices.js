@@ -121,8 +121,9 @@ function getColor(index, x) {
 
 module.exports.settings = {
     Commands: ["topvoices", "topsesler"],
-    Usage: "",
-    Description: "",
+    Usage: "topvoices",
+    Description: "Sunucudaki ses sıralamasına bakarsın.",
+    Category: "Stats",
     Activity: true,
     cooldown: 30000
 }

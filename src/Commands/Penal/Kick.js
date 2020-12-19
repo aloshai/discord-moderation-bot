@@ -33,7 +33,8 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["kick", "at"],
-    Usage: "",
-    Description: "",
+    Usage: "kick <@member|id> [reason]",
+    Description: "Bahsettiğin kişiyi sunucudan atarsın.",
+    Category: "Penal",
     Activity: true
 }

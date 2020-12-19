@@ -36,8 +36,9 @@ module.exports.execute = async (client, message, args) => {
 }
 
 module.exports.settings = {
-    Commands: ["çek", "getir", "pull"],
-    Usage: "",
-    Description: "",
+    Commands: ["pull", "çek", "getir"],
+    Usage: "pull <@member|id>",
+    Description: "Etiketlediğin kişiyi yanına çekmek için talep açarsın.",
+    Category: "Useable",
     Activity: true
 }

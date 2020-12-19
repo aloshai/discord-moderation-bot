@@ -31,5 +31,6 @@ module.exports.settings = {
     Commands: ["warn", "uyarı", "uyar"],
     Usage: "",
     Description: "",
+    Category: "Penal",
     Activity: true
 }

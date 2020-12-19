@@ -34,7 +34,8 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["ban", "cezalandır"],
-    Usage: "",
-    Description: "",
+    Usage: "ban <@user|id> [reason]",
+    Description: "Bahsettiğin kişiyi sunucudan yasaklarsın.",
+    Category: "Penal",
     Activity: true
 }

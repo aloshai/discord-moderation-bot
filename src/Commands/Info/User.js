@@ -20,9 +20,10 @@ module.exports.execute = async (client, message, args) => {
 }
 
 module.exports.settings = {
-    Commands: ["kullanıcı", "user"],
-    Usage: "",
-    Description: "",
-    cooldown: 50000,
+    Commands: ["user", "kullanıcı", "kullanici"],
+    Usage: "user <mention|id>",
+    Description: "Etiketlediğin ya da ID'sini belirttiğin kişinin Discord profili hakkında detaylı bir bilgi alırsın.",
+    Category: "Info",
+    cooldown: 60000,
     Activity: true
 }

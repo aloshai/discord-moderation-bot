@@ -48,7 +48,8 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["unmute"],
-    Usage: "",
-    Description: "",
+    Usage: "unmute <@user|id>",
+    Description: "Etiketlediğin kişinin aktif olan susturma cezalarından herhangi birini kaldırabilirsin.",
+    Category: "Penal",
     Activity: true
 }

@@ -11,8 +11,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["tag"],
-    Usage: "",
-    Description: "",
+    Usage: "tag",
+    Description: "Sunucuya ait özel bir sembol varsa, bunu sana metin olarak atar.",
+    Category: "Info",
     cooldown: 2500,
     Activity: true
 }

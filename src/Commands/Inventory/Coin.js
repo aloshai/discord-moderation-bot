@@ -21,8 +21,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["coin", "puan", "puanım", "puanim"],
-    Usage: "",
-    Description: "",
+    Usage: "coin",
+    Description: "Üzerinde ne kadar puan olduğunu öğrenirsin.",
+    Category: "Economy",
     cooldown: 5000,
     Activity: true
 }

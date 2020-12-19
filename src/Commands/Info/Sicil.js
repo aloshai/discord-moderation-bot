@@ -69,8 +69,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["sicil"],
-    Usage: "",
-    Description: "",
+    Usage: "sicil <member>",
+    Description: "Etiketlediğin kişinin sunucu içerisinde aldığı cezaları listelersin.",
+    Category: "Info",
     Activity: true,
-    cooldown: 5000
+    cooldown: 15000
 }

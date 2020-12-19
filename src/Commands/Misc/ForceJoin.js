@@ -22,7 +22,8 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["forcejoin", "forcego", "forcegit", "zorlagit", "fgit", "fgo"],
-    Usage: "",
-    Description: "",
+    Usage: "forcejoin <member|id>",
+    Description: "Etiketlemiş olduğun kişi herhangi bir odadaysa onun odasına zorla girersin.",
+    Category: "Useable",
     Activity: true
 }

@@ -45,8 +45,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["mine", "kaz"],
-    Usage: "",
-    Description: "",
+    Usage: "mine",
+    Description: "Eğer bir kazman varsa maden kazarsın ve içerisinden ilginç şeyler düşürebilirsin.",
+    Category: "Economy",
     cooldown: 5000,
     Activity: true
 }

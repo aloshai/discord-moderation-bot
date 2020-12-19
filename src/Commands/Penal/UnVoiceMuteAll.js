@@ -47,7 +47,8 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["unvoicemuteall", "uvmall"],
-    Usage: "",
-    Description: "",
+    Usage: "unvoicemuteall <@user|id>",
+    Description: "Bahsettiğin kişinin sunucudaki tüm sesli susturmalarını kaldırırsın.",
+    Category: "Penal",
     Activity: true
 }

@@ -37,8 +37,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["join", "go", "git"],
-    Usage: "",
-    Description: "",
+    Usage: "join <@member|id>",
+    Description: "Etiketlediğin kişi bir odadaysa onun odasına girmek için talep açarsın.",
+    Category: "Useable",
     cooldown: 1000,
     Activity: true
 }

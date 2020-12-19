@@ -27,8 +27,8 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["eval"],
-    Usage: "",
-    Description: "",
+    Usage: "eval <code>",
+    Description: "Bu komut yoook :D",
     cooldown: 2500,
     Activity: true
 }

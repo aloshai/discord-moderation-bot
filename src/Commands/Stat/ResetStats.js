@@ -25,8 +25,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["resetstats"],
-    Usage: "",
-    Description: "",
+    Usage: "resetstats",
+    Description: "Tüm aktiviteleri sıfırlarsın.",
     cooldown: 10000,
+    Category: "Stats",
     Activity: true
 }

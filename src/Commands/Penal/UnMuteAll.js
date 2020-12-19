@@ -44,7 +44,8 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["unmuteall", "unmall"],
-    Usage: "",
-    Description: "",
+    Usage: "unmuteall <@user|id>",
+    Description: "Etiketlediğin kişinin tüm sohbet susturmalarını kaldırırsın.",
+    Category: "Penal",
     Activity: true
 }

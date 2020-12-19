@@ -13,8 +13,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["seskontrol", "sesk", "kses", "sk"],
-    Usage: "",
-    Description: "",
+    Usage: "seskontrol <member|id>",
+    Description: "Etiketlediğin ya da ID'sini belirttiğin kişinin bir kanalda olup olmadığını, eğer kanaldaysa o kanalın ismini öğrenirsin.",
+    Category: "Info",
     cooldown: 2500,
     Activity: true
 }

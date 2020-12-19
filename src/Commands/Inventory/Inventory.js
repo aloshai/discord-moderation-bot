@@ -40,8 +40,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["inventory", "envanter"],
-    Usage: "",
-    Description: "",
+    Usage: "inventory [use|open|remove]",
+    Description: "Envanteri yönetmeni ya da envanterinde neler olduğunu görmeni sağlar.",
+    Category: "Economy",
     cooldown: 5000,
     Activity: true
 }

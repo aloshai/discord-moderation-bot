@@ -31,8 +31,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["opencrate"],
-    Usage: "",
-    Description: "",
+    Usage: "opencrate",
+    Description: "Envanterinde olan kasaları sırasıyla açarsın. Komutu bir kez kullanırsan, 1 tane kasa açarsın.",
+    Category: "Economy",
     cooldown: 5000,
     Activity: true
 }

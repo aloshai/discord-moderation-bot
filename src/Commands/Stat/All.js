@@ -115,8 +115,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["stats", "istatistik", "stat"],
-    Usage: "",
-    Description: "",
+    Usage: "stats [@user|id]",
+    Description: "Sunucudaki genel ses ve mesaj istatistiğinle alakalı bilgi alırsın.",
+    Category: "Stats",
     Activity: true,
     cooldown: 20000
 }

@@ -15,8 +15,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["topcoin"],
-    Usage: "",
-    Description: "",
+    Usage: "topcoin",
+    Description: "En çok puana sahip olan kullanıcıları listeler.",
+    Category: "Economy",
     cooldown: 5000,
     Activity: true
 }

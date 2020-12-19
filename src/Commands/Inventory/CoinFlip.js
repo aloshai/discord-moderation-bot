@@ -44,8 +44,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["yazitura", "yazıtura", "yazi-tura", "yazı-tura", "coinflip"],
-    Usage: "!coinflip <bahis>",
-    Description: "",
+    Usage: "coinflip <bahis>",
+    Description: "Üzerinde bulunan puanları kullanarak bahis oynarsın ve %50 şans ile kazanır ya da kaybedersin.",
+    Category: "Economy",
     cooldown: 2500,
     Activity: true
 }

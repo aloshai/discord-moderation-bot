@@ -30,8 +30,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["cointransfer", "transfercoin"],
-    Usage: "",
-    Description: "",
+    Usage: "transfer @user <amount>",
+    Description: "Etiketlemiş olduğun kişiye belirtmiş olduğun kadar puan transfer edersin.",
+    Category: "Economy",
     cooldown: 5000,
     Activity: true
 }

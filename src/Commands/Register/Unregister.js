@@ -25,8 +25,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["unregister", "kayıtsız", "kayitsiz"],
-    Usage: "",
-    Description: "",
+    Usage: "unregister <@member|id>",
+    Description: "Bahsettiğin kişiyi sunucuda kayıtsıza atarsın.",
     Activity: true,
+    Category: "Register",
     cooldown: 10000
 }

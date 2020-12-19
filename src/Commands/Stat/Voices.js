@@ -147,8 +147,9 @@ function convert(ms) {
 
 module.exports.settings = {
     Commands: ["voicestats", "sesler", "sesim", "seslerim", "ises", "voice", "ses"],
-    Usage: "",
-    Description: "",
+    Usage: "voicestats",
+    Description: "Sunucudaki kendi ses istatistiğine bakarsın.",
+    Category: "Stats",
     Activity: true,
     cooldown: 15000
 }

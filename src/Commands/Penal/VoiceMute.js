@@ -36,7 +36,8 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["voicemute", "seslisustur"],
-    Usage: "",
-    Description: "",
+    Usage: "voicemute <@user|id> [reason]",
+    Description: "Bahsettiğin kişiyi sunucuda kalıcı olarak susturursun.",
+    Category: "Penal",
     Activity: true
 }

@@ -79,8 +79,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["market", "shop"],
-    Usage: "",
-    Description: "",
+    Usage: "market [buy|sell]",
+    Description: "Marketin içerisinde ne olduğunu ya da markette bulunan bir eşyayı satın alabilir veya satabilirsin.",
+    Category: "Economy",
     cooldown: 5000,
     Activity: true
 }

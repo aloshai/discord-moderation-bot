@@ -47,7 +47,8 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["name", "isim"],
-    Usage: "",
-    Description: "",
+    Usage: "name [@member <newName>|<newName>]",
+    Description: "Eğer boostersan bu komutu kullanarak ismini değiştirebilirsin. Yetkiliysen etiketlediğin kişinin ismini değiştirmek için kullanabilirsin.",
+    Category: "Useable",
     Activity: true
 }

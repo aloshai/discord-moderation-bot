@@ -38,8 +38,9 @@ module.exports.execute = async (client, message, args) => {
 }
 
 module.exports.settings = {
-    Commands: ["tvm", "tempvoicemute", "geçiciseslisustur", "gss"],
-    Usage: "",
-    Description: "",
+    Commands: ["tempvoicemute","tvm", "geçiciseslisustur", "gss"],
+    Usage: "tempvoicemute <@user|id> <time> [reason]",
+    Description: "Bahsettiğin kişiyi sunucuda sesli bir şekilde geçici olarak susturursun.",
+    Category: "Penal",
     Activity: true
 }

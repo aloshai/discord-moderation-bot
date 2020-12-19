@@ -16,8 +16,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["avatar", "pp"],
-    Usage: "",
-    Description: "",
-    cooldown: 10000,
+    Usage: "avatar <member/id>",
+    Description: "Etiketlediğin kişinin Discord'daki profil fotoğrafını birçok formatta alırsın ve indirebilir duruma getirirsin.",
+    Category: "Info",
+    cooldown: 20000,
     Activity: true
 }

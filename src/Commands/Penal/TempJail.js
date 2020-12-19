@@ -36,7 +36,8 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["tempjail", "geçicicezalandır"],
-    Usage: "",
-    Description: "",
+    Usage: "tempjail <@user|id> <time> [reason]",
+    Description: "Bahsettiğin kişiyi sunucuda belirttiğin süre boyunca geçici olarak cezalandırırsın.",
+    Category: "Penal",
     Activity: true
 }

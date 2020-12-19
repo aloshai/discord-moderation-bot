@@ -118,8 +118,9 @@ function getColor(index, x) {
 
 module.exports.settings = {
     Commands: ["topmessages", "topmesajlar"],
-    Usage: "",
-    Description: "",
+    Usage: "topmessages",
+    Description: "Sunucudaki mesaj sıralamasına bakarsın.",
+    Category: "Stats",
     Activity: true,
     cooldown: 30000
 }

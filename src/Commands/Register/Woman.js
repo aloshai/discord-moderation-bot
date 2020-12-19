@@ -44,7 +44,8 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["woman", "kız", "kiz", "k"],
-    Usage: "",
-    Description: "",
+    Usage: "woman <@member|id> <Name|Name Age>",
+    Description: "Bahsettiğin kişiyi sunucuda kız olarak kaydedersin.",
+    Category: "Register",
     Activity: true
 }

@@ -85,8 +85,9 @@ __Tamamlanan Görev:__ ${görev.ComplatedTask.length}
 
 module.exports.settings = {
     Commands: ["task", "görev"],
-    Usage: "",
-    Description: "",
+    Usage: "task",
+    Description: "Genel görevin hakkında bilgi edinirsin. (Zorunlu değil)",
+    Category: "Task",
     cooldown: 5000,
     Activity: true
 }

@@ -29,8 +29,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["dailycrate"],
-    Usage: "",
-    Description: "",
+    Usage: "dailycrate",
+    Description: "Günlük alabileceğin kasayı alırsın.",
+    Category: "Economy",
     cooldown: 5000,
     Activity: true
 }

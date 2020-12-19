@@ -22,8 +22,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["take", "takecoin", "cointake"],
-    Usage: "",
-    Description: "",
+    Usage: "take",
+    Description: "Kanalda yere atılmış olan herhangi bir parayı almanı sağlar.",
+    Category: "Economy",
     cooldown: 5000,
     Activity: true
 }

@@ -37,7 +37,8 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["tempmute", "geçicisustur"],
-    Usage: "",
-    Description: "",
+    Usage: "tempmute <@user|id> <time> [reason]",
+    Description: "Bahsettiğin kişiyi sunucuda geçici olarak yazılı susturursun.",
+    Category: "Penal",
     Activity: true
 }

@@ -13,8 +13,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["yazitura", "turayazi", "yazıtura", "turayazı"],
-    Usage: "",
-    Description: "",
+    Usage: "yazıtura",
+    Description: "Havaya para atıyorsun ve yere düşüyor, artık şansına ne çıkarsa :D",
+    Category: "Fun",
     cooldown: 5000,
     Activity: true
 }

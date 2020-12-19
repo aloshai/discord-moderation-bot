@@ -21,8 +21,9 @@ module.exports.execute = async (client, message, args) => {
 }
 
 module.exports.settings = {
-    Commands: ["zorlaçek", "zorlagetir", "forcepull", "forceçek", "forcecek", "zorlacek", "forcegetir", "fcek", "fgetir", "fpull"],
-    Usage: "",
-    Description: "",
+    Commands: ["forcepull","zorlaçek", "zorlagetir", "forceçek", "forcecek", "zorlacek", "forcegetir", "fcek", "fgetir", "fpull"],
+    Usage: "forcepull <@member|id>",
+    Description: "Etiketlediğin kişi herhangi bir kanaldaysa yanına zorla çekersin.",
+    Category: "Useable",
     Activity: true
 }

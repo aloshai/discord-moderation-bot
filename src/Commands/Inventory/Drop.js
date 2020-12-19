@@ -26,8 +26,9 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["coindrop", "dropcoin"],
-    Usage: "",
-    Description: "",
+    Usage: "drop <miktar>",
+    Description: "O kanalda yere belirtmiş olduğun kadar para bırakırsın ve başkası o parayı **take** komutu ile alabilir.",
+    Category: "Economy",
     cooldown: 5000,
     Activity: true
 }
