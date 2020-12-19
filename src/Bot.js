@@ -21,6 +21,7 @@ EM.addEvent("Misc/Welcome.js");
 EM.addEvent("Misc/PrivateChannels.js");
 EM.addEvent("Market/CaseDrop.js");
 EM.addEvent("FriendShip/OnVoiceStateUpdate");
+EM.addEvent("FriendShip/OnVoiceReady");
 
 client.on("ready", () => console.log("Bot is ready."))
 

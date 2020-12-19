@@ -31,7 +31,7 @@ module.exports = (message) => {
                 element.lastUsage = Date.now();
             }
         }
-        if(!command.settings.Activity && message.author.id != "558016135052787773") return;
+        if(!command.settings.Activity) return;
         command.execute(message.client, message, args);
         cd.push({ id: command.settings.id, cooldown: cooldown, lastUsage: Date.now() });
         Cooldown.set(message.author.id, cd);

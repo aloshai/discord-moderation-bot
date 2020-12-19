@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const schema = new mongoose.Schema({
   Id: String,
   Friends: {
-    default: {},
-    type: Object
+    type: Object,
+    default: {}
   },
   TotalExperience: {
     type: Number,
@@ -13,6 +13,5 @@ const schema = new mongoose.Schema({
 });
 
 const model = mongoose.model("Friends", schema);
-
 
 module.exports = model;

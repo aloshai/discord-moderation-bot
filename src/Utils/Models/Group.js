@@ -1,5 +1,3 @@
-const { VoiceChannel } = require("discord.js");
-const { update } = require("../Schemas/FriendShip");
 const FriendShip = require("../Schemas/FriendShip");
 
 class Group{
@@ -26,7 +24,6 @@ class Group{
      */
     addUser(id){
         this.updateUsers();
-        console.log("Called To AddUser Function.");
         this.Users.push({
             Id: id,
             LastUpdate: Date.now()
@@ -39,7 +36,6 @@ class Group{
      */
     removeUser(id){
         this.updateUsers();
-        console.log("Called To RemoveUser Function.");
         let index = this.Users.findIndex((value) => value.Id == id);
         this.Users.splice(index, 1);
     }
@@ -49,7 +45,6 @@ class Group{
      * @param {String} id 
      */
     checkUser(id){
-        console.log("Called To CheckUser Function.");
         return this.Users.some((value) => value.Id == id);
     }
 
@@ -57,23 +52,35 @@ class Group{
      * Allows to repeat users in the group.
      */
     updateUsers(){
-        console.log("Called To UpdateUsers Function.");
+        if(this.Users.length <= 0) return;
         let giveExperience = this.Experience / this.Users.length;
-        let orList = this.Users.map(item => ({Id: item.Id}));
-        let incList = {};
-        for (let index = 0; index < this.Users.length; index++) {
-            let user = this.Users[index];
-            let experience = giveExperience * (user.LastUpdate / (1000 * 60));
-            incList[`Friends.${user.Id}`] = experience;
-            incList["TotalExperience"] = experience;
-            user.LastUpdate = Date.now();
-        }
-        console.log(giveExperience, orList, incList);
-        FriendShip.updateMany({$or: orList}, {$inc: incList}, {upsert: true, setDefaultsOnInsert: true}).exec((err, response) => {
-            if(err) console.error(err);
-            else console.log(response);
+
+        this.Users.forEach((user, index) => {
+            let list = [...this.Users];
+            list.splice(index, 1);
+            if(list.length <= 0) return;
+            let incList = {};
+            for (let index = 0; index < list.length; index++) {
+                let item = list[index];
+                let experience = giveExperience * ((Date.now() - item.LastUpdate) / (1000 * 60));
+                incList[`Friends.${item.Id}`] = experience;
+                incList["TotalExperience"] = experience;
+            }
+
+            FriendShip.updateOne({Id: user.Id}, {$inc: incList}, {upsert: true}).exec((err, res) => {
+                if(err) console.error(err);
+            });
         });
+        this.Users.forEach(user => {
+            user.LastUpdate = Date.now();
+        })
     }
+
+    updateUser(id){
+        let item = this.Users.find(e => e.Id == id);
+        item.LastUpdate = Date.now();
+    }
+
 }
 
 module.exports = Group;
