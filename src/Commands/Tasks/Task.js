@@ -1,6 +1,8 @@
-const { Message, Client, MessageEmbed } = require("discord.js");
+const { Message, Client, MessageEmbed, Role } = require("discord.js");
 const Settings = require("../../Configuration/Settings.json");
 const Task = require("../../Utils/Schemas/Task");
+
+const ms = require("ms");
 
 /**
  * @param {Client} client 
@@ -8,101 +10,56 @@ const Task = require("../../Utils/Schemas/Task");
  * @param {Array<String>} args 
  */
 module.exports.execute = async (client, message, args) => {
-    let görev = await Task.findOne({ Id: message.author.id }).exec();
-    if (!görev) {
-        await message.reply("upps! sanırsam sana görev oluşturmayı unutmuşum. her neyse, biraz bekle, sana birkaç tane görev oluşturup geliyorum :D");
-        let tasks = CreateTask(0);
+    if (message.member.hasPermission("ADMINISTRATOR")) {
+        let seçim = args[0];
+        switch (seçim) {
+            case "create":
+                /**
+                 * @type {Role} target
+                 */
+                let target = args[1];
+                if (!target) return message.reply("bir hedef belirlemelisin. Bir rolü ya da birisini etiketleyebilirsin.");
 
-        let _task = {
-            Voice: {
-                LastActivity: undefined,
-                Target: tasks.voice,
-                Current: 0
-            },
-            Message: {
-                LastActivity: undefined,
-                Target: tasks.message,
-                Current: 0
-            }
-        };
-        let görev = new Task({
-            Id: message.author.id,
-            StartTime: Date.now(),
-            Task: _task,
-            ComplatedTask: [],
-            Difficulty: 0
-        });
-        görev.save();
-        return message.channel.csend(new MessageEmbed()
-            .setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true }))
-            .setFooter(`Bugüne kadar toplam ${görev.ComplatedTask.length} görev tamamlamışsın.`)
-            .setTimestamp()
-            .addField("\❔ Hedef Görevler \❔", `\n
-        ${görev.Task.Message.Current < görev.Task.Message.Target ? "❎" : "✅"} ${görev.Task.Message.Current < görev.Task.Message.Target ? "" : "~~"} **Mesaj:** ${görev.Task.Message.Current > görev.Task.Message.Target ? görev.Task.Message.Target : görev.Task.Message.Current}/${görev.Task.Message.Target} mesaj ${görev.Task.Message.Current < görev.Task.Message.Target ? "" : "~~"}
-        ${görev.Task.Voice.Current < görev.Task.Voice.Target ? "❎" : "✅"} ${görev.Task.Voice.Current < görev.Task.Voice.Target ? "" : "~~"} **Ses:** ${görev.Task.Voice.Current > görev.Task.Voice.Target ? (görev.Task.Voice.Target / 60000) : (görev.Task.Voice.Current / 60000).toFixed(0)}/${görev.Task.Voice.Target / 60000} dakika ${görev.Task.Voice.Current < görev.Task.Voice.Target ? "" : "~~"}
-        `, true)
-            .addField("❕ Bilgilendirme ❕", `
-        __Tamamlanan Görev:__ ${görev.ComplatedTask.length} 
-    
-        **Mevcut Seviye:** ${görev.Difficulty}
-        `, true));
+                target = message.mentions.roles.first() || message.guild.roles.cache.get(args[1]);
+                if (!target) return message.reply("geçerli bir hedef belirtmedin.");
+
+                let messageCount = Number(args[2]);
+                if (isNaN(messageCount)) return message.reply("hedef bir mesaj sayısı belirle.");
+                let voice = Number(args[3]);
+                if (isNaN(voice)) return message.reply("hedef bir ses süresi belirle.");
+                let time = args[4];
+                if (!time || !ms(time)) return message.reply("lütfen geçerli bir süre gir.");
+                time = ms(time);
+                let reason = args.splice(5).join(" ") || undefined;
+
+                let task = new Task({
+                    Activity: true,
+                    Target: target.id,
+                    StartTime: Date.now(),
+                    FinishTime: Date.now() + time,
+                    Message: messageCount,
+                    Voice: (voice * (1000 * 60)),
+                    Reason: reason,
+                    Members: target.members.map(member => ({Id: member.id, Voice: 0, Message: 0}))
+                });
+                await task.save();
+                
+                let embed = new MessageEmbed()
+                .setAuthor(message.author.username, message.author.avatarURL({dynamic: true}))
+                .setTimestamp()
+                .setDescription(`${target} rolü için ${message.author} tarafından **${messageCount}** hedef mesaj ve **${voice}** sesli süresi görevi oluşturdu. Görev toplam **${task.Members.length}** kişi tarafından gerçekleştirilmek üzere eklendi.\n\n ❔ **Görev Hakkında Bilgiler** ❗\n \`Hedef:\` ${target}\n \`Mesaj:\` ${messageCount} mesaj\n \`Ses:\` ${voice} dakika sesli\n \`Görev Katılımı:\` ${task.Members.length}\n Görev Numarası: \`${task._id}\``);
+
+                message.channel.send(embed);
+                break;
+        }
     }
-
-    if (görev.Task.Message.Target <= görev.Task.Message.Current && görev.Task.Voice.Target <= görev.Task.Voice.Current) {
-        görev.ComplatedTask.push({ Element: görev.Task, Date: Date.now() });
-        görev.Difficulty += 1;
-        let newTask = CreateTask(görev.Difficulty);
-        görev.Task = {
-            Voice: {
-                LastActivity: undefined,
-                Target: newTask.voice,
-                Current: 0
-            },
-            Message: {
-                LastActivity: undefined,
-                Target: newTask.message,
-                Current: 0
-            }
-        };
-        görev.StartTime = Date.now();
-        await görev.save();
-    }
-
-    return message.channel.csend(new MessageEmbed()
-        .setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true }))
-        .setFooter(`Bugüne kadar toplam ${görev.ComplatedTask.length} görev tamamlamışsın.`)
-        .setTimestamp()
-        .addField("\❔ Hedef Görevler \❔", `\n
-${görev.Task.Message.Current < görev.Task.Message.Target ? "❎" : "✅"} ${görev.Task.Message.Current < görev.Task.Message.Target ? "" : "~~"} **Mesaj:** ${görev.Task.Message.Current > görev.Task.Message.Target ? görev.Task.Message.Target : görev.Task.Message.Current}/${görev.Task.Message.Target} mesaj ${görev.Task.Message.Current < görev.Task.Message.Target ? "" : "~~"}
-${görev.Task.Voice.Current < görev.Task.Voice.Target ? "❎" : "✅"} ${görev.Task.Voice.Current < görev.Task.Voice.Target ? "" : "~~"} **Ses:** ${görev.Task.Voice.Current > görev.Task.Voice.Target ? (görev.Task.Voice.Target / 60000) : (görev.Task.Voice.Current / 60000).toFixed(0)}/${görev.Task.Voice.Target / 60000} dakika ${görev.Task.Voice.Current < görev.Task.Voice.Target ? "" : "~~"}
-`, true)
-        .addField("❕ Bilgilendirme ❕", `
-__Tamamlanan Görev:__ ${görev.ComplatedTask.length} 
-
-**Mevcut Seviye:** ${görev.Difficulty}
-`, true));
 }
 
 module.exports.settings = {
     Commands: ["task", "görev"],
     Usage: "task",
-    Description: "Genel görevin hakkında bilgi edinirsin. (Zorunlu değil)",
+    Description: "Bir görev oluşturmak için kullanabilirsin.",
     Category: "Task",
     cooldown: 5000,
     Activity: true
-}
-
-function CreateTask(difficulty) {
-    let message = MessageDifficultySizer(difficulty);
-    let voice = VoiceDifficultySizer(difficulty);
-
-    return { message, voice };
-}
-
-function MessageDifficultySizer(value) {
-    return 5 * (Math.pow(value, 2)) + 50 * value + 100;
-}
-
-function VoiceDifficultySizer(value) {
-    return (3 * (Math.pow(value, 2)) + 50 * value + 30) * (1000 * 60);
 }
