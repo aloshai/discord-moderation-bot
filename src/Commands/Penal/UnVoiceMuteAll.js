@@ -10,7 +10,7 @@ const Penal = require("../../Utils/Schemas/Penal");
  * @param {Array<String>} args 
  */
 module.exports.execute = async (client, message, args) => {
-    if (!message.member.hasPermission("ADMINISTRATOR") && !Settings.Penals.Mute.AuthRoles.some(authRole => message.member.roles.cache.has(authRole))) return message.reply("yeterli yetkin yok.");
+    if (!message.member.hasPermission("ADMINISTRATOR") && !Settings.Penals.VoiceMute.AuthRoles.some(authRole => message.member.roles.cache.has(authRole))) return message.reply("yeterli yetkin yok.");
 
     let victim = message.mentions.users.first() || client.users.cache.get(args[0]) || await client.users.getUser(args[0]);
     if (!victim) return message.reply(`birisini etiketlemelisin.`);

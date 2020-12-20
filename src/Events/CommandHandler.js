@@ -21,20 +21,23 @@ module.exports = (message) => {
 
     let command = global.Commands.find(command => command.settings.Commands.includes(name.toLocaleLowerCase()));
     if (command) {
-        let cooldown = command.settings.cooldown || 1000;
-        let cd = Cooldown.get(message.author.id) || [];
-        if (cd.length > 0) {
-            let element = cd.find(e => e.id == command.settings.id);
-            if (element) {
-                let diff = (Date.now() - element.lastUsage);
-                if (diff < cooldown) return; //message.reply(`bu komutu tekrar kullanabilmek için **${Number(((cooldown - diff) / 1000).toFixed(2)).toHumanize({}, 1)} saniye** sonra tekrar dene.`);
-                element.lastUsage = Date.now();
-            }
-        }
         if(!command.settings.Activity) return;
-        command.execute(message.client, message, args);
-        cd.push({ id: command.settings.id, cooldown: cooldown, lastUsage: Date.now() });
-        Cooldown.set(message.author.id, cd);
+        if(!message.member.hasPermission("ADMINISTRATOR")){
+            let cooldown = command.settings.cooldown || 1000;
+            let cd = Cooldown.get(message.author.id) || [];
+            if (cd.length > 0) {
+                let element = cd.find(e => e.id == command.settings.id);
+                if (element) {
+                    let diff = (Date.now() - element.lastUsage);
+                    if (diff < cooldown) return; //message.reply(`bu komutu tekrar kullanabilmek için **${Number(((cooldown - diff) / 1000).toFixed(2)).toHumanize({}, 1)} saniye** sonra tekrar dene.`);
+                    element.lastUsage = Date.now();
+                }
+            }
+            command.execute(message.client, message, args);
+            cd.push({ id: command.settings.id, cooldown: cooldown, lastUsage: Date.now() });
+            Cooldown.set(message.author.id, cd);    
+        }
+        else command.execute(message.client, message, args);
         //global.forceGC();
     }
 }

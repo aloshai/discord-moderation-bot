@@ -10,7 +10,7 @@ class StatsManager {
      * @param {Number} value 
      */
     static async addVoiceStat(id, channel, value) {
-        Task.updateOne({"Members.Id": id}, {$inc: {"Members.$.Voice": value}}).exec((err, res) => {
+        Task.updateOne({"Members.Id": id, "Activity": true, "FinishTime": {$gte: Date.now()}}, {$inc: {"Members.$.Voice": value}}).exec((err, res) => {
             if(err) console.error(err);
         });
         return Stat.updateOne({ Id: id }, { $inc: { AllVoice: value, [`Voice.${await tm.getDay(Settings.Server.Id)}.${channel}`]: value } }, { upsert: true }).exec();
@@ -22,7 +22,7 @@ class StatsManager {
      * @param {Number} value 
      */
     static async addMessageStat(id, channel, value) {
-        Task.updateOne({"Members.Id": id}, {$inc: {"Members.$.Message": value}}).exec((err, res) => {
+        Task.updateOne({"Members.Id": id, "Activity": true, "FinishTime": {$gte: Date.now()}}, {$inc: {"Members.$.Message": value}}).exec((err, res) => {
             if(err) console.error(err);
         });
         return Stat.updateOne({ Id: id }, { $inc: { AllMessage: value, [`Message.${await tm.getDay(Settings.Server.Id)}.${channel}`]: value } }, { upsert: true }).exec();
