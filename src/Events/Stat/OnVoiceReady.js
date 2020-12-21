@@ -19,7 +19,7 @@ module.exports = () => {
 
     setInterval(() => {
         check();
-    }, 10000);
+    }, 30000);
 };
 
 module.exports.config = {

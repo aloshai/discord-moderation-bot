@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({
+  Id: String,
   Activity: Boolean,
   Target: String,
   StartTime: Date,

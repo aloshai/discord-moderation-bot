@@ -72,7 +72,7 @@ module.exports.execute = async (client, message, args) => {
     }
 
     let items = InventoryManager.Items;
-    let list = items.map((item, index) => `\`${index + 1}.\` ${item.Name}(${item.Id}) | ${item.Sell ? `Sat: **${item.Sell} puan**` : ""} ${item.Price ? `Al: **${item.Price} puan**` : ""}`).join("\n");
+    let list = items.map((item, index) => `\`${index + 1}.\` ${item.Name} (${item.Id}) | ${item.Sell ? `Sat: **${item.Sell} puan**` : ""} ${item.Price ? `Al: **${item.Price} puan**` : ""}`).join("\n");
 
     message.channel.send(new MessageEmbed().setDescription(list).setColor("RANDOM").setAuthor(message.member.displayName, message.author.avatarURL({ dynamic: true })));
 }
