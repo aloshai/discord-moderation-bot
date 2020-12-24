@@ -11,7 +11,7 @@ module.exports.execute = async (client, message, args) => {
     let data = await FriendShip.findOne({Id: message.author.id});
     if(!data) return message.reply("s-sanırsam hiç arkadaşın yok 😳");
 
-    let friends = Object.keys(data.Friends).sort((a, b) => data.Friends[b] - data.Friends[a]);
+    let friends = Object.keys(data.Friends).sort((a, b) => data.Friends[b] - data.Friends[a]).splice(0, 15);
 
     let embed = new MessageEmbed().setColor("RANDOM").setAuthor(message.author.username, message.author.avatarURL({dynamic: true})).setTimestamp();
     embed.setDescription(`Arkadaşlık sistemi sunucu içerisinde vakit geçirdiğin insanların/grupların seninle olan arkadaşlık puanlarını gösterir. Unutma ki buradaki puanlama sistemi tamamen matematiksel hesaplamalarla çalışır, arkadaşlarınla arandaki ilişkini bilemez.`);

@@ -149,7 +149,7 @@ module.exports.execute = async (client, message, args) => {
                 if (err) console.error(err);
                 else {
                     let status = result.n >= 1 ? "silindi" : "bulunamadığı için silinemedi";
-                    message.reply(`\`${task.Id}\` numaralı görev kalıcı olarak **${status}**.`);
+                    message.reply(`\`${id}\` numaralı görev kalıcı olarak **${status}**.`);
                 }
             });
             return;
@@ -224,7 +224,7 @@ module.exports.execute = async (client, message, args) => {
         let role = (message.guild.roles.cache.get(task.Target) || { name: undefined }).name || "#deleted-role";
 
         return [(role.length > 13 ? role.substring(0, 10).toUpperCase() +"..." : role.toUpperCase()),
-        `${member.Voice >= task.Voice ? (task.Voice / (1000 * 60)) : (member.Voice / (1000 * 60))}/${task.Voice / (1000 * 60)} dakika`,
+        `${member.Voice >= task.Voice ? (task.Voice / (1000 * 60)) : (member.Voice / (1000 * 60)).toFixed(0)}/${task.Voice / (1000 * 60)} dakika`,
         `${member.Message >= task.Message ? task.Message : member.Message}/${task.Message} mesaj`,
         `${moment(task.FinishTime).fromNow()}`/*, `${moment(task.FinishTime).tz("Europe/Istanbul").format("YYYY.MM.DD HH:mm")}`*/];
     }));
@@ -234,7 +234,7 @@ module.exports.execute = async (client, message, args) => {
     **Aktif Görevler:** ${tasks.length} adet
     **Bitirilen Görevler:** ${tasks.filter(task => task.Voice <= task.Members[0].Voice && task.Message <= task.Members[0].Message).length} adet
     
-    \`\`\`${table.table(data, {
+    \`\`\`js\n${table.table(data, {
         columns: {
             0: {
                 paddingLeft: 0
@@ -260,7 +260,7 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.settings = {
     Commands: ["görev", "task"],
-    Usage: "!task [<@rol|id>|create/modify/update/remove/add/delete] [message/voice/activity/reason/finish|settings] [settings]",
+    Usage: "task [<@rol|id>|create <@rol|id> <targetMessage> <targetVoice> <finishTime> [reason]/modify [message/voice/activity/reason/finish|settings] <data>/update <id>/remove <@member|id>/add <@member|id>/delete <id>]",
     Description: "Bir görev oluşturmak için kullanabilirsin.",
     Category: "Task",
     cooldown: 5000,

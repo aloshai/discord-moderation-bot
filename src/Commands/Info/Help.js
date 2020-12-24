@@ -39,11 +39,11 @@ module.exports.execute = async (client, message, args) => {
             if(!command) return message.reply("belirtmiş olduğun ad ile bir komut bulamadım :(");
 
             embed.setDescription(`            
-            \`Komut:\` ${command.settings.Commands[0]}
-            \`Açıklama:\` ${Config.Prefix}${command.settings.Usage}
-            \`Kullanımı:\` ${command.settings.Description}
-            \`Kategori:\` ${command.settings.Category || "Misc"}
-            \`Tekrar Kullanım:\` ${(command.settings.cooldown || 1000) / 1000} saniye
+            **Komut:** \`${command.settings.Commands[0]}\`
+            **Açıklama:** \`${Config.Prefix}${command.settings.Description}\`
+            **Kullanımı:** \`${command.settings.Usage}\`
+            **Kategori:** \`${command.settings.Category || "Misc"}\`
+            **Tekrar Kullanım:** \`${(command.settings.cooldown || 1000) / 1000} saniye\`
             `)
             message.channel.csend(embed);
         }

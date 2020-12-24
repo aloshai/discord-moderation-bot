@@ -13,7 +13,7 @@ module.exports = async (oldState, newState) => {
     if (!mainChannel) return;
 
     if (!oldState.channelID && (newState.channelID && newState.channel.parentID == mainChannel.parentID && newState.channelID == mainChannel.id)) {
-        newState.guild.channels.create(`${Settings.Symbol} ${newState.member.displayName}'s Home`, {
+        newState.guild.channels.create(`${Settings.Symbol} ${newState.member.displayName}'s Nature`, {
             type: "voice",
             parent: mainChannel.parentID,
             permissionOverwrites: mainChannel.permissionOverwrites.clone().set(newState.member.id, {
@@ -29,7 +29,7 @@ module.exports = async (oldState, newState) => {
         let oldChannel = oldState.channel;
         if (oldChannel.position > mainChannel.position && oldChannel.parentID == mainChannel.parentID && oldChannel.members.size <= 0 && !oldChannel.deleted) oldChannel.delete().catch(undefined);
         if (newState.channelID == mainChannel.id && newState.channel.parentID == mainChannel.parentID) {
-            newState.guild.channels.create(`${Settings.Symbol} ${newState.member.displayName}'s Home`, {
+            newState.guild.channels.create(`${Settings.Symbol} ${newState.member.displayName}'s Nature`, {
                 type: "voice",
                 parent: mainChannel.parentID,
                 permissionOverwrites: mainChannel.permissionOverwrites.clone().set(newState.member.id, {
