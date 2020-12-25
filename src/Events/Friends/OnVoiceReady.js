@@ -9,7 +9,6 @@ module.exports = () => {
     let channels = guild.channels.cache.filter(channel => channel.type == "voice" && channel.members.size > 0);
     channels.forEach(channel => {
         global.Groups.set(channel.id, new Group(channel.members.map(member => ({Id: member.id, LastUpdate: Date.now()})), 10));
-        console.log("New group added");
     });
 };
 
