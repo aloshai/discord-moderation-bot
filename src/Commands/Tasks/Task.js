@@ -1,6 +1,6 @@
 const { Message, Client, MessageEmbed, Role, MessageAttachment } = require("discord.js");
 const Settings = require("../../Configuration/Settings.json");
-const Task = require("../../Schemas/Task");
+const Task = require("../../Models/Database/Task");
 
 const moment = require("moment");
 moment.locale("tr");

@@ -1,6 +1,6 @@
 const { Collection } = require("discord.js");
 
-const Invite = require("../Schemas/Invite");
+const Invite = require("../Models/Database/Invite");
 const Settings = require("../Configuration/Settings.json");
 const client = global.Client;
 

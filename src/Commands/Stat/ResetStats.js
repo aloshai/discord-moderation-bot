@@ -2,7 +2,7 @@ const { Message, Client, MessageEmbed } = require("discord.js");
 const Config = require("../../Configuration/Config.json");
 
 const StatsManager = require("../../Managers/StatsManager");
-const Stat = require("../../Schemas/Stat");
+const Stat = require("../../Models/Database/Stat");
 
 const TimeManager = require("../../Managers/TimeManager");
 

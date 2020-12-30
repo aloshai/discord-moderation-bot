@@ -1,8 +1,8 @@
 const { Message, Client, MessageEmbed } = require("discord.js");
 const InventoryManager = require("../../Managers/Inventory/InventoryManager");
 
-const User = require("../../Schemas/User");
-const Stat = require("../../Schemas/Stat");
+const User = require("../../Models/Database/User");
+const Stat = require("../../Models/Database/Stat");
 
 /**
  * @param {Client} client 

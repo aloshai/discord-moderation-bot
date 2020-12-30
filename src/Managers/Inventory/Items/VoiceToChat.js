@@ -1,5 +1,5 @@
 const Item = require("../Item");
-const Stat = require("../../../Schemas/Stat");
+const Stat = require("../../../Models/Database/Stat");
 
 class VoiceToChat extends Item {
     constructor(){

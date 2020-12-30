@@ -2,7 +2,7 @@ const { Client, Message } = require("discord.js");
 const Settings = require("../../Configuration/Settings.json");
 
 const PenalManager = require("../../Managers/PenalManager");
-const Penal = require("../../Schemas/Penal");
+const Penal = require("../../Models/Database/Penal");
 
 /**
  * @param {Client} client 

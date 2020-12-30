@@ -1,5 +1,5 @@
-const Stat = require("../Schemas/Stat");
-const Task = require("../Schemas/Task");
+const Stat = require("../Models/Database/Stat");
+const Task = require("../Models/Database/Task");
 const tm = require("./TimeManager");
 const Settings = require("../Configuration/Settings.json");
 

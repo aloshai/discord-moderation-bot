@@ -4,7 +4,7 @@ const InventoryManager = require("../../Managers/Inventory/InventoryManager");
 const moment = require("moment");
 require("moment-duration-format");
 
-const User = require("../../Schemas/User");
+const User = require("../../Models/Database/User");
 
 /**
  * @param {Client} client 

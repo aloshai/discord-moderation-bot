@@ -1,4 +1,4 @@
-const Guild = require("../Schemas/Guild");
+const Guild = require("../Models/Database/Guild");
 
 class TimeManager {
     static async getDay(id) {

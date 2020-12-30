@@ -1,5 +1,5 @@
 const Item = require("../Item");
-const User = require("../../../Schemas/User");
+const User = require("../../../Models/Database/User");
 const InventoryManager = require("../InventoryManager");
 
 class Pickaxe extends Item {

@@ -1,7 +1,7 @@
 const { Message, Client, MessageEmbed } = require("discord.js");
 const Settings = require("../../Configuration/Settings.json");
 
-const User = require("../../Schemas/User");
+const User = require("../../Models/Database/User");
 /**
  * @param {Client} client 
  * @param {Message} message 

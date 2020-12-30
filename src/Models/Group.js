@@ -1,4 +1,4 @@
-const FriendShip = require("../Schemas/FriendShip");
+const FriendShip = require("./Database/Friend");
 
 class Group{
     /**
@@ -21,7 +21,6 @@ class Group{
         this.Users = users;
         this.Experience = experience;
     }
-
 
     /**
      * Adds user to group.

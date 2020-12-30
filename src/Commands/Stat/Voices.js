@@ -1,5 +1,5 @@
 const { Client, Message, MessageEmbed, MessageAttachment } = require("discord.js");
-const Stat = require("../../Schemas/Stat");
+const Stat = require("../../Models/Database/Stat");
 
 const moment = require("moment");
 require("moment-duration-format");
