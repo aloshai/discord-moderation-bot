@@ -23,6 +23,7 @@ module.exports.execute = async (client, message, args) => {
     embed.setColor("2f3136");
 
     Stat.aggregate([
+        {$project: {Message: 0}},
         { $sort: { AllVoice: -1 } }
     ]).limit(10).exec(async (err, docs) => {
         if (err) return message.reply("bir hata ile karşılaşıldı.");

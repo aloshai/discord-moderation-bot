@@ -1,5 +1,4 @@
 const Guild = require("../Schemas/Guild");
-const Settings = require("../../Configuration/Settings.json");
 
 class TimeManager {
     static async getDay(id) {
@@ -20,12 +19,12 @@ class TimeManager {
     }
 
     static async addDay(id, value) {
-        await Guild.findOneAndUpdate({ Id: id }, { $inc: { Day: value } }, { upsert: true, setDefaultsOnInsert: true }).exec((err, doc) => {
+        await Guild.updateOne({ Id: id }, { $inc: { Day: value } }, { upsert: true, setDefaultsOnInsert: true }).exec((err, doc) => {
             if (err) console.error(err);
         });
     }
     static async sumDay(id, value) {
-        await Guild.findOneAndUpdate({ Id: id }, { $inc: { Day: -value } }, { upsert: true, setDefaultsOnInsert: true }).exec((err, doc) => {
+        await Guild.updateOne({ Id: id }, { $inc: { Day: -value } }, { upsert: true, setDefaultsOnInsert: true }).exec((err, doc) => {
             if (err) console.error(err);
         });
     }

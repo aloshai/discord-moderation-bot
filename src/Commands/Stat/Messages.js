@@ -18,7 +18,7 @@ module.exports.execute = async (client, message, args) => {
         .setAuthor(victim.username, victim.avatarURL({ dynamic: true }))
         .setFooter(`${message.guild.name} sunucusuda ${victim.username} kişisinin bilgileri.`)
 
-    let data = await Stat.findOne({ Id: victim.id });
+    let data = await Stat.findOne({ Id: victim.id }, {Voice: 0});
     if (!data) data = {};
     let day = await tm.getDay(message.guild.id);
     embed.setDescription(`${victim} kişisinin ${day} gün boyunca yapmış olduğu mesaj aktifliği aşağıda detaylı olarak sıralanmıştır. Bir önceki güne gitmek için yöneticiye başvurunuz.`);
