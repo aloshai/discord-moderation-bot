@@ -1,5 +1,5 @@
 const {VoiceState, Collection} = require("discord.js");
-const Group = require("../../Utils/Models/Group");
+const Group = require("../../Models/Group");
 
 /**
  * @type {Collection<String, Group>}

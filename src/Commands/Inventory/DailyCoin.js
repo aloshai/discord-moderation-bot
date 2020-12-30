@@ -1,6 +1,6 @@
 const { Message, Client, MessageEmbed } = require("discord.js");
-const User = require("../../Utils/Schemas/User");
-const InventoryManager = require("../../Utils/Managers/Inventory/InventoryManager");
+const User = require("../../Schemas/User");
+const InventoryManager = require("../../Managers/Inventory/InventoryManager");
 
 const moment = require("moment");
 require("moment-duration-format");

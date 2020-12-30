@@ -1,7 +1,7 @@
 const { Collection } = require("discord.js");
 
 const Invite = require("../Schemas/Invite");
-const Settings = require("../../Configuration/Settings.json");
+const Settings = require("../Configuration/Settings.json");
 const client = global.Client;
 
 //#region Invite Manager

@@ -1,17 +1,5 @@
 const Config = global.Config = require("./src/Configuration/Config.json");
 
-global.forceGC = function forceGC() {
-  return;
-  if (global.gc) {
-    let used = process.memoryUsage().heapUsed / 1024 / 1024;
-    global.gc();
-    console.log(`GC Çağrıldı ${used} MB -> ${process.memoryUsage().heapUsed / 1024 / 1024} MB`);
-  } else {
-    console.warn('No GC hook! Start your program as `node --expose-gc file.js`.');
-  }
-};
-
-
 const { Client } = require("discord.js");
 const client = global.Client = new Client({
   fetchAllMembers: true
@@ -37,11 +25,11 @@ dirs.forEach(dir => {
 });
 
 
-const InventoryManager = require("./src/Utils/Managers/Inventory/InventoryManager");
+const InventoryManager = require("./src/Managers/Inventory/InventoryManager");
 let items = [];
-let fileNames = fs.readdirSync("./src/Utils/Managers/Inventory/Items", "utf-8").filter(e => e.endsWith(".js"));
+let fileNames = fs.readdirSync("./src/Managers/Inventory/Items", "utf-8").filter(e => e.endsWith(".js"));
 fileNames.forEach(fileName => {
-    let item = require(`./src/Utils/Managers/Inventory/Items/${fileName}`);
+    let item = require(`./src/Managers/Inventory/Items/${fileName}`);
     items.push(new item());
 });
 

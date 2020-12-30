@@ -1,7 +1,7 @@
 const {VoiceState, Collection} = require("discord.js");
 const Settings = require("../../Configuration/Settings.json");
 
-const sm = require("../../Utils/Managers/StatsManager");
+const sm = require("../../Managers/StatsManager");
 
 const Voices = global.Voices = new Collection();
 

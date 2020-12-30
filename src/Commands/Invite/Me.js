@@ -1,6 +1,6 @@
 const { Message, Client, MessageEmbed } = require("discord.js");
 
-const Invite = require("../../Utils/Schemas/Invite");
+const Invite = require("../../Schemas/Invite");
 
 /**
  * @param {Client} client 

@@ -4,7 +4,7 @@ const moment = require("moment");
 require("moment-duration-format");
 require("moment-timezone");
 
-const Penal = require("../../Utils/Schemas/Penal");
+const Penal = require("../../Schemas/Penal");
 
 /**
  * @param {Client} client 

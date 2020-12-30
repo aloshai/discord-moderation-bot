@@ -1,6 +1,6 @@
 const { GuildMember } = require("discord.js");
 const Penal = require("../Schemas/Penal");
-const Settings = require("../../Configuration/Settings.json");
+const Settings = require("../Configuration/Settings.json");
 
 class PenalManager {
 

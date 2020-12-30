@@ -1,6 +1,6 @@
 const { Message, Client, MessageEmbed } = require("discord.js");
 
-const FriendShip = require("../../Utils/Schemas/FriendShip");
+const FriendShip = require("../../Schemas/FriendShip");
 
 /**
  * @param {Client} client 

@@ -1,6 +1,6 @@
 const {Message} = require("discord.js");
 const Settings = require("../../Configuration/Settings.json");
-const StatsManager = require("../../Utils/Managers/StatsManager");
+const StatsManager = require("../../Managers/StatsManager");
 
 // TODO: Çok fazla veri olduğunda bellekte fazla yer kaplayacak. Güncelleme kontrolü yapacağız.
 

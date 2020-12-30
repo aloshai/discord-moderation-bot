@@ -4,8 +4,8 @@ const {MessageEmbed} = require("discord.js");
 
 const client = global.Client;
 
-const InventoryManager = require("../../Utils/Managers/Inventory/InventoryManager");
-const User = require("../../Utils/Schemas/User");
+const InventoryManager = require("../../Managers/Inventory/InventoryManager");
+const User = require("../../Schemas/User");
 let lastDrop = undefined;
 
 module.exports = () => {

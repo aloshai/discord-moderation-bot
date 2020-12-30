@@ -1,6 +1,6 @@
 const {GuildMember, MessageEmbed} = require("discord.js");
 const Settings = require("../../Configuration/Settings.json");
-const PenalManager = require("../../Utils/Managers/PenalManager");
+const PenalManager = require("../../Managers/PenalManager");
 
 /**
  * 

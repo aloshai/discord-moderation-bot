@@ -1,10 +1,10 @@
 const { Message, Client, MessageEmbed } = require("discord.js");
 const Config = require("../../Configuration/Config.json");
 
-const StatsManager = require("../../Utils/Managers/StatsManager");
-const Stat = require("../../Utils/Schemas/Stat");
+const StatsManager = require("../../Managers/StatsManager");
+const Stat = require("../../Schemas/Stat");
 
-const TimeManager = require("../../Utils/Managers/TimeManager");
+const TimeManager = require("../../Managers/TimeManager");
 
 /**
  * @param {Client} client 

@@ -1,7 +1,7 @@
 const Stat = require("../Schemas/Stat");
 const Task = require("../Schemas/Task");
 const tm = require("./TimeManager");
-const Settings = require("../../Configuration/Settings.json");
+const Settings = require("../Configuration/Settings.json");
 
 class StatsManager {
     /**

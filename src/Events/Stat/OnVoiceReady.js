@@ -1,5 +1,5 @@
 const Settings = require("../../Configuration/Settings.json");
-const sm = require("../../Utils/Managers/StatsManager");
+const sm = require("../../Managers/StatsManager");
 const client = global.Client;
 
 module.exports = () => {

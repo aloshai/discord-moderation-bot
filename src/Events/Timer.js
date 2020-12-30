@@ -1,4 +1,4 @@
-const TimeManager = require("../Utils/Managers/TimeManager");
+const TimeManager = require("../Managers/TimeManager");
 const Settings = require("../Configuration/Settings.json");
 
 module.exports = () => {

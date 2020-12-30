@@ -1,5 +1,5 @@
 const Settings = require("../../Configuration/Settings.json");
-const Group = require("../../Utils/Models/Group");
+const Group = require("../../Models/Group");
 const client = global.Client;
 
 module.exports = () => {
