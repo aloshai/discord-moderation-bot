@@ -11,7 +11,7 @@
     
     
 # Neden Yayınlandı?
- Sunucuda takılırken can sıkıntısından arkadaşlarıma bunu yapacağımı söyledim ve eğer bir ara kullanmak istemezsem yayınlayacağımı dile getirdim ve söz verdiğim gibi ne eklemek istediysem ekledim. Şimdi sana bu aptallık gibi geliyor olabilir ama ben kendi sunucumda arkadaşlarım için yaptığım ve boş zamanında geliştirdiğim bu botu sadece ben değil, herkesin kullanmasını istiyorum ve bunu burada yayınlamak istiyorum. **Boşu boşuna orada burada kendini övenlere para vermeyin, aptallık edersiniz.**
+ Sunucuda takılırken can sıkıntısından arkadaşlarıma bunu yapacağımı söyledim ve eğer bir ara kullanmak istemezsem yayınlayacağımı dile getirdim ve söz verdiğim gibi ne eklemek istediysem ekledim. Şimdi sana bu aptallık gibi geliyor olabilir ama ben kendi sunucumda arkadaşlarım için yaptığım ve boş zamanında geliştirdiğim bu botu sadece ben değil, herkesin kullanmasını istiyorum ve bunu burada yayınlamak istiyorum. **Boşu boşuna orada burada kendini övenlere para vermeyin, aptallık edersiniz.** (zeze ve yasin hariç <3)
     
 # Içerikler
  Buradan botun içerisinde olan tüm özellikleri görebilirsiniz. Buradaki özelliklerin yanında tik olanlar kullanılabilir durumda olanlar, olmayanlar ise yakın gelecekte gelecek olanlardır.
