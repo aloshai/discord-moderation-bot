@@ -59,9 +59,10 @@ Sana burada en ama en basit şekilde kurulumu anlatacağım eğer anlamadım diy
   * `DatabaseName` buraya istediğin gibi veri tabanının ismini yaz.
 * Bittiğini mi sanıyorsun? Hayır, yanılıyorsun şimdi geldik `src/Configuration` klasörünün içerisinde olan `Settings.json` dosyasına. Bu dosya sunucudaki ayarlayı yapman için önemli bir etkene sahip. Dolayısıyla, buradaki ayarları atlama ve hepsini doğru yaptığından emin ol.
   * Bunun için bir açıklama yapmayacağım sadece bilmen gereken püf noktalar `[]` arasında bir şey varsa bu demektir ki oraya birden fazla değer girebiliyorsun, örneğin `["ben", "birden", "fazla", "değerim"]` bunu bil yeterli sonrasını ufacık bir İngilizcen varsa bile yaparsın.
-* Oh be!? dur lan dur daha bitmedi, daha botu çalıştıracaksın.
-* `Powershell` ya da `CMD` kullanarak projenin konumuna gir ve `npm start`, `node Index.js` ya da `node .` yazıp projeyi çalıştır.
-
+* Oh be!? dur lan dur daha bitmedi, daha botu çalıştırmayı öğreneceksin.
+* `Powershell` ya da `CMD` kullanarak projenin konumuna gir.
+* Hiçbir modülün yüklü değilse `npm install` veya `yarn` kullanıyorsan `yarn install` yaz.
+* Artık botu çalıştırma vakti `npm start`, `node Index.js` ya da `node .` yazıp projeyi çalıştır.
 * Botun çalışıyor artık götüne kına yakarsın, hayırlı olsun :D
 
 # Kullanım
