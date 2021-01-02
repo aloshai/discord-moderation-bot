@@ -47,7 +47,7 @@
 # Kurulum
 Sana burada en ama en basit şekilde kurulumu anlatacağım eğer anlamadım diyorsan Discord sunucusundan bir mesaj at ve cevap vermemi bekle.
 
-* **Okuma yazma bildiğinden emin ol ardından derin bir nefes al :>**
+* **Okuma yazma bildiğinden emin ol ardından derin bir nefes al- ve başlıyoruz :>**
 * İlk adım olarak [Node JS](https://nodejs.org/en/) indir.
   * Bu kurulumu yaparken sana bazı paketlerin farklı yüklemeleri ihtiyaç duyduğunu soracaktır. O kısımdaki boşluğu tikle ve devam et yoksa baya uğraşırsın dostum, demedi deme :D
 * Kendine git ve bir adet MongoDB hesabı kur, nasıl kuracağını bilmiyorsan bunun için internette tonlarca video var.
