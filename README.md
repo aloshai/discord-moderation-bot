@@ -5,7 +5,7 @@
  
 - [Discord Moderation Bot](#discord-moderation-bot)
     - [İçerikler](#içerikler)
-    - [Kurulum](#kurulum)
+    - [Kurulum](#kurulum) ya da [Kurulum Videosu](https://youtu.be/xau_vBwhqAI)
     - [Kullanım](#kullanım)
     - [FAQ](#faq)
     
@@ -64,6 +64,8 @@ Sana burada en ama en basit şekilde kurulumu anlatacağım eğer anlamadım diy
 * Hiçbir modülün yüklü değilse `npm install` veya `yarn` kullanıyorsan `yarn install` yaz.
 * Artık botu çalıştırma vakti `npm start`, `node Index.js` ya da `node .` yazıp projeyi çalıştır.
 * Botun çalışıyor artık götüne kına yakarsın, hayırlı olsun :D
+
+**İndirmeyi başaramadın mı? [Videoyu İzlemeyi Dene](https://youtu.be/xau_vBwhqAI)**
 
 # Kullanım
 Botun kullanımıyla alakalı bilgilere buradan erişebilirsin.
