@@ -15,32 +15,32 @@
     
 # Içerikler
  Buradan botun içerisinde olan tüm özellikleri görebilirsiniz. Buradaki özelliklerin yanında tik olanlar kullanılabilir durumda olanlar, olmayanlar ise yakın gelecekte gelecek olanlardır.
- - [x] Davet Sayacı (invite-manager)
+ - [x] **Davet Sayacı (invite-manager)**
    * Sunucuya davet ettiğiniz tüm kullanıcıları gösterir ya da bunun için size bilgi verir.
      * `me`
- - [x] İstatistik Sistemi (stat-system)
+ - [x] **İstatistik Sistemi (stat-system)**
    * Ses ve Mesaj istatistiğini gün gün saymak ve bunu hem yazı hemde tablo hâlinde yansıtır.
      * `!resetstats`, `!stats`, `!topvoices`, `!topmessages`, `!message` ve `!voice` komutlarını kullanabilirsiniz.
- - [x] Envanter Sistemi (market/inventory-system)
+ - [x] **Envanter Sistemi (market/inventory-system)**
    * Owo bot gibi maden kazıp, kazdığın madeni sattıktan sonra para kazanıp bunu kumara yatırabilirsin ve bunları kullanarak güzel şeyler yapabilirsin.
      * `!coin`, `!coinflip`, `!dailycoin`, `!dailycrate`, `!opencrate`, `!inventory`, `!market`, `!mine`, `!rolecreate`, `!topcoin` ve `!transfer` komutlarını kullanarak görebilirsin.
- - [x] Kayıt Sistemi (register)
+ - [x] **Kayıt Sistemi (register)**
    * Sunucuya giren bir kişiyi **erkek/kız** olarak kaydedebilirsin.
      * `!erkek`, `!kız` ve `!kayıtsız` komutlarını deneyerek görebilirsin.
- - [x] Görev Sistemi (task-system)
+ - [x] **Görev Sistemi (task-system)**
    * Sunucuda bir rolün üstüne istediğiniz gibi görev oluşturabilirsin. Belirttiğiniz rol için belli bir süre veriyorsunuz ve belirttiğiniz mesaj ve ses aktifliğini o süre tamamlanana kadar o rolde olan herkes gerçekleştirmeye çalışıyor.
      * `!task`, `!task create`, `!task update`, `!task add`, `!task remove`, `!task delete` ve `!task all` komutlarını kullanarak görebilirsin.
- - [x] Özel Oda Sistemi (private-voice-channel)
+ - [x] **Özel Oda Sistemi (private-voice-channel)**
    * Belirttiğiniz bir kanala girdiğinizde onun altına bir oda açar ve o odayı sizin yönetebileceğiniz şekilde ayarlar.
- - [x] Cezalandırma Sistemi (penal-system)
+ - [x] **Cezalandırma Sistemi (penal-system)**
    * Tamamen kusursuz ve size oldukça detaylı bir bilgi veren bu sistem kullanışlı ve güzeldir :D
      * `!sicil`, `!jail`, `!tempjail`, `!mute`, `!tempmute`, `!voicemute`, `!tempvoicemute`, `!warn`, `!ban`, `!unmute`, `!unmuteall`, `!unmvoicemute`, `!unvoicemuteall` ve `!kick` komutlarını kullanarak görebilirsin.
- - [x] Odalara İzinli Giriş
- - [x] Arkadaşlık Sistemi (friend-system)
+ - [x] **Odalara İzinli Giriş**
+ - [x] **Arkadaşlık Sistemi (friend-system)**
    * Sunucuda her kim ile vakit geçiriyorsan sana bunun için bot belli bir puan veriyor. Bu kazandığın puanlar hiçbir işe yaramıyor ancak bu botu alıp kullanacak kişi onu istediği gibi düzenleyebilir.
      * `!friends` komutunu dene gör :D
- - [x] Eğlence İşleri
- - [x] Bilgilendirme Komutları
+ - [x] **Eğlence İşleri**
+ - [x] **Bilgilendirme Komutları**
    * Kısacası help komutu, tüm komutların nasıl kullanıldığını rahatça oradan görebilirsin.
 
 
