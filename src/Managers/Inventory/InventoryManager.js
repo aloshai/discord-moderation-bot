@@ -4,8 +4,6 @@ const UserItem = require("./UserItem");
 class InventoryManager {
     static Items = [];
 
-    constructor(){}
-
     static Numbers = [
         "⁰",
         "¹",
@@ -83,7 +81,6 @@ class InventoryManager {
     static FindItemsToType(name){
         return this.Items.filter(item => item.Type == name);
     }
-
 
     static async addItemOfInventory(user, item, count){
         let element = user.Inventory.find(e => e.Id == item.Id);

@@ -1,51 +1,51 @@
 {
     "Server":{
-        "Id": "777664896816644137"
+        "Id": "YOUR_SERVER_ID"
     },
 
     "Welcome": {
-        "Channel": "777668528874586114"
+        "Channel": "WELCOME_CHANNEL_ID"
     },
 
     "PrivHub": {
-        "Room": "777673097045606420",
+        "Room": "PRIVATE_CHANNEL_ID",
         "Symbol": "🏠"
     },
 
     "Authorization": {
         "Registers":{
-            "Roles": ["777665198311735308"],
+            "Roles": ["AUTH_ROLE_1", "AUTH_ROLE_2"],
             "NameAndAge": true,
             "AgeLimit": 13,
             "Brace": " | ",
-            "ManRoles": ["777665200199041057", "777665201658396722"],
-            "WomanRoles": ["777665200840638506", "777665201658396722"]
+            "ManRoles": ["MAN_ROLE_1", "MAN_ROLE_2"],
+            "WomanRoles": ["WOMAN :D", "WOMAN :D"]
         },
         "Transporter": {
-            "Roles": ["777678361773211689"],
+            "Roles": ["TRANSPORTER_ROLE_1"],
             "Cooldown": 15
         },
         "NameChanger":{
-            "Roles": ["777667488191873064"],
+            "Roles": ["NAME_CHANGER_ROLE"],
             "ForceTag": true,
             "ForceTagFormat": "<tag> <name>"
         }
     },
 
     "Invite": {
-        "Channel": "777679562011312149"
+        "Channel": "INVITE_COUNTER_CHANNEL"
     },
 
     "Tag": {
-        "Symbol": "",
-        "Symbol_2": "",
-        "Roles": ["777665199339208714"],
-        "Log": "777679246730461216"
+        "Symbol": "SYMBOL_1",
+        "Symbol_2": "SYMBOL_2",
+        "Roles": ["TAG_ROLE"],
+        "Log": "TAG_LOG_CHANNEL"
     },
 
     "Roles": {
-        "Unregistered": ["777665205400240128"],
-        "BoosterRole": "777668265878880257"
+        "Unregistered": ["UNREGISTERED_ROLE"],
+        "BoosterRole": "BOOSTER_ROLE"
     },
 
     "Stats": {
@@ -61,40 +61,40 @@
     "Penals": {
         "SendPrivateMessage": false,
         "Jail": {
-            "AuthRoles": ["777667499642191902"],
-            "Role": "777665204401471499",
-            "Log": "777679267274031176",
+            "AuthRoles": ["AUTH_ROLES"],
+            "Role": "JAIL_ROLE_ID",
+            "Log": "JAIL_LOG_CHANNEL_ID",
             "Limit": 3
         },
         "Mute": {
-            "AuthRoles": ["777665197644972043"],
-            "Role": "777665203470860348",
-            "Log": "777679293849141278"
+            "AuthRoles": ["AUTH_ROLES"],
+            "Role": "MUTE_ROLE_ID",
+            "Log": "MUTE_CHANNEL_LOG_ID"
         },
         "VoiceMute": {
-            "AuthRoles": ["777665197644972043"],
-            "Role": "777665202480611388",
-            "Log": "777679305412706305",
+            "AuthRoles": ["AUTH_ROLES"],
+            "Role": "MUTE_ROLE_ID",
+            "Log": "MUTE_CHANNEL_LOG_ID",
             "ManualMute": true
         },
         "Suspect": {
             "AuthRoles": [],
-            "Role": "777665203775995956",
-            "Log": ""
+            "Role": "SUSPET_ROLE_ID",
+            "Log": "SUSPECT_LOG_CHANNEL"
         },
         "Ban": {
-            "AuthRoles": ["777665197664894977"],
-            "Log": "777679255801823253",
+            "AuthRoles": ["AUTH_ROLE"],
+            "Log": "BAN_CHANNEL_ID",
             "Limit": 3
         },
         "Warn": {
-            "AuthRoles": ["777665196411322378"],
-            "Log": "777679314870599710",
+            "AuthRoles": ["AUTH_ROLE"],
+            "Log": "WARN_CHANNEL_ID",
             "Role": []
         },
         "Kick": {
-            "AuthRoles": ["777665196851462174"],
-            "Log": "777679280686891048",
+            "AuthRoles": ["AUTH_ROLE"],
+            "Log": "KICK_LOG_CHANNEL",
             "Limit": 3
         }
     },

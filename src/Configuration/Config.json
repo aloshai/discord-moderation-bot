@@ -1,6 +1,6 @@
 {
-    "Token": "Nzc3Njc3OTY4MTA5MjA3NTgy.X7G7DA.wjVntSCaX8UDA7vYIq-ZeONNsuo",
+    "Token": "DISCORD_BOT_TOKEN",
     "Prefix": "!",
-    "DatabaseUrl": "mongodb+srv://alosha:MXRrP3kLsDo39N78@aloshadatabase.fsiwe.mongodb.net/<dbname>?retryWrites=true&w=majority",
-    "DatabaseName": "glare"
+    "DatabaseUrl": "MONGODB_CONNECTION_STRING",
+    "DatabaseName": "DATABASE_nAME"
 }

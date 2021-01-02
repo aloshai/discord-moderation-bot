@@ -32,6 +32,5 @@
     "request": "^2.88.2",
     "table": "^6.0.4"
   },
-  "devDependencies": {},
   "keywords": []
 }

@@ -1,5 +1,4 @@
 class Item {
-
     constructor(id, name, description, type, symbol){
         this.Id = id;
         this.Name = name;
