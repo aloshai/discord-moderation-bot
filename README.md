@@ -3,6 +3,8 @@
 
  En iyi şekilde geliştirilmiş bir moderasyon botu Discord'da Türk sunucuların severek kullanabileceği bir bot.
  
+ [Bot Tanıtım Videosu](https://youtu.be/5ZPOEhTD0yo)
+ 
 - [Discord Moderation Bot](#discord-moderation-bot)
     - [İçerikler](#içerikler)
     - [Kurulum](#kurulum) ya da [Kurulum Videosu](https://youtu.be/xau_vBwhqAI)
