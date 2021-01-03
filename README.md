@@ -3,20 +3,24 @@
 
  En iyi şekilde geliştirilmiş bir moderasyon botu Discord'da Türk sunucuların severek kullanabileceği bir bot.
  
- [Bot Tanıtım Videosu](https://youtu.be/5ZPOEhTD0yo)
- 
-- [Discord Moderation Bot](#discord-moderation-bot)
+ - [Discord Moderation Bot](#discord-moderation-bot)
     - [İçerikler](#içerikler)
-    - [Kurulum](#kurulum) ya da [Kurulum Videosu](https://youtu.be/xau_vBwhqAI)
+    - [Kurulum](#kurulum), [Hızlı Kurulum Videosu](https://youtu.be/xau_vBwhqAI) ya da [Detaylı Kurulum Videosu](https://youtu.be/4D-UvhETm48)
     - [Kullanım](#kullanım)
     - [FAQ](#faq)
+ 
+
+
     
     
 # Neden Yayınlandı?
  Sunucuda takılırken can sıkıntısından arkadaşlarıma bunu yapacağımı söyledim ve eğer bir ara kullanmak istemezsem yayınlayacağımı dile getirdim ve söz verdiğim gibi ne eklemek istediysem ekledim. Şimdi sana bu aptallık gibi geliyor olabilir ama ben kendi sunucumda arkadaşlarım için yaptığım ve boş zamanında geliştirdiğim bu botu sadece ben değil, herkesin kullanmasını istiyorum ve bunu burada yayınlamak istiyorum. **Boşu boşuna orada burada gözünüzde büyüttüğünüz insanların yaptıklarını bu kadar büyütüp onlara yüzlerce ₺ para vermeyin, aptallık edersiniz.**
     
+
 # Içerikler
  Buradan botun içerisinde olan tüm özellikleri görebilirsiniz. Buradaki özelliklerin yanında tik olanlar kullanılabilir durumda olanlar, olmayanlar ise yakın gelecekte gelecek olanlardır.
+ [![Bot Tanıtım Videosu](https://img.youtube.com/vi/5ZPOEhTD0yo/maxresdefault.jpg)](https://youtu.be/5ZPOEhTD0yo)
+
  - [x] **Davet Sayacı (invite-manager)**
    * Sunucuya davet ettiğiniz tüm kullanıcıları gösterir ya da bunun için size bilgi verir.
      * `me`
@@ -69,7 +73,9 @@ Sana burada en ama en basit şekilde kurulumu anlatacağım eğer anlamadım diy
 * Artık botu çalıştırma vakti `npm start`, `node Index.js` ya da `node .` yazıp projeyi çalıştır.
 * Botun çalışıyor artık götüne kına yakarsın, hayırlı olsun :D
 
-**İndirmeyi başaramadın mı? [Videoyu İzlemeyi Dene](https://youtu.be/xau_vBwhqAI)**
+[![Detaylı Kurulum Videosu](https://img.youtube.com/vi/4D-UvhETm48/maxresdefault.jpg)](https://youtu.be/4D-UvhETm48)
+
+[![Detaylı Kurulum Videosu](https://img.youtube.com/vi/xau_vBwhqAI/maxresdefault.jpg)](https://youtu.be/xau_vBwhqAI)
 
 # Kullanım
 Botun kullanımıyla alakalı bilgilere buradan erişebilirsin.
