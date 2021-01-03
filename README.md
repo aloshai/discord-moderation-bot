@@ -16,7 +16,7 @@
     
     
 # Neden Yayınlandı?
- Sunucuda takılırken can sıkıntısından arkadaşlarıma bunu yapacağımı söyledim ve eğer bir ara kullanmak istemezsem yayınlayacağımı dile getirdim ve söz verdiğim gibi ne eklemek istediysem ekledim. Şimdi sana bu aptallık gibi geliyor olabilir ama ben kendi sunucumda arkadaşlarım için yaptığım ve boş zamanında geliştirdiğim bu botu sadece ben değil, herkesin kullanmasını istiyorum ve bunu burada yayınlamak istiyorum. **Boşu boşuna orada burada gözünüzde büyüttüğünüz insanların yaptıklarını bu kadar büyütüp onlara yüzlerce ₺ para vermeyin, aptallık edersiniz.**
+ Sunucuda takılırken can sıkıntısından arkadaşlarıma bunu yapacağımı söyledim ve eğer bir ara kullanmak istemezsem yayınlayacağımı dile getirdim ve söz verdiğim gibi ne eklemek istediysem ekledim. Şimdi sana bu aptallık gibi geliyor olabilir ama ben kendi sunucumda arkadaşlarım için yaptığım ve boş zamanında geliştirdiğim bu botu sadece ben değil, herkesin kullanmasını istiyorum ve bunu burada yayınlamak istiyorum.
     
 
 # Içerikler
