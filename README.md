@@ -9,8 +9,10 @@
     - [Kullanım](#kullanım)
     - [FAQ](#faq)
  
-
-
+ ## Bot Tanıtım Videosu
+ [Bot Tanıtım Videosu](https://youtu.be/5ZPOEhTD0yo)
+ 
+ [![Bot Tanıtım Videosu](https://img.youtube.com/vi/5ZPOEhTD0yo/maxresdefault.jpg)](https://youtu.be/5ZPOEhTD0yo)
     
     
 # Neden Yayınlandı?
@@ -19,7 +21,6 @@
 
 # Içerikler
  Buradan botun içerisinde olan tüm özellikleri görebilirsiniz. Buradaki özelliklerin yanında tik olanlar kullanılabilir durumda olanlar, olmayanlar ise yakın gelecekte gelecek olanlardır.
- [![Bot Tanıtım Videosu](https://img.youtube.com/vi/5ZPOEhTD0yo/maxresdefault.jpg)](https://youtu.be/5ZPOEhTD0yo)
 
  - [x] **Davet Sayacı (invite-manager)**
    * Sunucuya davet ettiğiniz tüm kullanıcıları gösterir ya da bunun için size bilgi verir.
@@ -53,6 +54,8 @@
 # Kurulum
 Sana burada en ama en basit şekilde kurulumu anlatacağım eğer anlamadım diyorsan Discord sunucusundan bir mesaj at ve cevap vermemi bekle.
 
+[Detaylı Kurulum Videosu](https://youtu.be/4D-UvhETm48)
+
 * **Okuma yazma bildiğinden emin ol ardından derin bir nefes al- ve başlıyoruz :>**
 * İlk adım olarak [Node JS](https://nodejs.org/en/) indir.
   * Bu kurulumu yaparken sana bazı paketlerin farklı yüklemeleri ihtiyaç duyduğunu soracaktır. O kısımdaki boşluğu tikle ve devam et yoksa baya uğraşırsın dostum, demedi deme :D
@@ -73,9 +76,18 @@ Sana burada en ama en basit şekilde kurulumu anlatacağım eğer anlamadım diy
 * Artık botu çalıştırma vakti `npm start`, `node Index.js` ya da `node .` yazıp projeyi çalıştır.
 * Botun çalışıyor artık götüne kına yakarsın, hayırlı olsun :D
 
+## Detaylı Kurulum Videosu
+[Detaylı Kurulum Videosu](https://youtu.be/4D-UvhETm48)
+
 [![Detaylı Kurulum Videosu](https://img.youtube.com/vi/4D-UvhETm48/maxresdefault.jpg)](https://youtu.be/4D-UvhETm48)
 
-[![Detaylı Kurulum Videosu](https://img.youtube.com/vi/xau_vBwhqAI/maxresdefault.jpg)](https://youtu.be/xau_vBwhqAI)
+## Hızlı Kurulum Videosu
+[Hızlı Kurulum Videosu](https://youtu.be/xau_vBwhqAI)
+
+[![Hızlı Kurulum Videosu](https://img.youtube.com/vi/xau_vBwhqAI/maxresdefault.jpg)](https://youtu.be/xau_vBwhqAI)
+
+## Kurulumlar
+[Detaylı Kurulum Videosu](https://youtu.be/4D-UvhETm48) ya da [Hızlı Kurulum Videosu](https://youtu.be/xau_vBwhqAI)
 
 # Kullanım
 Botun kullanımıyla alakalı bilgilere buradan erişebilirsin.
