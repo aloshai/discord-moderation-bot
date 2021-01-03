@@ -54,8 +54,6 @@
 # Kurulum
 Sana burada en ama en basit şekilde kurulumu anlatacağım eğer anlamadım diyorsan Discord sunucusundan bir mesaj at ve cevap vermemi bekle.
 
-[Detaylı Kurulum Videosu](https://youtu.be/4D-UvhETm48)
-
 * **Okuma yazma bildiğinden emin ol ardından derin bir nefes al- ve başlıyoruz :>**
 * İlk adım olarak [Node JS](https://nodejs.org/en/) indir.
   * Bu kurulumu yaparken sana bazı paketlerin farklı yüklemeleri ihtiyaç duyduğunu soracaktır. O kısımdaki boşluğu tikle ve devam et yoksa baya uğraşırsın dostum, demedi deme :D
@@ -86,7 +84,7 @@ Sana burada en ama en basit şekilde kurulumu anlatacağım eğer anlamadım diy
 
 [![Hızlı Kurulum Videosu](https://img.youtube.com/vi/xau_vBwhqAI/maxresdefault.jpg)](https://youtu.be/xau_vBwhqAI)
 
-## Kurulumlar
+## Videolu Kurulumlar
 [Detaylı Kurulum Videosu](https://youtu.be/4D-UvhETm48) ya da [Hızlı Kurulum Videosu](https://youtu.be/xau_vBwhqAI)
 
 # Kullanım
