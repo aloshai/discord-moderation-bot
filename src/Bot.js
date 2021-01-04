@@ -23,6 +23,8 @@ EM.addEvent("Market/CaseDrop.js");
 EM.addEvent("Friends/OnVoiceStateUpdate");
 EM.addEvent("Friends/OnVoiceReady");
 
+EM.addEvent("Tag/UserUpdate");
+
 client.on("ready", () => console.log("Bot is ready."))
 
 require("./Utils/Helper");

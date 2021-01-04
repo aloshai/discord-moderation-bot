@@ -39,7 +39,7 @@
     "Tag": {
         "Symbol": "SYMBOL_1",
         "Symbol_2": "SYMBOL_2",
-        "Roles": ["TAG_ROLE"],
+        "Role": "TAG_ROLE_ID",
         "Log": "TAG_LOG_CHANNEL"
     },
 

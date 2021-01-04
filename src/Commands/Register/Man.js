@@ -32,7 +32,7 @@ module.exports.execute = async (client, message, args) => {
     victim.setNickname(newName).catch(console.error);
     let roles = Settings.Authorization.Registers.ManRoles;
 
-    if (victim.user.username.includes(Settings.Tag.Symbol)) roles.concat(Settings.Tag.Roles);
+    if (victim.user.username.includes(Settings.Tag.Symbol)) roles.concat(Settings.Tag.Role);
     victim.setRoles(roles);
 
     User.updateOne({ Id: victim.id }, { $push: { "Names": { Admin: message.author.id, Date: Date.now(), Value: newName } } }, { upsert: true }).exec();
