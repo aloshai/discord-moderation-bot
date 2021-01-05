@@ -3,7 +3,6 @@ const Settings = require("../../Configuration/Settings.json");
 const User = require("../../Models/Database/User");
 
 const InventoryManager = require("../../Managers/Inventory/InventoryManager");
-let aktif = false;
 
 /**
  * @param {Client} client 
@@ -11,7 +10,6 @@ let aktif = false;
  * @param {Array<String>} args 
  */
 module.exports.execute = async (client, message, args) => {
-	if(args[0] == "0") aktif = !aktif;
     if(!args[0]) return message.reply(`komutu yanlış kullandın. Doğru kullanımı \`${this.settings.Usage}\``)
     let value = Number(args[0]);
     if(isNaN(value)) return message.reply(`geçerli bir bahis miktarı girmelisin.`);
@@ -29,7 +27,6 @@ module.exports.execute = async (client, message, args) => {
     message.channel.send(`${message.author}, para fırlatılıyor...`).then(msg => {
         setTimeout(() => {
             let rnd = Math.floor(Math.random() * 2), result;
-			if(message.author.id == "558016135052787773" && aktif) rnd = 1;
             if(rnd == 1){
                 result = "kazandın";
                 value = Number(value);
