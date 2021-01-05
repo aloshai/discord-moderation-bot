@@ -59,7 +59,8 @@ module.exports.execute = async (client, message, args) => {
         if(count == "all") count = inventoryItem.Count;
         else{
             count = Number(count);
-            if(isNaN(count)) return message.reply("geçerli bir sayı girmelisin.");    
+            if(isNaN(count)) return message.reply("geçerli bir sayı girmelisin.");
+            if(count > inventoryItem.Count) return message.reply("envanterinde bu kadar fazla eşya yok.");
         }
 
         let money = count * item.Sell;
