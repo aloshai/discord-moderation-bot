@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/aloshai/discord-moderation-bot#readme",
   "dependencies": {
-    "axios": "^0.21.0",
     "chart.js": "^2.9.4",
     "chartjs-node-canvas": "^3.0.6",
     "discord.js": "^12.4.1",
@@ -29,7 +28,6 @@
     "ms": "^2.1.2",
     "quickchart-js": "^1.0.5",
     "randomstring": "^1.1.5",
-    "request": "^2.88.2",
     "table": "^6.0.4"
   },
   "keywords": []
