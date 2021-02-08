@@ -1,4 +1,4 @@
-const { CanvasRenderService } = require('chartjs-node-canvas');
+const { ChartJSNodeCanvas } = require('chartjs-node-canvas');
 
 class ChartManager {
     static async ImageFromData(body, w = 600, h = 290) {
@@ -6,7 +6,7 @@ class ChartManager {
     }
 
     static async fromImage(config, w, h) {
-        let crs = new CanvasRenderService(w, h);
+        let crs = new ChartJSNodeCanvas({ width: w, height: h });
         return await crs.renderToBuffer(config);
     }
 }
