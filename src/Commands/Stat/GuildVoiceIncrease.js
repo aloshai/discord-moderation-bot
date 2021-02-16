@@ -1,13 +1,8 @@
 const { Client, Message, MessageEmbed, MessageAttachment } = require("discord.js");
 const Guild = require("../../Models/Database/Guild");
 
-const moment = require("moment");
-require("moment-duration-format");
-
 const tm = require("../../Managers/TimeManager");
-
 const cm = require("../../Managers/ChartManager");
-
 
 /**
  * @param {Client} client 
@@ -61,6 +56,6 @@ module.exports.settings = {
     Usage: "gvi",
     Description: "Sunucudaki aktifliğin nasıl sürdürüldüğüne bakarsın.",
     Category: "Stats",
-    Activity: true,
+    Activity: false,
     cooldown: 15000
 }
