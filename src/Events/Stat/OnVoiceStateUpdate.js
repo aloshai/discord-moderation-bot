@@ -19,7 +19,7 @@ module.exports = (oldState, newState) => {
         });
     }
 
-    if(!Voices.has(oldState.id)) Voices.set(oldState.id, {
+    if(!Voices.has(oldState.id) && !Settings.Stats.Voice.BypassChannels.includes(newState.channelID)) Voices.set(oldState.id, {
         Time: Date.now(),
         ChannelID: (oldState.channelID || newState.channelID)
     });
